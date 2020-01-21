@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @spot.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @spot.description %>
+</p>
+
+<p>
+  <strong>Tags:</strong>
+  <%#= @spot.tag_list %>
+  <% @spot.tag_list.each do |tag| %>
+    <%= link_to tag, tagged_path(tag: tag) %>
+  <% end %>
+</p>
+
+<!-- As a user, I want to be able to find related restaurants based on their tags -->
+<h1><%#= @spot.name %></h1>
+<ul>
+  <%# @related_spots.each do |spot| %>
+    <li><%#= spot.name %></li>
+  <%# end %>
+</ul>
+
+<%= link_to 'Edit', edit_spot_path(@spot) %> |
+<%= link_to 'Back', spots_path %>

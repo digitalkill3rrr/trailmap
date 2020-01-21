@@ -1,0 +1,32 @@
+<%= form_with(model: spot, local: true) do |form| %>
+  <% if spot.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(spot.errors.count, "error") %> prohibited this spot from being saved:</h2>
+
+      <ul>
+        <% spot.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="name">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="description">
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div class="tags">
+    <%= form.label :tags %>
+    <%= form.text_field :tag_list %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

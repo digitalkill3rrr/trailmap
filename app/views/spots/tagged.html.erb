@@ -1,0 +1,13 @@
+<tbody>
+  <% @spots.each do |s| %>
+    <h4><%= s.name %></h4>
+    <p><%= s.description %></p>
+    <p>
+      <% s.tag_list.each do |tag| %>
+        <%= link_to tag, tagged_path(tag: tag) %>
+      <% end %>
+    </p>
+  <% end %>
+
+  <td><%= link_to 'Back', spots_url %></td>
+</tbody>
