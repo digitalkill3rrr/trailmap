@@ -1,0 +1,22 @@
+<%= form_with(model: difficulty, local: true) do |form| %>
+  <% if difficulty.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(difficulty.errors.count, "error") %> prohibited this difficulty from being saved:</h2>
+
+      <ul>
+        <% difficulty.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :level %>
+    <%= form.text_field :level %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

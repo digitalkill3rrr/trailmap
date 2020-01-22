@@ -26,6 +26,11 @@
     <%= form.text_field :tag_list %>
   </div>
 
+  <div class="route">
+    <%= form.label :route %>
+    <%= select("spot", "route_id", Route.all.collect { |r| [ r.title, r.id ] }, { include_blank: true }) %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

@@ -1,0 +1,34 @@
+<p>
+  <strong>Title:</strong>
+  <%= @route.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @route.description %>
+</p>
+
+<p>
+  <strong>Difficulty:</strong>
+  <%= Difficulty.find(@route.difficulty_id).level %>
+</p>
+
+<p>
+  <strong>Season:</strong>
+  <%= Season.find(@route.season_id).title %>
+</p>
+
+<p>
+  <strong>Distance:</strong>
+  <%= @route.distance %>
+</p>
+
+<p>
+  <strong>Kind:</strong>
+  <%= Kind.find(@route.kind_id).title %>
+</p>
+
+<%= link_to 'Edit', edit_route_path(@route) %> |
+<%= link_to 'Back', routes_path %>
+
+<%= render 'spots/index' %>

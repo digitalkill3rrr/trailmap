@@ -1,0 +1,50 @@
+<%= form_with(model: route, local: true) do |form| %>
+  <% if route.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(route.errors.count, "error") %> prohibited this route from being saved:</h2>
+
+      <ul>
+        <% route.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :difficulty %>
+    <%#= form.text_field :difficulty %>
+    <%= select("route", "difficulty_id", Difficulty.all.collect { |d| [ d.level, d.id ] }) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :season %>
+    <%#= form.text_field :season %>
+    <%= select("route", "season_id", Season.all.collect { |s| [ s.title, s.id ] }) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :distance %>
+    <%= form.text_field :distance %>
+  </div>
+
+  <div class="field">
+    <%= form.label :kind %>
+    <%#= form.text_field :kind %>
+    <%= select("route", "kind_id", Kind.all.collect { |k| [ k.title, k.id ] }) %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
