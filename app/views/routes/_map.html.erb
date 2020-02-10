@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.css' rel='stylesheet' />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <title>Map</title>
+  </head>
+  <body>
+    <style>
+      .marker {
+        display: block;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        padding: 0;
+      }
+    </style>
+
+    <%
+      spots = []
+
+      # вытаскиваем параметры точки через маршрут и кладем в массив сверху
+      @route.spots.each do |spot|
+        spots.push([spot.latitude, spot.longitude])
+      end
+    %>
+
+    <div class="">
+      <!-- кладем массив в локальную переменную -->
+      <%= spots %>
+    </div>
+
+
+    <div id='map' style='width: 100%; height: 300px;' data-lat='<%=  %>' data-lan='<%=  %>'></div>
+    <script>
+      mapboxgl.accessToken = 'pk.eyJ1IjoiZGlnaXRhbGtpbGwzcnIiLCJhIjoiY2s1d3Z0NGd2MXRybDNlbWx0bjFpdTJzMiJ9.NI5AijutKs6So5VFDX9URw';
+
+
+      var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/digitalkill3rr/ck3x6ftex0v0g1cmq2b5ps6kz',
+        center: [43.10256, 56.07072],
+        zoom: 12
+      });
+
+
+
+      // создаем цикл и прогоняем через него точки. Сколько в маршруте точек, столько и здесь будет
+      var geojson = {
+        'type': 'FeatureCollection',
+        'features': [
+            <% spots.each do |spot| %>
+              {
+                'type': 'Feature',
+                'properties': {},
+                'geometry': {
+                  'type': 'LineString',
+                  'coordinates': <%= spot %>
+                }
+              },
+            <% end %>
+        ]
+      };
+
+
+      // map.on('load', function() {
+      //     map.addSource('route', {
+      //     'type': 'geojson',
+      //     'data': {
+      //         'type': 'FeatureCollection',
+      //         'features': [
+      //               {
+      //                 'type': 'Feature',
+      //                 'properties': {},
+      //                 'geometry': {
+      //                     'type': 'LineString',
+      //                     'coordinates':
+      //
+      //                       // [43.10256, 56.07072],
+      //                       // [43.05308, 56.09047]
+      //
+      //                       <%# spots.each do |spot| %>
+      //                         <%#= spot %>
+      //                       <%# end %>
+      //                 }
+      //               }
+      //         ]
+      //
+      //     }
+      // });
+
+      // add markers to map
+      geojson.features.forEach(function(marker) {
+        var marker = new mapboxgl.Marker()
+        // new mapboxgl.Marker(el)
+          .setLngLat(marker.geometry.coordinates)
+          .addTo(map);
+      });
+
+
+    </script>
+  </body>
+</html>

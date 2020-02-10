@@ -1,7 +1,12 @@
 <div class="spot_info">
-  <p><%= @spot.route_id %></p>
+  <p><%= @spot.route.title %></p>
   <h2><%= @spot.name %></h2>
   <p><%= @spot.description %></p>
+  <p>
+    <%= @spot.longitude %>
+    <%= @spot.latitude %>
+  </p>
+
 </div>
 
 <p>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_21_211920) do
+ActiveRecord::Schema.define(version: 2020_01_27_202250) do
 
   create_table "difficulties", force: :cascade do |t|
     t.string "level"
@@ -47,6 +47,8 @@ ActiveRecord::Schema.define(version: 2020_01_21_211920) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "route_id"
+    t.float "longitude"
+    t.float "latitude"
   end
 
   create_table "taggings", force: :cascade do |t|

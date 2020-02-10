@@ -1,9 +1,8 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Routes</h1>
 
 <table>
   <thead>
+
     <tr>
       <th>Title</th>
       <th>Description</th>
@@ -17,9 +16,10 @@
   </thead>
 
   <tbody>
+
     <% @routes.each do |route| %>
       <tr>
-        <td><%= route.title %></td>
+        <td><%= link_to route.title, route %></td>
         <td><%= route.description %></td>
         <td><%= route.difficulty_id %></td>
         <td><%= route.season_id %></td>

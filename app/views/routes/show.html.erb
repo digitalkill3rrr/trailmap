@@ -31,4 +31,14 @@
 <%= link_to 'Edit', edit_route_path(@route) %> |
 <%= link_to 'Back', routes_path %>
 
-<%= render 'spots/index' %>
+<hr>
+
+<%#= render 'spots/index' %>
+
+<% @spots.each do |spot| %>
+  <%= render 'spots/show', spot: spot %>
+<% end %>
+
+<%= render 'spots/form', spot: Spot.new %>
+
+<%= render 'map' %>

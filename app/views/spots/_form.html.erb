@@ -21,15 +21,29 @@
     <%= form.text_field :description %>
   </div>
 
+  <div class="longitude">
+    <%= form.label :longitude %>
+    <%= form.text_field :longitude %>
+  </div>
+
+  <div class="latitude">
+    <%= form.label :latitude %>
+    <%= form.text_field :latitude %>
+  </div>
+
   <div class="tags">
     <%= form.label :tags %>
     <%= form.text_field :tag_list %>
   </div>
 
-  <div class="route">
-    <%= form.label :route %>
-    <%= select("spot", "route_id", Route.all.collect { |r| [ r.title, r.id ] }, { include_blank: true }) %>
-  </div>
+  <% if @route %>
+    <%= form.hidden_field :route_id, value: @route.id %>
+  <% else %>
+    <div class="route_id">
+      <%= form.label :route_id %>
+      <%= select("spot", "route_id", Route.all.collect { |r| [ r.title, r.id ] }, { include_blank: true }) %>
+    </div>
+  <% end %>
 
   <div class="actions">
     <%= form.submit %>

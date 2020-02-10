@@ -1,0 +1,22 @@
+<div class="spot_info">
+  <p><%#= spot.route_id %></p>
+  <h2><%= link_to spot.name, spot %></h2>
+  <p><%= spot.description %></p>
+  <p>
+    <%= spot.longitude %>
+    <%= spot.latitude %>
+  </p>
+
+</div>
+
+<p>
+  <%#= @spot.tag_list %>
+  <% spot.tag_list.each do |tag| %>
+    <%= link_to tag, tagged_path(tag: tag) %>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_spot_path(spot) %> |
+<%= link_to 'Destroy', spot, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+<hr>

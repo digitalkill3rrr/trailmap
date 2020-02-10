@@ -5,7 +5,4 @@ class Spot < ApplicationRecord
 
   validates :route_id, presence: true
 
-  # def tag_list
-  #   self.tags.map(&:name).join(', ')
-  # end
 end
