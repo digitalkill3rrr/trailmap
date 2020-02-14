@@ -22,6 +22,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :distance %>
+    <%= form.text_field :distance %>
+  </div>
+
+  <div class="field">
     <%= form.label :difficulty %>
     <%#= form.text_field :difficulty %>
     <%= select("route", "difficulty_id", Difficulty.all.collect { |d| [ d.level, d.id ] }) %>
@@ -31,11 +36,6 @@
     <%= form.label :season %>
     <%#= form.text_field :season %>
     <%= select("route", "season_id", Season.all.collect { |s| [ s.title, s.id ] }) %>
-  </div>
-
-  <div class="field">
-    <%= form.label :distance %>
-    <%= form.text_field :distance %>
   </div>
 
   <div class="field">
