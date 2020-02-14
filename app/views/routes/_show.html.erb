@@ -1,0 +1,18 @@
+<p><%= link_to route.title, route %></p>
+
+<p><%= route.description %></p>
+
+<p><%= route.distance %></p>
+
+<p><%= Difficulty.find(route.difficulty_id).level %></p>
+
+<p><%= Season.find(route.season_id).title %></p>
+
+<p><%= Kind.find(route.kind_id).title %></p>
+
+<p><%= Collection.find(route.collection_id).title %></p>
+
+<%= link_to 'Edit', edit_route_path(route) %> |
+<%= link_to 'Back', routes_path %>
+
+<hr>

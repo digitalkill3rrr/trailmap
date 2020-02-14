@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_27_202250) do
+ActiveRecord::Schema.define(version: 2020_02_14_223544) do
+
+  create_table "collections", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "difficulties", force: :cascade do |t|
     t.string "level"
@@ -33,6 +40,7 @@ ActiveRecord::Schema.define(version: 2020_01_27_202250) do
     t.integer "season_id"
     t.integer "difficulty_id"
     t.integer "kind_id"
+    t.integer "collection_id"
   end
 
   create_table "seasons", force: :cascade do |t|

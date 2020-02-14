@@ -1,0 +1,18 @@
+<p>
+  <strong>Title:</strong>
+  <%= @collection.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @collection.description %>
+</p>
+
+<%= link_to 'Edit', edit_collection_path(@collection) %> |
+<%= link_to 'Back', collections_path %>
+
+<hr>
+
+<% @routes.each do |route| %>
+  <%= render 'routes/show', route: route %>
+<% end %>

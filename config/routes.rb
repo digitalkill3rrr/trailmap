@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :collections
   resources :kinds
   resources :seasons
   resources :difficulties

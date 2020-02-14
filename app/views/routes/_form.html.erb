@@ -44,6 +44,12 @@
     <%= select("route", "kind_id", Kind.all.collect { |k| [ k.title, k.id ] }) %>
   </div>
 
+  <div class="field">
+    <%= form.label :collection %>
+    <%#= form.text_field :kind %>
+    <%= select("route", "collection_id", Collection.all.collect { |c| [ c.title, c.id ] }) %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

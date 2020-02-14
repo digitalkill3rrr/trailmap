@@ -15,6 +15,7 @@ Route.create([
   {
     title: 'Oкская тропа',
     description: 'description',
+    collection_id: '1',
     difficulty_id: 1,
     season_id: 1,
     distance: '41 км',
@@ -22,6 +23,7 @@ Route.create([
   }, {
     title: 'Озёрный край',
     description: 'description',
+    collection_id: '2',
     difficulty_id: 2,
     season_id: 2,
     distance: '39 км',
@@ -93,5 +95,15 @@ Spot.create([
     route_id: random_route_id,
     latitude: 43.03003,
     longitude: 56.10654
+  }
+])
+
+Collection.create([
+  {
+    title: 'коллекция 1',
+    description: '1'
+  }, {
+    title: 'коллекция 2',
+    description: '2'
   }
 ])
