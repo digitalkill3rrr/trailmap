@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :collections
   resources :kinds
   resources :seasons
