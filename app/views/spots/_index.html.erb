@@ -28,8 +28,13 @@
           <% end %>
         </td>
 
-        <td><%= link_to 'Edit', edit_spot_path(spot) %></td>
-        <td><%= link_to 'Destroy', spot, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if can? :update, Spot %>
+          <td><%= link_to 'Edit', edit_spot_path(spot) %></td>
+        <% end %>
+
+        <% if can? :destroy, Spot %>
+          <td><%= link_to 'Destroy', spot, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
 
@@ -38,4 +43,6 @@
 
 <br>
 
-<%= link_to 'New Spot', new_spot_path %>
+<% if can? :create, Spot %>
+  <%= link_to 'New Spot', new_spot_path %>
+<% end %>

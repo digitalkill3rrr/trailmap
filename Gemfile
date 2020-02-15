@@ -31,6 +31,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'carrierwave', '~> 2.0'
 gem 'devise'
+gem 'cancancan'
+
 gem 'geocoder'
 
 group :development, :test do

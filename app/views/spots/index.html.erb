@@ -22,14 +22,20 @@
           <%= spot.longitude %>
           <%= spot.latitude %>
         </td>
+
         <td>
           <% spot.tag_list.each do |tag| %>
             <%= link_to tag, tagged_path(tag: tag) %>
           <% end %>
         </td>
 
-        <td><%= link_to 'Edit', edit_spot_path(spot) %></td>
-        <td><%= link_to 'Destroy', spot, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if can? :update, Spot %>
+          <td><%= link_to 'Edit', edit_spot_path(spot) %></td>
+        <% end %>
+        
+        <% if can? :destroy, Spot %>
+          <td><%= link_to 'Destroy', spot, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
 

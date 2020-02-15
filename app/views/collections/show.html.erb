@@ -8,8 +8,11 @@
   <%= @collection.description %>
 </p>
 
-<%= link_to 'Edit', edit_collection_path(@collection) %> |
-<%= link_to 'Back', collections_path %>
+<% if can? :update, Collection %>
+  <%= link_to 'Edit', edit_collection_path(@collection) %> |
+<% else %>
+  <%= link_to 'Back', collections_path %>
+<% end %>
 
 <hr>
 

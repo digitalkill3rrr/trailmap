@@ -16,14 +16,21 @@
 
   <body>
     <nav>
-      <%= link_to 'Routes', routes_url %>
-      <%= link_to 'Spots',  spots_url %>
-      <%= link_to 'Collections', collections_url %>
+      <div>
+        <%= link_to 'Routes', routes_url %>
+        <%= link_to 'Spots',  spots_url %>
+        <%= link_to 'Collections', collections_url %>
+      </div>
 
-      <% if user_signed_in? %>
-        <%= current_user.email %>
-        <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
-      <% end %>
+      <div>
+        <% if user_signed_in? %>
+          <%= current_user.email %>
+          <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+        <% else %>
+          <%= link_to 'Login', new_user_session_path %>
+          <%= link_to 'Register', new_user_registration_path %>
+        <% end %>
+      </div>
     </nav>
     <%= yield %>
   </body>

@@ -16,5 +16,8 @@
   <% end %>
 </p>
 
-<%= link_to 'Edit', edit_spot_path(@spot) %> |
-<%= link_to 'Back', spots_path %>
+<% if can? :update, Spot %>
+  <%= link_to 'Edit', edit_spot_path(@spot) %> |
+<% else %>
+  <%= link_to 'Back', spots_path %>
+<% end %>
