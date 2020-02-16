@@ -17,8 +17,9 @@
 </p>
 
 <% if can? :update, Spot %>
-  <%= link_to 'Edit', edit_spot_path(@spot) %> |
+  <%= link_to 'Edit', edit_spot_path(spot) %>
 <% end %>
+
 <%= link_to 'Back', spots_path %>
 
 <hr>

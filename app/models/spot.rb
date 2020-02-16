@@ -3,6 +3,6 @@ class Spot < ApplicationRecord
 
   belongs_to :route
 
-  validates :route_id, presence: true
+  validates :route_id, :user_id, :name, presence: true
 
 end

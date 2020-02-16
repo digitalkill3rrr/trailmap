@@ -11,6 +11,7 @@
       <th>Season</th>
       <th>Kind</th>
       <th>Collection</th>
+      <th>User</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -26,6 +27,7 @@
         <td><%= Season.find(route.season_id).title %></td>
         <td><%= Kind.find(route.kind_id).title %></td>
         <td><%= link_to Collection.find(route.collection_id).title, collections_path %></td>
+        <td><%= route.user.email %></td>
 
           <% if can? :update, Route %>
             <td><%= link_to 'Edit', edit_route_path(route) %></td>

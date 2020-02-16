@@ -2,6 +2,161 @@ Rake::Task['db:drop'].invoke
 Rake::Task['db:create'].invoke
 Rake::Task['db:migrate'].invoke
 
+# Create user method
+@users = [
+  {
+    email: 'user@user.com',
+    role:  'user'
+  }, {
+    email: 'admin@admin.com',
+    role:  'admin'
+  }, {
+    email: 'content@content.com',
+    role:  'content'
+  }, {
+    email: 'banned@user.com',
+    role:  'user',
+    banned: true
+  }
+]
+
+def create_users(user)
+  password = 'testtest'
+  # banned = user[:banned] ? user[:banned] :false
+
+  User.create(
+    email:                 user[:email],
+    role:                  user[:role],
+    password:              password,
+    password_confirmation: password
+  )
+end
+
+@users.each do |user|
+  u = create_users(user)
+  puts "User with #{u.email} created"
+end
+
+
+# Route info methods
+# Create seasons
+@seasons = [ 'лето', 'осень', 'зима', 'весна' ]
+
+@seasons.each do |season|
+  s = Season.new(
+    title: @seasons.sample
+  )
+
+  if s.save
+    puts "Season #{s.title} created"
+  else
+    puts "Season #{s.title} not created"
+  end
+end
+
+# Create difficulty
+@difficulties = [ 'лёгкая', 'средняя', 'сложная' ]
+
+@difficulties.each do |difficulty|
+  d = Difficulty.new(
+    level: @difficulties.sample
+  )
+
+  if d.save
+    puts "Difficulty #{d.level} created"
+  else
+    puts "Difficulty #{d.level} not created"
+  end
+end
+
+# Create route kind
+@kinds = [ 'пеший', 'вело' ]
+
+@kinds.each do |kind|
+  k = Kind.create(
+    title: @kinds.sample
+  )
+
+  if k.save
+    puts "Kind #{k.title} created"
+  else
+    puts "Kind #{k.title} not created"
+  end
+end
+
+
+# Create collection method
+@collections = [
+  {
+    title:       'походы МО',
+    description: 'походы по Московской Области'
+  }, {
+    title:       'походы выходного дня',
+    description: 'походы на выходных'
+  }
+]
+
+@collections.each do |collection|
+  c = Collection.create(
+    title:       collection[:title],
+    description: collection[:description]
+  )
+
+  if c.save
+    puts "Collection #{c.title} created"
+  else
+    puts "Collection #{c.title} not created"
+  end
+end
+
+# Fake data
+@route_titles = [ 'Oкская тропа', 'Озёрный край', 'Боровский тракт', 'Тропы Березополья', 'Старицкая Земля', '«Кольцо Суханова» (Ущелье Актру)', 'Приокские дюны (Акри — Турово)' ]
+@route_descriptions = [
+  'Маршрут вдоль реки Оки, в прошлом главного судоходного тракта через старинные города и села, от Павлова до города Горбатов. Это первый этап будущего большого маршрута от Павлова до Нижнего Новгорода общей протяженностью в 130 км.',
+  'Радиальный маршрут от озера Западное до озера Кщара. Включает в себя посещение четырех озер этого края. Может также быть совмещен с маршрутом "На озеро Кщара" с завершением в городе Вязники.',
+  'Маршрут соединяет центры ремесел и старинные усадьбы в окрестностях Богородска и Ворсмы с районом карстовых озер и сосновых лесов в долине реки Сережа.',
+  'Пешеходный маршрут по участку бывшего Боровского тракта и его окрестностям. Вы увидите, что осталось от старинной большой дороги, посетите Чайниково болото и красивое урочище Кузьминка.',
+  'Уникальная архитектура, история и природа на всем протяжении маршрута в районе города Старица: пещеры, водопад, усадебные и купеческие постройки 16-17 века, церкви и монастырь.'
+]
+
+@distances = [ '41 км', '39 км', '15,2 км', '27 км', '21 км', '17,8 км', '31 км', '54 км' ]
+
+
+# Create route method
+@routes = [
+    user_id:       User.all.sample.id,
+    title:         @route_titles.sample,
+    description:   @route_descriptions.sample,
+    distance:      @distances.sample,
+    difficulty_id: Difficulty.all.sample.id,
+    season_id:     Season.all.sample.id,
+    kind_id:       Kind.all.sample.id,
+    collection_id: Collection.all.sample.id
+]
+
+def create_route(route)
+  Route.create(
+    user_id:       route[:user_id],
+    title:         route[:title],
+    description:   route[:description],
+    distance:      route[:distance],
+    difficulty_id: route[:difficulty_id],
+    season_id:     route[:season_id],
+    kind_id:       route[:kind_id],
+    collection_id: route[:collection_id]
+  )
+end
+
+@routes.each do |route|
+  route = create_route(route)
+
+  if route.save
+    puts "Route #{route.title} created"
+  else
+    puts "Route #{route.title} not created"
+  end
+end
+
 def random_route_id
   Route.offset(rand(Route.count)).first.id
   # routes_quantity = Route.count
@@ -11,99 +166,62 @@ def random_route_id
   # random_route.id
 end
 
-Route.create([
-  {
-    title: 'Oкская тропа',
-    description: 'description',
-    collection_id: '1',
-    difficulty_id: 1,
-    season_id: 1,
-    distance: '41 км',
-    kind_id: 1
-  }, {
-    title: 'Озёрный край',
-    description: 'description',
-    collection_id: '2',
-    difficulty_id: 2,
-    season_id: 2,
-    distance: '39 км',
-    kind_id: 2
-  }
-])
 
-Season.create([
-  {
-    title: 'лето'
-  }, {
-    title: 'осень'
-  }, {
-    title: 'зима'
-  }, {
-    title: 'весна'
-  }
-])
-
-Difficulty.create([
-  {
-    level: 'лёгкая'
-  }, {
-    level: 'средняя'
-  }, {
-    level: 'сложная'
-  }
-])
-
-Kind.create([
-  {
-    title: 'пеший'
-  }, {
-    title: 'вело'
-  }
-])
-
-# spot_titles = ['Абабковский монастырь', 'река Кишма', 'урочище Костино', 'река Ока']
-
-# spot_latitude = [43.10256, 43.05308, 43.01523, 43.03003]
-# spot_longitude = [56.07072, 56.09047, 56.13747, 56.10654]
-
-Spot.create([
+# Create spot method
+@spots = [
   {
     name:        'Абабковский монастырь',
     description: 'Не доходя до монастыря можно найти небольшую часовню с родником. Абабковский православный женский монастырь Выксунской епархии Русской православной церкви. В настоящее время монастырь восстанавливается к первоначальному образу, но уже сейчас можно увидеть внешний облик красивого храма.',
     tag_list:    ['храм', 'здание'],
-    route_id: random_route_id,
-    latitude: 43.10256,
-    longitude: 56.07072
+    # route_id:     Route.all.sample.id,
+    route_id:     random_route_id,
+    user_id:      User.all.sample.id,
+    latitude:     43.10256,
+    longitude:    56.07072
   }, {
     name:        'река Кишма',
     description: 'Здесь туристам предстоит переход через реку по трубам. Ширина Кишмы здесь не более 15 метров и глубина от 1 до 1,5 метров.',
     tag_list:    'река',
-    route_id: random_route_id,
-    latitude: 43.05308,
-    longitude: 56.09047
+    # route_id:     Route.all.sample.id,
+    route_id:     random_route_id,
+    user_id:      User.all.sample.id,
+    latitude:     43.05308,
+    longitude:    56.09047
   }, {
     name:        'урочище Костино',
     description: 'Отсюда открываются потрясающие виды на пойму Оки и бескрайний лес за рекой. А на месте поселения Костино, первое упоминание о котором датируется 15-ым веком, стоит крест и лежат каменные глыбы.',
     tag_list:    ['заброшка', 'река', 'храм'],
-    route_id: random_route_id,
-    latitude: 43.01523,
-    longitude: 56.13747
+    # route_id:     Route.all.sample.id,
+    route_id:     random_route_id,
+    user_id:      User.all.sample.id,
+    latitude:     43.01523,
+    longitude:    56.13747
   }, {
     name:        'река Ока',
     description: 'Река Ока будет вас сопровождать практически на всем пути. Это красивая река которая именно в Нижегородской области впадает в величественную Волгу. В прошлом главная судоходная артерия, обеспечивающая г. Горбатов стабильным доходом от торговли, течет извилисто, создавая излучины и обрывистые берега.',
     tag_list:    ['река', 'здание'],
-    route_id: random_route_id,
-    latitude: 43.03003,
-    longitude: 56.10654
+    # route_id:     Route.all.sample.id,
+    route_id:     random_route_id,
+    user_id:      User.all.sample.id,
+    latitude:     43.03003,
+    longitude:    56.10654
   }
-])
+]
 
-Collection.create([
-  {
-    title: 'коллекция 1',
-    description: '1'
-  }, {
-    title: 'коллекция 2',
-    description: '2'
-  }
-])
+@spots.each do |spot|
+  s = Spot.create(
+    name:        spot[:name],
+    description: spot[:description],
+    tag_list:    spot[:tag_list],
+    route_id:    spot[:route_id],
+    user_id:     spot[:user_id],
+    latitude:    spot[:latitude],
+    longitude:   spot[:longitude]
+  )
+
+  if s.save
+    puts "Spot #{s.name} created"
+  else
+    puts "Spot #{s.name} not created"
+  end
+end

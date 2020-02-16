@@ -8,6 +8,7 @@
       <th>Route</th>
       <th>Coordinates</th>
       <th>Tags</th>
+      <th>User</th>
       <th colspan="4"></th>
     </tr>
   </thead>
@@ -28,11 +29,12 @@
             <%= link_to tag, tagged_path(tag: tag) %>
           <% end %>
         </td>
+        <td><%= spot.route.user.email %></td>
 
         <% if can? :update, Spot %>
           <td><%= link_to 'Edit', edit_spot_path(spot) %></td>
         <% end %>
-        
+
         <% if can? :destroy, Spot %>
           <td><%= link_to 'Destroy', spot, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>

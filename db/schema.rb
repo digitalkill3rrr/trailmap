@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_15_001613) do
+ActiveRecord::Schema.define(version: 2020_02_15_130350) do
 
   create_table "collections", force: :cascade do |t|
     t.string "title"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2020_02_15_001613) do
     t.integer "difficulty_id"
     t.integer "kind_id"
     t.integer "collection_id"
+    t.integer "user_id"
   end
 
   create_table "seasons", force: :cascade do |t|
@@ -57,6 +58,7 @@ ActiveRecord::Schema.define(version: 2020_02_15_001613) do
     t.integer "route_id"
     t.float "longitude"
     t.float "latitude"
+    t.integer "user_id"
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -94,7 +96,8 @@ ActiveRecord::Schema.define(version: 2020_02_15_001613) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "role", default: "user"
+    t.string "role", default: "guest"
+    t.boolean "banned", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

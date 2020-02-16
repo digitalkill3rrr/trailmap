@@ -17,9 +17,10 @@
   <body>
     <nav>
       <div>
-        <%= link_to 'Routes', routes_url %>
-        <%= link_to 'Spots',  spots_url %>
+        <%= link_to 'Routes',      routes_url %>
+        <%= link_to 'Spots',       spots_url %>
         <%= link_to 'Collections', collections_url %>
+        <%= link_to 'Users',       users_index_url if can? :index, User %>
       </div>
 
       <div>
