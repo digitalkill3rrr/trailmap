@@ -8,33 +8,6 @@ class SpotsController < ApplicationController
     @spots = Spot.all
   end
 
-  # def map
-  #   @spots = Spot.all
-  #   @geojson = Array.new
-  #
-  #   @spots.each do |spot|
-  #     @geojson << {
-  #       type: 'Feature',
-  #       geometry: {
-  #         type: 'Point',
-  #         coordinates: [spot.longitude, spot.latitude]
-  #       },
-  #       properties: {
-  #         # spot_id: spot.id,
-  #         name: spot.name,
-  #         :'marker-color' => '#00607d',
-  #         :'marker-symbol' => 'circle',
-  #         :'marker-size' => 'medium'
-  #       }
-  #     }
-  #   end
-  #
-  #   respond_to do |format|
-  #     format.html
-  #     format.json { render json: @geojson }  # respond with the created JSON object
-  #   end
-  # end
-
   # GET /spots/1
   # GET /spots/1.json
   # As a user, I want to be able to find related restaurants based on their tags

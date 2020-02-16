@@ -12,6 +12,7 @@ class RoutesController < ApplicationController
   # GET /routes/1.json
   def show
     @spots = @route.spots
+    @spots_for_map = build_geojson(@spots)
   end
 
   # GET /routes/new
@@ -72,5 +73,12 @@ class RoutesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def route_params
       params.require(:route).permit(:title, :description, :difficulty, :season, :distance, :kind, :collection_id, :user_id)
+    end
+
+    def build_geojson(records)
+      {
+        type: "FeatureCollection",
+        features: records.map(&:to_map_point)
+      }
     end
 end

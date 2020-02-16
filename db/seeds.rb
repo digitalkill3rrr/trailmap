@@ -109,29 +109,56 @@ end
   end
 end
 
-# Fake data
-@route_titles = [ 'Oкская тропа', 'Озёрный край', 'Боровский тракт', 'Тропы Березополья', 'Старицкая Земля', '«Кольцо Суханова» (Ущелье Актру)', 'Приокские дюны (Акри — Турово)' ]
-@route_descriptions = [
-  'Маршрут вдоль реки Оки, в прошлом главного судоходного тракта через старинные города и села, от Павлова до города Горбатов. Это первый этап будущего большого маршрута от Павлова до Нижнего Новгорода общей протяженностью в 130 км.',
-  'Радиальный маршрут от озера Западное до озера Кщара. Включает в себя посещение четырех озер этого края. Может также быть совмещен с маршрутом "На озеро Кщара" с завершением в городе Вязники.',
-  'Маршрут соединяет центры ремесел и старинные усадьбы в окрестностях Богородска и Ворсмы с районом карстовых озер и сосновых лесов в долине реки Сережа.',
-  'Пешеходный маршрут по участку бывшего Боровского тракта и его окрестностям. Вы увидите, что осталось от старинной большой дороги, посетите Чайниково болото и красивое урочище Кузьминка.',
-  'Уникальная архитектура, история и природа на всем протяжении маршрута в районе города Старица: пещеры, водопад, усадебные и купеческие постройки 16-17 века, церкви и монастырь.'
-]
-
-@distances = [ '41 км', '39 км', '15,2 км', '27 км', '21 км', '17,8 км', '31 км', '54 км' ]
-
 
 # Create route method
 @routes = [
+  {
     user_id:       User.all.sample.id,
-    title:         @route_titles.sample,
-    description:   @route_descriptions.sample,
-    distance:      @distances.sample,
+    title:        'Oкская тропа',
+    description:  'Маршрут вдоль реки Оки, в прошлом главного судоходного тракта через старинные города и села, от Павлова до города Горбатов. Это первый этап будущего большого маршрута от Павлова до Нижнего Новгорода общей протяженностью в 130 км.',
+    distance:      '41 км',
     difficulty_id: Difficulty.all.sample.id,
     season_id:     Season.all.sample.id,
     kind_id:       Kind.all.sample.id,
     collection_id: Collection.all.sample.id
+  }, {
+    user_id:       User.all.sample.id,
+    title:        'Озёрный край',
+    description:  'Радиальный маршрут от озера Западное до озера Кщара. Включает в себя посещение четырех озер этого края. Может также быть совмещен с маршрутом "На озеро Кщара" с завершением в городе Вязники.',
+    distance:      '39 км',
+    difficulty_id: Difficulty.all.sample.id,
+    season_id:     Season.all.sample.id,
+    kind_id:       Kind.all.sample.id,
+    collection_id: Collection.all.sample.id
+  }, {
+    user_id:       User.all.sample.id,
+    title:        'Боровский тракт',
+    description:  'Маршрут соединяет центры ремесел и старинные усадьбы в окрестностях Богородска и Ворсмы с районом карстовых озер и сосновых лесов в долине реки Сережа.',
+    distance:      '15,2 км',
+    difficulty_id: Difficulty.all.sample.id,
+    season_id:     Season.all.sample.id,
+    kind_id:       Kind.all.sample.id,
+    collection_id: Collection.all.sample.id
+  }
+  # {
+  #   user_id:       User.all.sample.id,
+  #   title:        'Тропы Березополья',
+  #   description:  'Пешеходный маршрут по участку бывшего Боровского тракта и его окрестностям. Вы увидите, что осталось от старинной большой дороги, посетите Чайниково болото и красивое урочище Кузьминка.',
+  #   distance:      '27 км',
+  #   difficulty_id: Difficulty.all.sample.id,
+  #   season_id:     Season.all.sample.id,
+  #   kind_id:       Kind.all.sample.id,
+  #   collection_id: Collection.all.sample.id
+  # }, {
+  #   user_id:       User.all.sample.id,
+  #   title:        'Старицкая Земля',
+  #   description:  'Уникальная архитектура, история и природа на всем протяжении маршрута в районе города Старица: пещеры, водопад, усадебные и купеческие постройки 16-17 века, церкви и монастырь.',
+  #   distance:      '17,8 км',
+  #   difficulty_id: Difficulty.all.sample.id,
+  #   season_id:     Season.all.sample.id,
+  #   kind_id:       Kind.all.sample.id,
+  #   collection_id: Collection.all.sample.id
+  # }
 ]
 
 def create_route(route)
@@ -176,8 +203,8 @@ end
     # route_id:     Route.all.sample.id,
     route_id:     random_route_id,
     user_id:      User.all.sample.id,
-    latitude:     43.10256,
-    longitude:    56.07072
+    longitude:    56.07072,
+    latitude:     43.10256
   }, {
     name:        'река Кишма',
     description: 'Здесь туристам предстоит переход через реку по трубам. Ширина Кишмы здесь не более 15 метров и глубина от 1 до 1,5 метров.',
@@ -185,8 +212,8 @@ end
     # route_id:     Route.all.sample.id,
     route_id:     random_route_id,
     user_id:      User.all.sample.id,
-    latitude:     43.05308,
-    longitude:    56.09047
+    longitude:    56.09047,
+    latitude:     43.05308
   }, {
     name:        'урочище Костино',
     description: 'Отсюда открываются потрясающие виды на пойму Оки и бескрайний лес за рекой. А на месте поселения Костино, первое упоминание о котором датируется 15-ым веком, стоит крест и лежат каменные глыбы.',
@@ -194,8 +221,8 @@ end
     # route_id:     Route.all.sample.id,
     route_id:     random_route_id,
     user_id:      User.all.sample.id,
-    latitude:     43.01523,
-    longitude:    56.13747
+    longitude:    56.13747,
+    latitude:     43.01523
   }, {
     name:        'река Ока',
     description: 'Река Ока будет вас сопровождать практически на всем пути. Это красивая река которая именно в Нижегородской области впадает в величественную Волгу. В прошлом главная судоходная артерия, обеспечивающая г. Горбатов стабильным доходом от торговли, течет извилисто, создавая излучины и обрывистые берега.',
@@ -203,8 +230,26 @@ end
     # route_id:     Route.all.sample.id,
     route_id:     random_route_id,
     user_id:      User.all.sample.id,
-    latitude:     43.03003,
-    longitude:    56.10654
+    longitude:    56.10654,
+    latitude:     43.03003
+  }, {
+    name:        'г. Павлово',
+    description: 'Река Ока будет вас сопровождать практически на всем пути. Это красивая река которая именно в Нижегородской области впадает в величественную Волгу. В прошлом главная судоходная артерия, обеспечивающая г. Горбатов стабильным доходом от торговли, течет извилисто, создавая излучины и обрывистые берега.',
+    tag_list:    ['река', 'здание'],
+    # route_id:     Route.all.sample.id,
+    route_id:     random_route_id,
+    user_id:      User.all.sample.id,
+    longitude:    55.964629,
+    latitude:     43.064570
+  }, {
+    name:        'г. Горбатов',
+    description: 'Река Ока будет вас сопровождать практически на всем пути. Это красивая река которая именно в Нижегородской области впадает в величественную Волгу. В прошлом главная судоходная артерия, обеспечивающая г. Горбатов стабильным доходом от торговли, течет извилисто, создавая излучины и обрывистые берега.',
+    tag_list:    ['река', 'здание'],
+    # route_id:     Route.all.sample.id,
+    route_id:     random_route_id,
+    user_id:      User.all.sample.id,
+    longitude:    56.130869,
+    latitude:     43.062701
   }
 ]
 
@@ -215,8 +260,8 @@ end
     tag_list:    spot[:tag_list],
     route_id:    spot[:route_id],
     user_id:     spot[:user_id],
-    latitude:    spot[:latitude],
-    longitude:   spot[:longitude]
+    longitude:   spot[:longitude],
+    latitude:    spot[:latitude]
   )
 
   if s.save
