@@ -16,6 +16,11 @@
     <%= form.text_field :name %>
   </div>
 
+  <div class="images">
+    <%= form.label :images %>
+    <%= form.file_field :images, multiple: true %>
+  </div>
+
   <div class="description">
     <%= form.label :description %>
     <%= form.text_field :description %>

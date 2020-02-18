@@ -1,4 +1,5 @@
 class Spot < ApplicationRecord
+  mount_uploader :images, ImageUploader
   acts_as_taggable_on :tags
 
   belongs_to :route

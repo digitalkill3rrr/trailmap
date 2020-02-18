@@ -72,7 +72,7 @@ class RoutesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def route_params
-      params.require(:route).permit(:title, :description, :difficulty_id, :season_id, :distance, :kind_id, :collection_id, :user_id, :cover)
+      params.require(:route).permit(:title, :description, :difficulty_id, :season_id, :distance, :kind_id, :collection_id, :user_id, :cover )
     end
 
     def build_geojson(records)

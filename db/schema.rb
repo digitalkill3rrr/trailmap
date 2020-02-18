@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_18_193443) do
+ActiveRecord::Schema.define(version: 2020_02_18_210423) do
 
   create_table "collections", force: :cascade do |t|
     t.string "title"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 2020_02_18_193443) do
     t.float "longitude"
     t.float "latitude"
     t.integer "user_id"
+    t.json "images"
   end
 
   create_table "taggings", force: :cascade do |t|

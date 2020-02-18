@@ -229,11 +229,26 @@ def random_route_id
   # random_route.id
 end
 
+# Fake spot images
+def upload_fake_spot_image
+  uploader = ImageUploader.new(Spot.new, :images)
+  # uploader.cache!(File.open(Dir.glob(File.join(Rails.root, 'public/uploads/genre/covers', '*')).sample))
+  uploader.cache!(File.open(Dir.glob(File.join(Rails.root, 'lib/assets/spot/images', '*')).sample))
+  uploader
+end
+
+# def upload_fake_route_cover
+#   uploader = CoverUploader.new(Route.new, :cover)
+#   # uploader.cache!(File.open(Dir.glob(File.join(Rails.root, 'public/uploads/genre/covers', '*')).sample))
+#   uploader.cache!(File.open(Dir.glob(File.join(Rails.root, 'lib/assets/route/covers', '*')).sample))
+#   uploader
+# end
 
 # Create spot method
 @spots = [
   {
     name:        'Абабковский монастырь',
+    images:       upload_fake_spot_image,
     description: 'Не доходя до монастыря можно найти небольшую часовню с родником. Абабковский православный женский монастырь Выксунской епархии Русской православной церкви. В настоящее время монастырь восстанавливается к первоначальному образу, но уже сейчас можно увидеть внешний облик красивого храма.',
     tag_list:    ['храм', 'здание'],
     # route_id:     Route.all.sample.id,
@@ -243,6 +258,7 @@ end
     latitude:     43.10256
   }, {
     name:        'река Кишма',
+    images:       upload_fake_spot_image,
     description: 'Здесь туристам предстоит переход через реку по трубам. Ширина Кишмы здесь не более 15 метров и глубина от 1 до 1,5 метров.',
     tag_list:    'река',
     # route_id:     Route.all.sample.id,
@@ -252,6 +268,7 @@ end
     latitude:     43.05308
   }, {
     name:        'урочище Костино',
+    images:       upload_fake_spot_image,
     description: 'Отсюда открываются потрясающие виды на пойму Оки и бескрайний лес за рекой. А на месте поселения Костино, первое упоминание о котором датируется 15-ым веком, стоит крест и лежат каменные глыбы.',
     tag_list:    ['заброшка', 'река', 'храм'],
     # route_id:     Route.all.sample.id,
@@ -261,6 +278,7 @@ end
     latitude:     43.01523
   }, {
     name:        'река Ока',
+    images:       upload_fake_spot_image,
     description: 'Река Ока будет вас сопровождать практически на всем пути. Это красивая река которая именно в Нижегородской области впадает в величественную Волгу. В прошлом главная судоходная артерия, обеспечивающая г. Горбатов стабильным доходом от торговли, течет извилисто, создавая излучины и обрывистые берега.',
     tag_list:    ['река', 'здание'],
     # route_id:     Route.all.sample.id,
@@ -270,6 +288,7 @@ end
     latitude:     43.03003
   }, {
     name:        'г. Павлово',
+    images:       upload_fake_spot_image,
     description: 'Река Ока будет вас сопровождать практически на всем пути. Это красивая река которая именно в Нижегородской области впадает в величественную Волгу. В прошлом главная судоходная артерия, обеспечивающая г. Горбатов стабильным доходом от торговли, течет извилисто, создавая излучины и обрывистые берега.',
     tag_list:    ['река', 'здание'],
     # route_id:     Route.all.sample.id,
@@ -279,6 +298,7 @@ end
     latitude:     43.064570
   }, {
     name:        'г. Горбатов',
+    images:       upload_fake_spot_image,
     description: 'Река Ока будет вас сопровождать практически на всем пути. Это красивая река которая именно в Нижегородской области впадает в величественную Волгу. В прошлом главная судоходная артерия, обеспечивающая г. Горбатов стабильным доходом от торговли, течет извилисто, создавая излучины и обрывистые берега.',
     tag_list:    ['река', 'здание'],
     # route_id:     Route.all.sample.id,
@@ -292,6 +312,7 @@ end
 @spots.each do |spot|
   s = Spot.create(
     name:        spot[:name],
+    images:      spot[:images],
     description: spot[:description],
     tag_list:    spot[:tag_list],
     route_id:    spot[:route_id],
