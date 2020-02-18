@@ -40,11 +40,21 @@ end
 
 # Route info methods
 # Create seasons
-@seasons = [ 'лето', 'осень', 'зима', 'весна' ]
+@seasons = [
+  {
+    title: 'лето'
+  }, {
+    title: 'осень'
+  }, {
+    title: 'зима'
+  }, {
+    title: 'весна'
+  }
+]
 
 @seasons.each do |season|
   s = Season.new(
-    title: @seasons.sample
+    title: season[:title]
   )
 
   if s.save
@@ -55,11 +65,19 @@ end
 end
 
 # Create difficulty
-@difficulties = [ 'лёгкая', 'средняя', 'сложная' ]
+@difficulties = [
+  {
+    level: 'лёгкая'
+  }, {
+    level: 'средняя'
+  }, {
+    level: 'сложная'
+  }
+]
 
 @difficulties.each do |difficulty|
   d = Difficulty.new(
-    level: @difficulties.sample
+    level: difficulty[:level]
   )
 
   if d.save
@@ -70,11 +88,17 @@ end
 end
 
 # Create route kind
-@kinds = [ 'пеший', 'вело' ]
+@kinds = [
+  {
+    title: 'пеший'
+  }, {
+    title: 'вело'
+  }
+]
 
 @kinds.each do |kind|
   k = Kind.create(
-    title: @kinds.sample
+    title: kind[:title]
   )
 
   if k.save
@@ -109,6 +133,14 @@ end
   end
 end
 
+# Fake route covers
+def upload_fake_route_cover
+  uploader = CoverUploader.new(Route.new, :cover)
+  # uploader.cache!(File.open(Dir.glob(File.join(Rails.root, 'public/uploads/genre/covers', '*')).sample))
+  uploader.cache!(File.open(Dir.glob(File.join(Rails.root, 'lib/assets/route/covers', '*')).sample))
+  uploader
+end
+
 
 # Create route method
 @routes = [
@@ -120,7 +152,8 @@ end
     difficulty_id: Difficulty.all.sample.id,
     season_id:     Season.all.sample.id,
     kind_id:       Kind.all.sample.id,
-    collection_id: Collection.all.sample.id
+    collection_id: Collection.all.sample.id,
+    cover:         upload_fake_route_cover
   }, {
     user_id:       User.all.sample.id,
     title:        'Озёрный край',
@@ -129,7 +162,8 @@ end
     difficulty_id: Difficulty.all.sample.id,
     season_id:     Season.all.sample.id,
     kind_id:       Kind.all.sample.id,
-    collection_id: Collection.all.sample.id
+    collection_id: Collection.all.sample.id,
+    cover:         upload_fake_route_cover
   }, {
     user_id:       User.all.sample.id,
     title:        'Боровский тракт',
@@ -138,7 +172,8 @@ end
     difficulty_id: Difficulty.all.sample.id,
     season_id:     Season.all.sample.id,
     kind_id:       Kind.all.sample.id,
-    collection_id: Collection.all.sample.id
+    collection_id: Collection.all.sample.id,
+    cover:         upload_fake_route_cover
   }
   # {
   #   user_id:       User.all.sample.id,
@@ -170,7 +205,8 @@ def create_route(route)
     difficulty_id: route[:difficulty_id],
     season_id:     route[:season_id],
     kind_id:       route[:kind_id],
-    collection_id: route[:collection_id]
+    collection_id: route[:collection_id],
+    cover:         route[:cover]
   )
 end
 

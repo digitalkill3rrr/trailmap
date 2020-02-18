@@ -12,6 +12,11 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :cover %>
+    <%= form.file_field :cover %>
+  </div>
+
+  <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title %>
   </div>
@@ -55,7 +60,7 @@
   <% else %>
     <div class="user_id">
       <%= form.label :user_id %>
-      <%= select("route", "user_id", User.all.collect { |u| [ u.email, u.id ] }, { include_blank: true }) %>
+      <%= select("route", "user_id", User.all.collect { |u| [ u.email, u.id ] }) %>
     </div>
   <% end %>
 
