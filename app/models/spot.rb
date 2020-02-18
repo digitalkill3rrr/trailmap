@@ -6,7 +6,7 @@ class Spot < ApplicationRecord
   validates :route_id, :user_id, :name, presence: true
 
   def coordinates
-    [longitude, latitude]
+    [latitude, longitude]
   end
 
   def to_map_point
