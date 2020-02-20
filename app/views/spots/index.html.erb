@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Status</th>
       <th>Description</th>
       <th>Route</th>
       <th>Coordinates</th>
@@ -17,6 +18,7 @@
     <% @spots.each do |spot| %>
       <tr>
         <td><%= link_to spot.name, spot %></td>
+        <td><%= spot.status %></td>
         <td><%= spot.description %></td>
         <td><%= spot.route.title %></td>
         <td>

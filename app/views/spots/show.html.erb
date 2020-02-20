@@ -1,7 +1,14 @@
 <div class="spot_info">
-  <p><%= image_tag @spot.images.url %></p>
+  <p><%#= image_tag @spot.images %></p>
+  <div>
+    <% @spot.images.each do |image| %>
+      <%= image_tag(image.url)  %>
+    <% end %>
+  </div>
+
   <p><%= @spot.route.title %></p>
   <h2><%= @spot.name %></h2>
+  <h2><%= @spot.status %></h2>
   <p><%= @spot.description %></p>
   <p>
     <%= @spot.longitude %>

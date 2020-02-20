@@ -16,6 +16,11 @@
     <%= form.text_field :name %>
   </div>
 
+  <div class="status">
+    <%#= select("spot", "status", Spot.all.collect { |s| [ s.status ] } ) %>
+    <%= form.select :status, Spot.statuses.keys %>
+  </div>
+
   <div class="images">
     <%= form.label :images %>
     <%= form.file_field :images, multiple: true %>
@@ -47,6 +52,15 @@
     <div class="route_id">
       <%= form.label :route_id %>
       <%= select("spot", "route_id", Route.all.collect { |r| [ r.title, r.id ] }, { include_blank: true }) %>
+    </div>
+  <% end %>
+
+  <% if @user %>
+    <%#= form.hidden_field :user_id, value: @user.id %>
+  <% else %>
+    <div class="user_id">
+      <%= form.label :user_id %>
+      <%= select("route", "user_id", User.all.collect { |u| [ u.email, u.id ] }) %>
     </div>
   <% end %>
 
