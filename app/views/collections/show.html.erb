@@ -1,12 +1,6 @@
-<p>
-  <strong>Title:</strong>
-  <%= @collection.title %>
-</p>
+<h1><%= @collection.title %></h1>
 
-<p>
-  <strong>Description:</strong>
-  <%= @collection.description %>
-</p>
+<p><%= @collection.description %></p>
 
 <% if can? :update, Collection %>
   <%= link_to 'Edit', edit_collection_path(@collection) %> |

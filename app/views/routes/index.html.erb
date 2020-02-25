@@ -22,10 +22,11 @@
       <tr>
         <td><%= link_to route.title, route %></td>
         <td><%= route.description %></td>
-        <td><%= route.distance %></td>
+        <td><%= number_to_human(route.distance, units: :distance) %></td>
         <td><%= Difficulty.find(route.difficulty_id).level %></td>
         <td><%= Season.find(route.season_id).title %></td>
         <td><%= Kind.find(route.kind_id).title %></td>
+
         <td><%= link_to Collection.find(route.collection_id).title, collections_path %></td>
         <td><%= route.user.email %></td>
 

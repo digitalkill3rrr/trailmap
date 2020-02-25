@@ -55,15 +55,6 @@
     </div>
   <% end %>
 
-  <% if @user %>
-    <%#= form.hidden_field :user_id, value: @user.id %>
-  <% else %>
-    <div class="user_id">
-      <%= form.label :user_id %>
-      <%= select("route", "user_id", User.all.collect { |u| [ u.email, u.id ] }) %>
-    </div>
-  <% end %>
-
   <div class="actions">
     <%= form.submit %>
   </div>

@@ -1,6 +1,14 @@
 <div class="spot_info">
-  <p><%#= spot.route_id %></p>
-  <h2><%= link_to spot.name, spot %></h2>
+  <div>
+    <% if spot.images.present? %>
+      <%= image_tag spot.images.url %>
+    <% end %>
+  </div>
+
+  <p><%= spot.route.title %></p>
+  <h2><%= spot.name %></h2>
+  <h4><%= User.find(spot.route.user_id).nickname %></h4>
+  <p><%= spot.status %></p>
   <p><%= spot.description %></p>
   <p>
     <%= spot.longitude %>
@@ -19,7 +27,5 @@
 <% if can? :update, Spot %>
   <%= link_to 'Edit', edit_spot_path(spot) %>
 <% end %>
-
-<%= link_to 'Back', spots_path %>
 
 <hr>

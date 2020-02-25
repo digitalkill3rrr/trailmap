@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_20_202955) do
+ActiveRecord::Schema.define(version: 2020_02_25_184712) do
 
   create_table "collections", force: :cascade do |t|
     t.string "title"
@@ -25,6 +25,13 @@ ActiveRecord::Schema.define(version: 2020_02_20_202955) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "images", force: :cascade do |t|
+    t.string "image"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "spot_id"
+  end
+
   create_table "kinds", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
@@ -36,7 +43,7 @@ ActiveRecord::Schema.define(version: 2020_02_20_202955) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "distance"
+    t.integer "distance"
     t.integer "season_id"
     t.integer "difficulty_id"
     t.integer "kind_id"
@@ -60,7 +67,6 @@ ActiveRecord::Schema.define(version: 2020_02_20_202955) do
     t.float "longitude"
     t.float "latitude"
     t.integer "user_id"
-    t.json "images"
     t.integer "status"
   end
 
@@ -101,6 +107,7 @@ ActiveRecord::Schema.define(version: 2020_02_20_202955) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "role", default: "guest"
     t.boolean "banned", default: false
+    t.string "nickname"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

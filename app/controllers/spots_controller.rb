@@ -14,6 +14,10 @@ class SpotsController < ApplicationController
   def show
     @spot = Spot.find(params[:id])
     @related_spots = @spot.find_related_tags
+
+    if user_signed_in?
+      @spot.user_id = current_user.id
+    end
   end
 
   def tagged
@@ -26,7 +30,8 @@ class SpotsController < ApplicationController
 
   # GET /spots/new
   def new
-    @spot = Spot.new
+    # @spot = Spot.new
+    @spot = current_user.spots.build
   end
 
   # GET /spots/1/edit
@@ -36,7 +41,8 @@ class SpotsController < ApplicationController
   # POST /spots
   # POST /spots.json
   def create
-    @spot = Spot.new(spot_params)
+    # @spot = Spot.new(spot_params)
+    @spot = current_user.spots.new(spot_params)
 
     respond_to do |format|
       if @spot.save
@@ -81,6 +87,6 @@ class SpotsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def spot_params
-      params.require(:spot).permit(:name, :description, :tag_list, :route_id, :longitude, :lattitude, :user_id, :status, {images: []} )
+      params.require(:spot).permit(:name, :description, :tag_list, :route_id, :longitude, :lattitude, :status )
     end
 end

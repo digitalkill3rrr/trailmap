@@ -16,8 +16,6 @@
     <%= form.file_field :cover %>
   </div>
 
-
-
   <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title %>
@@ -56,15 +54,6 @@
     <%#= form.text_field :kind %>
     <%= select("route", "collection_id", Collection.all.collect { |c| [ c.title, c.id ] }) %>
   </div>
-
-  <% if @user %>
-    <%#= form.hidden_field :user_id, value: @user.id %>
-  <% else %>
-    <div class="user_id">
-      <%= form.label :user_id %>
-      <%= select("route", "user_id", User.all.collect { |u| [ u.email, u.id ] }) %>
-    </div>
-  <% end %>
 
   <div class="actions">
     <%= form.submit %>

@@ -1,39 +1,34 @@
-<p><%= image_tag @route.cover.url %></p>
+<div class="route_cover">
+  <% if @route.cover.present? %>
+    <%= image_tag @route.cover.url %>
+  <% end %>
+</div>
+
+<h1><%= @route.title %></h1>
+<h4><%= User.find(@route.user_id).nickname %></h4>
+<p><%= @route.description %></p>
 
 <p>
-  <strong>Title:</strong>
-  <%= @route.title %>
+  <strong>Расстояние:</strong>
+  <%= number_to_human(@route.distance, units: :distance) %>
 </p>
 
 <p>
-  <strong>Description:</strong>
-  <%= @route.description %>
-</p>
-
-<p>
-  <strong>Distance:</strong>
-  <%= @route.distance %>
-</p>
-
-<p>
-  <strong>Difficulty:</strong>
+  <strong>Сложность:</strong>
   <%= Difficulty.find(@route.difficulty_id).level %>
 </p>
 
 <p>
-  <strong>Season:</strong>
+  <strong>Сезонность:</strong>
   <%= Season.find(@route.season_id).title %>
 </p>
 
 <p>
-  <strong>Kind:</strong>
+  <strong>Тип маршрута:</strong>
   <%= Kind.find(@route.kind_id).title %>
 </p>
 
-<p>
-  <strong>Collection:</strong>
-  <%= Collection.find(@route.collection_id).title %>
-</p>
+<h4><%= Collection.find(@route.collection_id).title %></h4>
 
 <% if can? :update, Route %>
   <%= link_to 'Edit', edit_route_path(@route) %> |

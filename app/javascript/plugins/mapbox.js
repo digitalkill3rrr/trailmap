@@ -20,6 +20,9 @@ const initMapbox = () => {
       // zoom: 12,
     });
 
+    // Add zoom and rotation controls to the map.
+    map.addControl(new mapboxgl.NavigationControl());
+
     map.on('load', function() {
       const collection = JSON.parse(mapElement.dataset.collection);
       const coordinates = collection.features.map((item) => item.geometry.coordinates);
@@ -49,8 +52,18 @@ const initMapbox = () => {
           'line-width': 8,
         },
       });
+
+
+
       collection.features.forEach((item) => {
-        const marker = new mapboxgl.Marker().setLngLat(item.geometry.coordinates).addTo(map);
+        var el = document.createElement('div');
+        el.id = 'marker';
+
+        // create the popup
+        var popup = new mapboxgl.Popup({ offset: 25 }).setText();
+
+
+        const marker = new mapboxgl.Marker(el).setLngLat(item.geometry.coordinates).setPopup(popup).addTo(map);
       });
       fitMapToMarkers(map, collection.features);
     });

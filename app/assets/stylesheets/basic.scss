@@ -2,3 +2,18 @@ nav {
   display: flex;
   justify-content: space-between;
 }
+
+#marker {
+  background-color: grey;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.route_cover {
+  // display: block;
+  // position: relative;
+  // width: 0px;
+  // height: 50px;
+}

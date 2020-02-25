@@ -1,12 +1,16 @@
 class Spot < ApplicationRecord
-  mount_uploaders :images, ImageUploader
   acts_as_taggable_on :tags
 
   belongs_to :route
+  # belongs_to :user
+  has_many :images
 
   validates :route_id, :name, presence: true
+
+  # spot_status
   enum status: [ 'активная', 'на проверке', 'неактивная' ]
 
+  # spots_for_map
   def coordinates
     [latitude, longitude]
   end
@@ -21,5 +25,4 @@ class Spot < ApplicationRecord
       properties: {}
     }
   end
-
 end

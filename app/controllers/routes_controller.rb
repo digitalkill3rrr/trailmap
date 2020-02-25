@@ -17,7 +17,8 @@ class RoutesController < ApplicationController
 
   # GET /routes/new
   def new
-    @route = Route.new
+    # @route = Route.new
+    @route = current_user.routes.build
   end
 
   # GET /routes/1/edit
@@ -27,7 +28,7 @@ class RoutesController < ApplicationController
   # POST /routes
   # POST /routes.json
   def create
-    @route = Route.new(route_params)
+    @route = current_user.routes.new(route_params)
 
     respond_to do |format|
       if @route.save
@@ -72,7 +73,7 @@ class RoutesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def route_params
-      params.require(:route).permit(:title, :description, :difficulty_id, :season_id, :distance, :kind_id, :collection_id, :user_id, :cover )
+      params.require(:route).permit(:title, :description, :difficulty_id, :season_id, :distance, :kind_id, :collection_id, :cover )
     end
 
     def build_geojson(records)

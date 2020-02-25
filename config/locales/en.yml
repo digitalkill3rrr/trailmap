@@ -31,3 +31,15 @@
 
 en:
   hello: "Hello world"
+  
+  distance:
+    centi:
+      one: "centimeter"
+      other: "centimeters"
+    unit:
+      one: "м"
+      other: "м"
+    thousand:
+      one: "км"
+      other: "км"
+    billion: "gazillion-distance"
