@@ -12,45 +12,57 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :cover %>
+    <%= form.label 'Обложка маршрута' %>
     <%= form.file_field :cover %>
   </div>
 
   <div class="field">
-    <%= form.label :title %>
+    <%= form.label 'Название маршрута' %>
     <%= form.text_field :title %>
   </div>
 
   <div class="field">
-    <%= form.label :description %>
+    <%= form.label 'Описание маршрута' %>
     <%= form.text_area :description %>
   </div>
 
   <div class="field">
-    <%= form.label :distance %>
+    <%= form.label 'Расстояние' %>
     <%= form.text_field :distance %>
   </div>
 
   <div class="field">
-    <%= form.label :difficulty %>
-    <%#= form.text_field :difficulty %>
+    <%= form.label 'Сложность' %>
     <%= select("route", "difficulty_id", Difficulty.all.collect { |d| [ d.level, d.id ] }) %>
   </div>
 
   <div class="field">
-    <%= form.label :season %>
-    <%#= form.text_field :season %>
+    <%= form.label 'Сезонность' %>
     <%= select("route", "season_id", Season.all.collect { |s| [ s.title, s.id ] }) %>
   </div>
 
   <div class="field">
-    <%= form.label :kind %>
-    <%#= form.text_field :kind %>
+    <%= form.label 'Тип маршрута' %>
     <%= select("route", "kind_id", Kind.all.collect { |k| [ k.title, k.id ] }) %>
   </div>
 
   <div class="field">
-    <%= form.label :collection %>
+    <%= form.label 'Что с собой взять' %>
+    <%= form.text_area :takeaway %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Как добраться' %>
+    <%= form.text_area :timetable %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Предупреждения' %>
+    <%= form.text_area :warning %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Коллекция' %>
     <%#= form.text_field :kind %>
     <%= select("route", "collection_id", Collection.all.collect { |c| [ c.title, c.id ] }) %>
   </div>

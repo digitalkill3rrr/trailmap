@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :images
   get 'users/index'
   devise_for :users
   resources :collections

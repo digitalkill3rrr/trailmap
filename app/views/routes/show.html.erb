@@ -28,6 +28,25 @@
   <%= Kind.find(@route.kind_id).title %>
 </p>
 
+<!-- ROUTE INFO -->
+
+<div>
+  <strong>Что с собой взять:</strong>
+  <p><%= @route.takeaway %></p>
+</div>
+
+<div>
+  <strong>Как добраться:</strong>
+  <p><%= @route.timetable %></p>
+</div>
+
+<div>
+  <strong>Предупреждения:</strong>
+  <p><%= @route.warning %></p>
+</div>
+
+<!-- ROUTE INFO -->
+
 <h4><%= Collection.find(@route.collection_id).title %></h4>
 
 <% if can? :update, Route %>
