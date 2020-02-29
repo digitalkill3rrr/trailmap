@@ -10,9 +10,11 @@ class Ability
 
     if user.role == 'admin'
       can :manage, :all
+      cannot [:update, :destroy], Comment
     elsif user.role == 'content'
       can :manage, :all
       cannot :index, User
+      cannot [:update, :destroy], Comment
     elsif user.role == 'user'
       can :manage, :all
       cannot [:create, :update, :destroy], Collection
@@ -20,6 +22,7 @@ class Ability
     else
       can :read, :all
       cannot :index, User
+      cannot :index, Comment
     end
 
     # The first argument to `can` is the action you are giving the user

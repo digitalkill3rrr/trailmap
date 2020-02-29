@@ -318,6 +318,35 @@ end
 
 
 
+# Create comment method
+@comments = [
+  {
+    body: 'йо',
+    route_id: random_route_id,
+    user_id: User.all.sample.id
+  }, {
+    body: 'рэп',
+    route_id: random_route_id,
+    user_id: User.all.sample.id
+  }, {
+    body: 'код',
+    route_id: random_route_id,
+    user_id: User.all.sample.id
+  }
+]
+
+@comments.each do |comment|
+  c = Comment.create(comment)
+
+  if c.save
+    puts "Comment created"
+  else
+    puts "Comment not created"
+  end
+end
+
+
+
 # Fake spot images
 # def upload_fake_spot_image
 #   uploader = ImageUploader.new(Image.new, :image)

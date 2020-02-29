@@ -3,6 +3,7 @@ class Route < ApplicationRecord
   belongs_to :collection, optional: true
   belongs_to :user
   has_many :spots
+  has_many :comments
   validates :user_id, :title, presence: true
 
 end

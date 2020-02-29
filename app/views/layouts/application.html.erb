@@ -17,6 +17,7 @@
         <%= link_to 'Spots',       spots_url %>
         <%= link_to 'Collections', collections_url %>
         <%= link_to 'Users',       users_index_url if can? :index, User %>
+        <%= link_to 'Comments',    comments_url if can? :index, Comment %>
       </div>
 
       <div>

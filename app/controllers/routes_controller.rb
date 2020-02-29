@@ -12,6 +12,8 @@ class RoutesController < ApplicationController
   # GET /routes/1.json
   def show
     @spots = @route.spots
+    @comments = @route.comments
+    # @comments = @route.comments
     @spots_for_map = build_geojson(@spots)
   end
 

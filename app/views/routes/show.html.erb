@@ -43,7 +43,28 @@
 <% end %>
 
 <% if can? :create, Spot %>
+  <strong>Новая точка</strong>
   <%= render 'spots/form', spot: Spot.new %>
 <% end %>
 
 <%= render 'map', spots: @spots_for_map %>
+
+<hr>
+<div>
+  <h2>Комментарии (<%= @route.comments.count %>)</h2>
+  <% @route.comments.each do |comment| %>
+    <%= render 'comments/show', comment: comment %>
+  <% end %>
+</div>
+
+
+<div>
+  <% if can? :create, Comment %>
+    <h4>Ваш комментарий</h4>
+    <%= render 'comments/form', comment: Comment.new %>
+  <% else %>
+  <p>Войдите или зарегистрируйтесь, чтобы оставить комментарий</p>
+    <%= link_to 'Login', new_user_session_path %>
+    <%= link_to 'Register', new_user_registration_path %>
+  <% end %>
+</div>
