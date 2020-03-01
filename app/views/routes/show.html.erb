@@ -50,7 +50,7 @@
 <h4><%= Collection.find(@route.collection_id).title %></h4>
 
 <% if can? :update, Route %>
-  <%= link_to 'Edit', edit_route_path(@route) %> |
+  <%= link_to 'Edit', edit_route_path(@route) %> |route_
 <% end %>
 <%= link_to 'Back', routes_path %>
 
@@ -73,6 +73,10 @@
   <h2>Комментарии (<%= @route.comments.count %>)</h2>
   <% @route.comments.each do |comment| %>
     <%= render 'comments/show', comment: comment %>
+
+    <%# if can? :update, Comment %>
+      <%#= link_to 'Edit', edit_comment_path(comment) unless comment.new_record? %>
+    <%# end %>
   <% end %>
 </div>
 

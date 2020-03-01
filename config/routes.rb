@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   resources :kinds
   resources :seasons
   resources :difficulties
-  resources :comments
   resources :routes
+  resources :comments
   resources :spots
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 

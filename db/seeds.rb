@@ -344,12 +344,3 @@ end
     puts "Comment not created"
   end
 end
-
-
-
-# Fake spot images
-# def upload_fake_spot_image
-#   uploader = ImageUploader.new(Image.new, :image)
-#   uploader.cache!(File.open(Dir.glob(File.join(Rails.root, 'lib/assets/spot/images', '*')).sample))
-#   uploader
-# end
