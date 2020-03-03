@@ -16,14 +16,17 @@
     <%= form.text_field :name %>
   </div>
 
+  <div class="images">
+    <%= form.fields_for :spot_images do |image| %>
+      <%= image.label :image %><br>
+      <%= image.file_field :image, :multiple => true, name: "spot_images[image][]" %>
+    <% end %>
+  </div>
+
+
   <div class="status">
     <%#= select("spot", "status", Spot.all.collect { |s| [ s.status ] } ) %>
     <%= form.select :status, Spot.statuses.keys %>
-  </div>
-
-  <div class="images">
-    <%= form.label :images %>
-    <%= form.file_field :images, multiple: true %>
   </div>
 
   <div class="description">

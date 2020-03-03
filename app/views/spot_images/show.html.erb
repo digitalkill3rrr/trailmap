@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Spot:</strong>
+  <%= @spot_image.spot_id %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @spot_image.image %>
+</p>
+
+<%= link_to 'Edit', edit_spot_image_path(@spot_image) %> |
+<%= link_to 'Back', spot_images_path %>

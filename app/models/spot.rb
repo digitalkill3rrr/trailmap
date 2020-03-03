@@ -3,7 +3,10 @@ class Spot < ApplicationRecord
 
   belongs_to :route
   # belongs_to :user
-  has_many :images
+  has_many :spot_images
+  accepts_nested_attributes_for :spot_images
+
+
 
   validates :route_id, :name, presence: true
 

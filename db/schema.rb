@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_29_194304) do
+ActiveRecord::Schema.define(version: 2020_03_02_161426) do
 
   create_table "collections", force: :cascade do |t|
     t.string "title"
@@ -58,6 +58,13 @@ ActiveRecord::Schema.define(version: 2020_02_29_194304) do
 
   create_table "seasons", force: :cascade do |t|
     t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "spot_images", force: :cascade do |t|
+    t.integer "spot_id"
+    t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

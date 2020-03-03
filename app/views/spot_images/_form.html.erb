@@ -1,0 +1,27 @@
+<%= form_with(model: spot_image, local: true) do |form| %>
+  <% if spot_image.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(spot_image.errors.count, "error") %> prohibited this spot_image from being saved:</h2>
+
+      <ul>
+        <% spot_image.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :spot_id %>
+    <%= form.number_field :spot_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.text_field :image %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

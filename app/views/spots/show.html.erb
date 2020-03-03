@@ -1,7 +1,7 @@
 <div class="spot_info">
   <div>
-    <% if @spot.images.present? %>
-      <%= image_tag @spot.images.url %>
+    <% @spot.spot_images.each do |image| %>
+      <%= image_tag image.image.url %>
     <% end %>
   </div>
 
