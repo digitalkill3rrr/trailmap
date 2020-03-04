@@ -1,4 +1,4 @@
-<%= form_with(model: spot, local: true) do |form| %>
+<%= form_with(model: spot, local: true, html: {multipart: true} ) do |form| %>
   <% if spot.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(spot.errors.count, "error") %> prohibited this spot from being saved:</h2>
