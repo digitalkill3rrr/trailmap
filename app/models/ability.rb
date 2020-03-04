@@ -16,7 +16,9 @@ class Ability
       cannot :index, User
       cannot [:update, :destroy], Comment
     elsif user.role == 'user'
-      can :manage, :all
+      can :read, :all
+      can :manage, Spot
+      can :manage, Comment
       cannot [:create, :update, :destroy], Collection
       cannot :index, User
     else

@@ -9,6 +9,14 @@ Rake::Task['db:migrate'].invoke
     nickname: 'just user',
     role:  'user'
   }, {
+    email: 'user1@user.com',
+    nickname: 'another user',
+    role:  'user'
+  }, {
+    email: 'user2@user.com',
+    nickname: 'some user',
+    role:  'user'
+  }, {
     email: 'admin@admin.com',
     nickname: 'true admin',
     role:  'admin'
@@ -16,17 +24,11 @@ Rake::Task['db:migrate'].invoke
     email: 'content@content.com',
     nickname: 'makes shit here',
     role:  'content'
-  }, {
-    email: 'banned@user.com',
-    nickname: 'wtf dude',
-    role:  'user',
-    banned: true
   }
 ]
 
 def create_users(user)
   password = 'testtest'
-  # banned = user[:banned] ? user[:banned] :false
 
   User.create(
     email:                 user[:email],
@@ -106,6 +108,16 @@ end
     puts "Kind #{k.title} not created"
   end
 end
+
+# Create route_info method
+@takeaways = [ 'Еда и питье', 'Подходящая одежда и обувь', 'Личное и групповое снаряжение', 'Аптечка' ]
+
+@warnings = [
+  'Затопление участков (весна)',
+  'Нерасчищенные участки (зима)',
+  'Крутые спуски и подъемы с натянутыми перилами',
+  'Гадюки'
+]
 
 
 # Create collection method

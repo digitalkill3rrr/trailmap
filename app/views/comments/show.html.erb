@@ -1,6 +1,10 @@
+<h4>
+  <%= @comment.user.nickname %>
+  <div>
+    <small><%= time_ago_in_words(@comment.created_at) %></small>
+  </div>
+</h4>
 <p><%= @comment.body %></p>
-<p><%= @comment.user.nickname %></p>
-<p><%= time_ago_in_words(@comment.created_at) %></p>
 
 <% if can? :update, Comment %>
   <%= link_to 'Edit', edit_comment_path(@comment) unless @comment.new_record? %>
