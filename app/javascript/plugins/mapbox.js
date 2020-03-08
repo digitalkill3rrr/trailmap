@@ -3,7 +3,7 @@ import mapboxgl from 'mapbox-gl';
 const fitMapToMarkers = (map, features) => {
   const bounds = new mapboxgl.LngLatBounds();
   features.forEach(({ geometry }) => bounds.extend(geometry.coordinates));
-  map.fitBounds(bounds, { padding: 70, maxZoom: 15 });
+  map.fitBounds(bounds, { padding: 80, maxZoom: 15 });
 };
 
 const initMapbox = () => {
@@ -56,15 +56,21 @@ const initMapbox = () => {
 
 
       collection.features.forEach((item) => {
-        var el = document.createElement('div');
-        el.id = 'marker';
+        const {
+          geometry: { coordinates },
+          properties: { description, status, author, image },
+        } = item;
 
-        // create the popup
-        var popup = new mapboxgl.Popup({ offset: 25 }).setText();
 
+        const html = `<p>${description}</p><p>${status}</p><p>${author}</p> <div class="popup_image"><img src=${image}></div>`;
+        var popup = new mapboxgl.Popup({ maxWidth: '600px' }).setHTML(html);
 
-        const marker = new mapboxgl.Marker(el).setLngLat(item.geometry.coordinates).setPopup(popup).addTo(map);
+        const marker = new mapboxgl.Marker()
+          .setLngLat(coordinates)
+          .setPopup(popup)
+          .addTo(map);
       });
+
       fitMapToMarkers(map, collection.features);
     });
   }

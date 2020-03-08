@@ -17,12 +17,21 @@
   </div>
 
   <div class="images">
-    <%= form.fields_for :spot_images do |image| %>
+    <% form.object.spot_images.each do |image| %>
+       <% if image.id %>
+         <% image_delete_params =
+           { spot: { spot_images_attributes: { id: image.id, _destroy: true } } }
+         %>
+         <%= image_tag image.image.url %>
+         <%= link_to "Delete", spot_path(form.object.id, image_delete_params), method: :patch, data: { confirm: 'Are you sure?' } %>
+       <% end %>
+    <% end %>
+
+    <%= form.fields_for :spot_images, SpotImage.new do |image| %>
       <%= image.label :image %><br>
-      <%= image.file_field :image, :multiple => true, name: "spot_images[image][]" %>
+      <%= image.file_field :image, :multiple => true, name:  "spot[spot_images_attributes][][image]" %>
     <% end %>
   </div>
-
 
   <div class="status">
     <%#= select("spot", "status", Spot.all.collect { |s| [ s.status ] } ) %>

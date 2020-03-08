@@ -25,6 +25,23 @@ class Ability
       cannot :index, Comment
     end
 
+    # if user.role == 'admin'
+    #   can [:read, :destroy], :all
+    # elsif user.role == 'content'
+    #   can :manage, :all, user_id: user.id
+    #   cannot :index, [User, Comment]
+    # elsif user.role == 'user'
+    #   can :manage, [Comment, Spot], user_id: user.id
+    #   can :read, :all
+    #   cannot [:create, :update, :destroy], [Route, Collection]
+    #   cannot :index, [User, Comment]
+    # else
+    #   can :read, :all
+    #   cannot :index, [User, Comment]
+    # end
+
+
+
     # The first argument to `can` is the action you are giving the user
     # permission to do.
     # If you pass :manage it will apply to every action. Other common actions
