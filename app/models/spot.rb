@@ -2,7 +2,7 @@ class Spot < ApplicationRecord
   acts_as_taggable_on :tags
 
   belongs_to :route
-  belongs_to :user, optional: true
+  belongs_to :user
 
   has_many :spot_images
   accepts_nested_attributes_for(
@@ -11,12 +11,10 @@ class Spot < ApplicationRecord
     reject_if: proc { |attributes| attributes[:image].blank? }
   )
 
-
-
-  validates :route_id, :name, presence: true
-
   # spot_status
   enum status: [ 'активная', 'на проверке', 'неактивная' ]
+
+  validates :route_id, :name, presence: true
 
   # spots_for_map
   def coordinates

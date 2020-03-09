@@ -22,7 +22,7 @@
 
       <div>
         <% if user_signed_in? %>
-          <%= current_user.email %>
+          <%= current_user.nickname %>
           <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
         <% else %>
           <%= link_to 'Login', new_user_session_path %>

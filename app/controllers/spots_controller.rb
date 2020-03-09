@@ -14,7 +14,6 @@ class SpotsController < ApplicationController
   def show
     @spot = Spot.find(params[:id])
     @related_spots = @spot.find_related_tags
-    # @spot_images = @spot.spot_images.all
 
     if user_signed_in?
       @spot.user_id = current_user.id

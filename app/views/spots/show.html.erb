@@ -8,7 +8,7 @@
   <h2><%= @spot.name %></h2>
   <p><%= @spot.status %></p>
   <p><%#= @spot.route.title %></p>
-  <p><%= User.find(@spot.route.user_id).nickname %></p>
+  <p><%= User.find(@spot.user_id).nickname %></p>
   <p><%= @spot.description %></p>
   <p>
     <%= @spot.longitude %>

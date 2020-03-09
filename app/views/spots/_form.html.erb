@@ -34,7 +34,6 @@
   </div>
 
   <div class="status">
-    <%#= select("spot", "status", Spot.all.collect { |s| [ s.status ] } ) %>
     <%= form.select :status, Spot.statuses.keys %>
   </div>
 
