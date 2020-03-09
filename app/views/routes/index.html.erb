@@ -1,49 +1,47 @@
-<h1>Routes</h1>
+<div class="wrapper">
+  <div class="route_wrapper">
+    <div class="section_title">
+      <h1>Routes</h1>
+    </div>
 
-<table>
-  <thead>
-
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Distance</th>
-      <th>Difficulty</th>
-      <th>Season</th>
-      <th>Kind</th>
-      <th>Collection</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
 
     <% @routes.each do |route| %>
-      <tr>
-        <td><%= link_to route.title, route %></td>
-        <td><%= route.description %></td>
-        <td><%= number_to_human(route.distance, units: :distance) %></td>
-        <td><%= Difficulty.find(route.difficulty_id).level %></td>
-        <td><%= Season.find(route.season_id).title %></td>
-        <td><%= Kind.find(route.kind_id).title %></td>
-
-        <td><%= link_to Collection.find(route.collection_id).title, collections_path %></td>
-        <td><%= route.user.email %></td>
-
-          <% if can? :update, Route %>
-            <td><%= link_to 'Edit', edit_route_path(route) %></td>
+      <div class="route">
+        <div class="route_cover_preview">
+          <% if route.cover.present? %>
+            <%= image_tag route.cover.url %>
           <% end %>
+        </div>
+        <div class="route_title"><%= link_to route.title, route %></div>
+        <div class="route_description"><%= route.description %></div>
+        <div class="route_info">
+          <div class="route_distance"><%= number_to_human(route.distance, units: :distance) %></div>
+          <div class="route_difficulty"><%= route.difficulty %></div>
+          <div class="route_season"><%= route.season %></div>
+          <div class="route_kind"><%= route.kind %></div>
+        </div>
+      </div>
 
-          <% if can? :destroy, Route %>
-            <td><%= link_to 'Destroy', route, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <% end %>
-      </tr>
+
+      <div id="edit_route_button" class="button">
+        <% if can? :update, Route %>
+          <div><%= link_to 'Edit', edit_route_path(route) %></div>
+        <% end %>
+      </div>
+
+      <div id="delete_route_button" class="button">
+        <% if can? :destroy, Route %>
+          <div><%= link_to 'Destroy', route, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+        <% end %>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
 
-<br>
+  <br>
 
-<% if can? :create, Route %>
-  <%= link_to 'New Route', new_route_path %>
-<% end %>
+  <div id="new_route_button" class="button">
+    <% if can? :create, Route %>
+      <%= link_to 'New Route', new_route_path %>
+    <% end %>
+  </div>
+</div>

@@ -20,7 +20,7 @@
         <td><%= link_to spot.name, spot %></td>
         <td><%= spot.status %></td>
         <td><%= spot.description %></td>
-        <td><%= spot.route.title %></td>
+        <td><%= link_to spot.route.title, spot.route %></td>
         <td>
           <%= spot.longitude %>
           <%= spot.latitude %>
@@ -31,8 +31,9 @@
             <%= link_to tag, tagged_path(tag: tag) %>
           <% end %>
         </td>
-        
-        <td><%= spot.route.user.email %></td>
+
+        <td><%= spot.user.nickname %></td>
+
 
         <% if can? :update, Spot %>
           <td><%= link_to 'Edit', edit_spot_path(spot) %></td>

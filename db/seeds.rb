@@ -2,28 +2,28 @@ Rake::Task['db:drop'].invoke
 Rake::Task['db:create'].invoke
 Rake::Task['db:migrate'].invoke
 
-# Create user method
+# Create user
 @users = [
   {
-    email: 'user@user.com',
-    nickname: 'just user',
-    role:  'user'
-  }, {
-    email: 'user1@user.com',
-    nickname: 'another user',
-    role:  'user'
-  }, {
-    email: 'user2@user.com',
-    nickname: 'some user',
-    role:  'user'
-  }, {
     email: 'admin@admin.com',
     nickname: 'true admin',
     role:  'admin'
   }, {
     email: 'content@content.com',
-    nickname: 'makes shit here',
+    nickname: 'makes content here',
     role:  'content'
+  }, {
+    email: 'user@user.com',
+    nickname: 'user 1',
+    role:  'user'
+  }, {
+    email: 'user2@user.com',
+    nickname: 'user 2',
+    role:  'user'
+  }, {
+    email: 'user3@user.com',
+    nickname: 'user 3',
+    role:  'user'
   }
 ]
 
@@ -45,68 +45,25 @@ end
 end
 
 
-# Route info methods
-# Create seasons
-@seasons = [
-  {
-    title: 'лето'
-  }, {
-    title: 'осень'
-  }, {
-    title: 'зима'
-  }, {
-    title: 'весна'
-  }
-]
+# Route info
+@seasons = [ 'лето', 'осень', 'зима', 'весна' ]
+@difficulties = [ 'лёгкая', 'средняя', 'сложная' ]
+@kinds = [ 'пеший', 'вело' ]
 
-@seasons.each do |season|
-  s = Season.create(season)
-
-  if s.save
-    puts "Season #{s.title} created"
-  else
-    puts "Season #{s.title} not created"
-  end
+def random_season
+  rand(0..3)
 end
 
-# Create difficulty
-@difficulties = [
-  {
-    level: 'лёгкая'
-  }, {
-    level: 'средняя'
-  }, {
-    level: 'сложная'
-  }
-]
-
-@difficulties.each do |difficulty|
-  d = Difficulty.create(difficulty)
-
-  if d.save
-    puts "Difficulty #{d.level} created"
-  else
-    puts "Difficulty #{d.level} not created"
-  end
+def random_difficulty
+  rand(0..2)
 end
 
-# Create route kind
-@kinds = [
-  {
-    title: 'пеший'
-  }, {
-    title: 'вело'
-  }
-]
+def random_kind
+  rand(0..1)
+end
 
-@kinds.each do |kind|
-  k = Kind.create(kind)
-
-  if k.save
-    puts "Kind #{k.title} created"
-  else
-    puts "Kind #{k.title} not created"
-  end
+def random_distance
+  rand(14000..60000)
 end
 
 # Create route_info method
@@ -120,7 +77,7 @@ end
 ]
 
 
-# Create collection method
+# Create collection
 @collections = [
   {
     title:       'походы МО',
@@ -150,56 +107,56 @@ def upload_fake_route_cover
 end
 
 
-# Create route method
+# Create route
 @routes = [
   {
-    user_id:       User.all.sample.id,
+    user_id:       3,
     title:        'Oкская тропа',
     description:  'Маршрут вдоль реки Оки, в прошлом главного судоходного тракта через старинные города и села, от Павлова до города Горбатов. Это первый этап будущего большого маршрута от Павлова до Нижнего Новгорода общей протяженностью в 130 км.',
-    distance:      41000,
-    difficulty_id: Difficulty.all.sample.id,
-    season_id:     Season.all.sample.id,
-    kind_id:       Kind.all.sample.id,
+    distance:      random_distance,
+    difficulty:    random_difficulty,
+    season:        random_season,
+    kind:          random_kind,
     collection_id: Collection.all.sample.id,
     cover:         upload_fake_route_cover
   }, {
-    user_id:       User.all.sample.id,
+    user_id:       3,
     title:        'Озёрный край',
     description:  'Радиальный маршрут от озера Западное до озера Кщара. Включает в себя посещение четырех озер этого края. Может также быть совмещен с маршрутом "На озеро Кщара" с завершением в городе Вязники.',
-    distance:      39000,
-    difficulty_id: Difficulty.all.sample.id,
-    season_id:     Season.all.sample.id,
-    kind_id:       Kind.all.sample.id,
+    distance:      random_distance,
+    difficulty:    random_difficulty,
+    season:        random_season,
+    kind:          random_kind,
     collection_id: Collection.all.sample.id,
     cover:         upload_fake_route_cover
   }, {
-    user_id:       User.all.sample.id,
+    user_id:       3,
     title:        'Боровский тракт',
     description:  'Маршрут соединяет центры ремесел и старинные усадьбы в окрестностях Богородска и Ворсмы с районом карстовых озер и сосновых лесов в долине реки Сережа.',
-    distance:      15200,
-    difficulty_id: Difficulty.all.sample.id,
-    season_id:     Season.all.sample.id,
-    kind_id:       Kind.all.sample.id,
+    distance:      random_distance,
+    difficulty:    random_difficulty,
+    season:        random_season,
+    kind:          random_kind,
     collection_id: Collection.all.sample.id,
     cover:         upload_fake_route_cover
   }, {
-    user_id:       User.all.sample.id,
+    user_id:       3,
     title:        'Тропы Березополья',
     description:  'Пешеходный маршрут по участку бывшего Боровского тракта и его окрестностям. Вы увидите, что осталось от старинной большой дороги, посетите Чайниково болото и красивое урочище Кузьминка.',
-    distance:      27000,
-    difficulty_id: Difficulty.all.sample.id,
-    season_id:     Season.all.sample.id,
-    kind_id:       Kind.all.sample.id,
+    distance:      random_distance,
+    difficulty:    random_difficulty,
+    season:        random_season,
+    kind:          random_kind,
     collection_id: Collection.all.sample.id,
     cover:         upload_fake_route_cover
   }, {
-    user_id:       User.all.sample.id,
+    user_id:       3,
     title:        'Старицкая Земля',
     description:  'Уникальная архитектура, история и природа на всем протяжении маршрута в районе города Старица: пещеры, водопад, усадебные и купеческие постройки 16-17 века, церкви и монастырь.',
-    distance:      17800,
-    difficulty_id: Difficulty.all.sample.id,
-    season_id:     Season.all.sample.id,
-    kind_id:       Kind.all.sample.id,
+    distance:      random_distance,
+    difficulty:    random_difficulty,
+    season:        random_season,
+    kind:          random_kind,
     collection_id: Collection.all.sample.id,
     cover:         upload_fake_route_cover
   }
@@ -211,9 +168,9 @@ def create_route(route)
     title:         route[:title],
     description:   route[:description],
     distance:      route[:distance],
-    difficulty_id: route[:difficulty_id],
-    season_id:     route[:season_id],
-    kind_id:       route[:kind_id],
+    difficulty:    route[:difficulty],
+    season:        route[:season],
+    kind:          route[:kind],
     collection_id: route[:collection_id],
     cover:         route[:cover]
   )
@@ -231,22 +188,21 @@ end
 
 def random_route_id
   Route.offset(rand(Route.count)).first.id
-  # routes_quantity = Route.count
-  # routes_random_offset = rand(routes_quantity)
-  # random_route = Route.offset(routes_random_offset).first
-  # random_route_id = random_route.id
-  # random_route.id
 end
 
 
-# Create spot status method
+# Create spot status
 @statuses = [ 'активный', 'нужна проверка', 'неактивный' ]
 
-# Create tag_list method
+# Create tag_list
 @tag_list = ['храм', 'здание', 'река', 'место для ночлега', 'кормушка для животных', 'панорамный вид', 'место для рыбалки', 'перекат', 'водопад', 'мост', 'плотина', 'заповедник', 'хвойный лес', 'заброшенное здание']
 
+# Create random users
+def random_users
+  rand(2..5)
+end
 
-# Create spot method
+# Create spot
 @spots = [
   {
     name:        'Абабковский монастырь',
@@ -255,7 +211,7 @@ end
     tag_list:     3.times.map { @tag_list.sample },
     # route_id:     Route.all.sample.id,
     route_id:     random_route_id,
-    # user_id:      User.all.sample.id,
+    user_id:      random_users,
     longitude:    56.07072,
     latitude:     43.10256
   }, {
@@ -265,7 +221,7 @@ end
     tag_list:     2.times.map { @tag_list.sample },
     # route_id:     Route.all.sample.id,
     route_id:     random_route_id,
-    # user_id:      User.all.sample.id,
+    user_id:      random_users,
     longitude:    56.09047,
     latitude:     43.05308
   }, {
@@ -275,7 +231,7 @@ end
     tag_list:     3.times.map { @tag_list.sample },
     # route_id:     Route.all.sample.id,
     route_id:     random_route_id,
-    # user_id:      User.all.sample.id,
+    user_id:      random_users,
     longitude:    56.13747,
     latitude:     43.01523
   }, {
@@ -285,7 +241,7 @@ end
     tag_list:     4.times.map { @tag_list.sample },
     # route_id:     Route.all.sample.id,
     route_id:     random_route_id,
-    # user_id:      User.all.sample.id,
+    user_id:      random_users,
     longitude:    56.10654,
     latitude:     43.03003
   }, {
@@ -295,17 +251,18 @@ end
     tag_list:     5.times.map { @tag_list.sample },
     # route_id:     Route.all.sample.id,
     route_id:     random_route_id,
-    # user_id:      User.all.sample.id,
+    user_id:      random_users,
     longitude:    55.964629,
     latitude:     43.064570
   }, {
     name:        'г. Горбатов',
     status:       0,
+    user_id:      random_users,
     description: 'Река Ока будет вас сопровождать практически на всем пути. Это красивая река которая именно в Нижегородской области впадает в величественную Волгу. В прошлом главная судоходная артерия, обеспечивающая г. Горбатов стабильным доходом от торговли, течет извилисто, создавая излучины и обрывистые берега.',
     tag_list:    @tag_list.sample,
     # route_id:     Route.all.sample.id,
     route_id:     random_route_id,
-    # user_id:      User.all.sample.id,
+    user_id:      User.all.sample.id,
     longitude:    56.130869,
     latitude:     43.062701
   }
@@ -330,7 +287,7 @@ end
 
 
 
-# Create comment method
+# Create comment
 @comments = [
   {
     body: 'йо',

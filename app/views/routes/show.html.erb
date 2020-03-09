@@ -5,7 +5,6 @@
 </div>
 
 <h1><%= @route.title %></h1>
-<h4><%= User.find(@route.user_id).nickname %></h4>
 <p><%= @route.description %></p>
 
 <p>
@@ -15,17 +14,17 @@
 
 <p>
   <strong>Сложность:</strong>
-  <%= Difficulty.find(@route.difficulty_id).level %>
+  <%= @route.difficulty %>
 </p>
 
 <p>
   <strong>Сезонность:</strong>
-  <%= Season.find(@route.season_id).title %>
+  <%= @route.season %>
 </p>
 
 <p>
   <strong>Тип маршрута:</strong>
-  <%= Kind.find(@route.kind_id).title %>
+  <%= @route.kind %>
 </p>
 
 <!-- ROUTE INFO -->
@@ -50,7 +49,7 @@
 <h4><%= Collection.find(@route.collection_id).title %></h4>
 
 <% if can? :update, Route %>
-  <%= link_to 'Edit', edit_route_path(@route) %> 
+  <%= link_to 'Edit', edit_route_path(@route) %>
 <% end %>
 <%= link_to 'Back', routes_path %>
 

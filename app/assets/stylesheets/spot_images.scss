@@ -1,0 +1,11 @@
+.spot_images {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.spot_images img, .images img {
+  display: block;
+  padding: 20px 10px 0 0;
+  width: 100px;
+  height: 100px;
+}

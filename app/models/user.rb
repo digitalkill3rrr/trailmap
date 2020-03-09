@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :routes
-  has_many :spots, through: :routes
+  has_many :spots
   has_many :comments
 
   # Include default devise modules. Others available are:

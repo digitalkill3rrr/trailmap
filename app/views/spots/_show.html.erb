@@ -1,8 +1,13 @@
 <div class="spot_info">
+  <div class="spot_images">
+    <% spot.spot_images.each do |image| %>
+      <%= image_tag image.image.url %>
+    <% end %>
+  </div>
 
   <p><%= spot.route.title %></p>
   <h2><%= spot.name %></h2>
-  <h4><%= User.find(spot.route.user_id).nickname %></h4>
+  <h4><%= User.find(spot.user_id).nickname %></h4>
   <p><%= spot.status %></p>
   <p><%= spot.description %></p>
   <p>

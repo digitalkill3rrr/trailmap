@@ -1,0 +1,2 @@
+module SpotImagesHelper
+end

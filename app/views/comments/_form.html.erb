@@ -16,10 +16,9 @@
     <%= form.text_area :body %>
   </div>
 
-  <div class="field">
-    <%= form.label :route_id %>
-    <%= select("comment", "route_id", Route.all.collect { |r| [ r.title, r.id ] }) %>
-  </div>
+  <% if @route %>
+    <%= form.hidden_field :route_id, value: @route.id %>
+  <% end %>
 
   <div class="actions">
     <%= form.submit %>

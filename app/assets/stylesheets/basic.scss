@@ -1,5 +1,5 @@
-* {
-  box-sizing: border-box;
+body {
+  overflow-x: hidden;
 }
 
 nav {
@@ -8,19 +8,10 @@ nav {
   // left: 0;
   display: flex;
   justify-content: space-between;
-}
-
-#marker {
-  background-color: grey;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.route_cover {
-  // display: block;
-  // position: relative;
-  // width: 0px;
-  // height: 50px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 66px;
+  background-color: #fafafa;
 }
