@@ -33,17 +33,17 @@
 
   <div class="field">
     <%= form.label 'Сложность' %>
-    <%= select("route", "difficulty_id", Difficulty.all.collect { |d| [ d.level, d.id ] }) %>
+    <%= form.select :difficulty, Route.difficulties.keys %>
   </div>
 
   <div class="field">
     <%= form.label 'Сезонность' %>
-    <%= select("route", "season_id", Season.all.collect { |s| [ s.title, s.id ] }) %>
+    <%= form.select :season, Route.seasons.keys %>
   </div>
 
   <div class="field">
     <%= form.label 'Тип маршрута' %>
-    <%= select("route", "kind_id", Kind.all.collect { |k| [ k.title, k.id ] }) %>
+    <%= form.select :kind, Route.kinds.keys %>
   </div>
 
   <div class="field">

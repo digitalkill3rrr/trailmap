@@ -8,37 +8,37 @@ class Ability
 
     user ||= User.new # guest user (not logged in)
 
-    # if user.role == 'admin'
-    #   can :manage, :all
-    #   cannot [:update, :destroy], Comment
-    # elsif user.role == 'content'
-    #   can :manage, :all
-    #   cannot :index, User
-    #   cannot [:update, :destroy], Comment
-    # elsif user.role == 'user'
-    #   can :manage, :all
-    #   cannot [:create, :update, :destroy], Collection
-    #   cannot :index, User
-    # else
-    #   can :read, :all
-    #   cannot :index, User
-    #   cannot :index, Comment
-    # end
-
     if user.role == 'admin'
-      can [:read, :destroy], :all
+      can :manage, :all
+      cannot [:update, :destroy], Comment
     elsif user.role == 'content'
-      can :manage, :all, id: user.id
-      cannot :index, [User, Comment]
+      can :manage, :all
+      cannot :index, User
+      cannot [:update, :destroy], Comment
     elsif user.role == 'user'
-      can :manage, [Spot, Comment], :user_id => user.id
-      can :read, :all
-      cannot [:create, :update, :destroy], [Route, Collection]
-      cannot :index, [User, Comment]
+      can :manage, :all
+      cannot [:create, :update, :destroy], Collection
+      cannot :index, User
     else
       can :read, :all
-      cannot :index, [User, Comment]
+      cannot :index, User
+      cannot :index, Comment
     end
+
+    # if user.role == 'admin'
+    #   can [:read, :destroy], :all
+    # elsif user.role == 'content'
+    #   can :manage, :all, id: user.id
+    #   cannot :index, [User, Comment]
+    # elsif user.role == 'user'
+    #   can :manage, [Spot, Comment], :user_id => user.id
+    #   can :read, :all
+    #   cannot [:create, :update, :destroy], [Route, Collection]
+    #   cannot :index, [User, Comment]
+    # else
+    #   can :read, :all
+    #   cannot :index, [User, Comment]
+    # end
 
 
 

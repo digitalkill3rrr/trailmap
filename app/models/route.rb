@@ -6,4 +6,10 @@ class Route < ApplicationRecord
   has_many :comments
   validates :user_id, :title, presence: true
 
+
+  # route info
+  enum difficulty: [ 'лёгкий', 'средний', 'сложный' ]
+  enum season: [ 'лето', 'осень', 'зима', 'весна' ]
+  enum kind: [ 'пеший', 'вело' ]
+
 end

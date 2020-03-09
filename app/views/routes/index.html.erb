@@ -16,9 +16,9 @@
         <div class="route_description"><%= route.description %></div>
         <div class="route_info">
           <div class="route_distance"><%= number_to_human(route.distance, units: :distance) %></div>
-          <div class="route_difficulty"><%= Difficulty.find(route.difficulty_id).level %></div>
-          <div class="route_season"><%= Season.find(route.season_id).title %></div>
-          <div class="route_kind"><%= Kind.find(route.kind_id).title %></div>
+          <div class="route_difficulty"><%= route.difficulty %></div>
+          <div class="route_season"><%= route.season %></div>
+          <div class="route_kind"><%= route.kind %></div>
         </div>
       </div>
 

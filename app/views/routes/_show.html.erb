@@ -15,17 +15,17 @@
 
 <p>
   <strong>Сложность:</strong>
-  <%= Difficulty.find(route.difficulty_id).level %>
+  <%= route.difficulty %>
 </p>
 
 <p>
   <strong>Сезонность:</strong>
-  <%= Season.find(route.season_id).title %>
+  <%= route.difficulty %>
 </p>
 
 <p>
   <strong>Тип маршрута:</strong>
-  <%= Kind.find(route.kind_id).title %>
+  <%= route.kind %>
 </p>
 
 <% if can? :update, Route %>

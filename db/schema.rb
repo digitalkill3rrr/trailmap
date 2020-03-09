@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_02_161426) do
+ActiveRecord::Schema.define(version: 2020_03_09_200154) do
 
   create_table "collections", force: :cascade do |t|
     t.string "title"
@@ -27,39 +27,21 @@ ActiveRecord::Schema.define(version: 2020_03_02_161426) do
     t.integer "user_id"
   end
 
-  create_table "difficulties", force: :cascade do |t|
-    t.string "level"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "kinds", force: :cascade do |t|
-    t.string "title"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "routes", force: :cascade do |t|
     t.string "title"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "distance"
-    t.integer "season_id"
-    t.integer "difficulty_id"
-    t.integer "kind_id"
     t.integer "collection_id"
     t.integer "user_id"
     t.string "cover"
     t.text "takeaway"
     t.text "timetable"
     t.text "warning"
-  end
-
-  create_table "seasons", force: :cascade do |t|
-    t.string "title"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.integer "difficulty"
+    t.integer "season"
+    t.integer "kind"
   end
 
   create_table "spot_images", force: :cascade do |t|
