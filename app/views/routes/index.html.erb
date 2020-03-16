@@ -1,47 +1,26 @@
 <div class="wrapper">
-  <div class="route_wrapper">
-    <div class="section_title">
-      <h1>Routes</h1>
-    </div>
 
+  <h1 class="section__title">популярные маршруты</h1>
 
+  <div class="route-list__wrapper">
     <% @routes.each do |route| %>
-      <div class="route">
-        <div class="route_cover_preview">
+      <div class="route-card">
+        <div id="h4"><%= link_to route.title, route %></div>
+
+        <div class="route-info-wrapper--inner-small">
+          <div id="body-m" class="info-container--small"><%= number_to_human(route.distance, units: :distance) %></div>
+          <div id="body-m" class="info-container--small"><%= route.difficulty %></div>
+          <div id="body-m" class="info-container--small"><%= route.kind %></div>
+        </div>
+
+        <div class="route-pic">
           <% if route.cover.present? %>
             <%= image_tag route.cover.url %>
           <% end %>
         </div>
-        <div class="route_title"><%= link_to route.title, route %></div>
-        <div class="route_description"><%= route.description %></div>
-        <div class="route_info">
-          <div class="route_distance"><%= number_to_human(route.distance, units: :distance) %></div>
-          <div class="route_difficulty"><%= route.difficulty %></div>
-          <div class="route_season"><%= route.season %></div>
-          <div class="route_kind"><%= route.kind %></div>
-        </div>
       </div>
 
-
-      <div id="edit_route_button" class="button">
-        <% if can? :update, Route %>
-          <div><%= link_to 'Edit', edit_route_path(route) %></div>
-        <% end %>
-      </div>
-
-      <div id="delete_route_button" class="button">
-        <% if can? :destroy, Route %>
-          <div><%= link_to 'Destroy', route, method: :delete, data: { confirm: 'Are you sure?' } %></div>
-        <% end %>
-      </div>
     <% end %>
   </div>
 
-  <br>
-
-  <div id="new_route_button" class="button">
-    <% if can? :create, Route %>
-      <%= link_to 'New Route', new_route_path %>
-    <% end %>
-  </div>
 </div>

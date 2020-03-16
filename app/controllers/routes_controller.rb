@@ -13,7 +13,6 @@ class RoutesController < ApplicationController
   def show
     @spots = @route.spots
     @comments = @route.comments
-    # @comments = @route.comments
     @spots_for_map = build_geojson(@spots)
   end
 

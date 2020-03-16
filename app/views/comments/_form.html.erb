@@ -11,16 +11,17 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :body %>
-    <%= form.text_area :body %>
+  <div class="field--text-area">
+    <%= form.text_area :body, :placeholder => 'Ваш комментарий' %>
+
+    <div class="button--submit">
+      <%= form.submit 'Отправить' %>
+    </div>
   </div>
+
 
   <% if @route %>
     <%= form.hidden_field :route_id, value: @route.id %>
   <% end %>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>

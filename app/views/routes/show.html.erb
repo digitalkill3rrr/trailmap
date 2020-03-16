@@ -1,92 +1,119 @@
-<div class="route_cover">
-  <% if @route.cover.present? %>
-    <%= image_tag @route.cover.url %>
-  <% end %>
-</div>
+<div class="wrapper">
 
-<h1><%= @route.title %></h1>
-<p><%= @route.description %></p>
+<!-- ----- section 1 ----- -->
+  <div class="route-page__wrapper">
+    <div class="route-cover">
+      <% if @route.cover.present? %>
+        <%= image_tag @route.cover.url %>
+      <% end %>
+    </div>
 
-<p>
-  <strong>Расстояние:</strong>
-  <%= number_to_human(@route.distance, units: :distance) %>
-</p>
+    <div class="route-heading-container">
+      <div id="h1"><%= @route.title %></div>
+      <div id="body-l--bold"><%= @route.user.nickname %></div>
+    </div>
 
-<p>
-  <strong>Сложность:</strong>
-  <%= @route.difficulty %>
-</p>
+    <div class="route-info-wrapper--external">
+      <div id="body-l" class="route-description"><%= @route.description %></div>
 
-<p>
-  <strong>Сезонность:</strong>
-  <%= @route.season %>
-</p>
+      <div class="route-info-wrapper--inner-big">
+        <div class="info-container--big">
+          <div id="h4"><%= number_to_human(@route.distance, units: :distance) %></div>
+          <div id="label-s">Расстояние</div>
+        </div>
 
-<p>
-  <strong>Тип маршрута:</strong>
-  <%= @route.kind %>
-</p>
+        <div class="info-container--big">
+          <div id="h4"><%= @route.kind %></div>
+          <div id="label-s">Тип маршрута</div>
+        </div>
 
-<!-- ROUTE INFO -->
+        <div class="info-container--big">
+          <div id="h4"><%= @route.difficulty %></div>
+          <div id="label-s">Сложность</div>
+        </div>
 
-<div>
-  <strong>Что с собой взять:</strong>
-  <p><%= @route.takeaway %></p>
-</div>
+        <div class="info-container--big">
+          <div id="h4"><%= @route.season %></div>
+          <div id="label-s">Сезонность</div>
+        </div>
+      </div>
+    </div>
 
-<div>
-  <strong>Как добраться:</strong>
-  <p><%= @route.timetable %></p>
-</div>
+  </div>
+  <!-- ----- section 1 ----- -->
 
-<div>
-  <strong>Предупреждения:</strong>
-  <p><%= @route.warning %></p>
-</div>
+  <div class="route-page__wrapper--section-2">
 
-<!-- ROUTE INFO -->
+    <div class="info-area-container">
+      <div class="scroll-container">
+        <div id="info" class="section-container">
 
-<h4><%= Collection.find(@route.collection_id).title %></h4>
+          <!-- ----- >> spots >> _show.html.erb ----- -->
+          <div class="block-container">
+            <div id="label-l--bold">Точки маршрута</div>
+            <% @spots.each do |spot| %>
+              <%= render 'spots/show', spot: spot %>
+            <% end %>
+          </div>
+          <!-- ----- >> spots >> _show.html.erb ----- -->
 
-<% if can? :update, Route %>
-  <%= link_to 'Edit', edit_route_path(@route) %>
-<% end %>
-<%= link_to 'Back', routes_path %>
+          <div class="block-container">
+            <div id="label-l--bold">Что с собой взять:</div>
+            <div id="body-l"><%= @route.takeaway %></div>
+          </div>
 
-<hr>
+          <div class="block-container">
+            <div id="label-l--bold">Как добраться:</div>
+            <div id="body-l"><%= @route.timetable %></div>
+          </div>
 
-<%#= render 'spots/index' %>
-<% @spots.each do |spot| %>
-  <%= render 'spots/show', spot: spot %>
-<% end %>
+          <div class="block-container">
+            <div id="label-l--bold">Предупреждения:</div>
+            <div id="body-l"><%= @route.warning %></div>
+          </div>
+        </div>
 
-<% if can? :create, Spot %>
-  <strong>Новая точка</strong>
-  <%= render 'spots/form', spot: Spot.new %>
-<% end %>
+        <div class="comments-container">
+          <div id="label-l--bold">Комментарии <%= @route.comments.count %></div>
 
-<%= render 'map', spots: @spots_for_map %>
+          <div class="comment-block-container">
+            <% @route.comments.each do |comment| %>
+              <%= render 'comments/show', comment: comment %>
 
-<hr>
-<div>
-  <h2>Комментарии (<%= @route.comments.count %>)</h2>
-  <% @route.comments.each do |comment| %>
-    <%= render 'comments/show', comment: comment %>
+              <%# if can? :update, Comment %>
+                <%#= link_to 'Edit', edit_comment_path(comment) unless comment.new_record? %>
+              <%# end %>
+            <% end %>
+          </div>
 
-    <%# if can? :update, Comment %>
-      <%#= link_to 'Edit', edit_comment_path(comment) unless comment.new_record? %>
+          <% if can? :create, Comment %>
+            <%= render 'comments/form', comment: Comment.new %>
+
+          <% else %>
+          <div>Войдите или зарегистрируйтесь, чтобы оставить комментарий</div>
+            <%= link_to 'Login', new_user_session_path %>
+            <%= link_to 'Register', new_user_registration_path %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- MAP -->
+    <div class="map_area-container"><%= render 'map', spots: @spots_for_map %></div>
+
+    <%# if can? :update, Route %>
+      <%#= link_to 'Edit', edit_route_path(@route) %>
     <%# end %>
-  <% end %>
-</div>
 
+    <%#= link_to 'Back', routes_path %>
 
-<div>
-  <% if can? :create, Comment %>
-    <h4>Ваш комментарий</h4>
-    <%= render 'comments/form', comment: Comment.new %>
-  <% else %>
-  <p>Войдите или зарегистрируйтесь, чтобы оставить комментарий</p>
-    <%= link_to 'Login', new_user_session_path %>
-    <%= link_to 'Register', new_user_registration_path %>
-  <% end %>
+    <%# if can? :create, Spot %>
+      <!-- <strong>Новая точка</strong> -->
+      <%#= render 'spots/form', spot: Spot.new %>
+    <%# end %>
+    <!-- ----------- -->
+
+  </div>
+
 </div>

@@ -11,10 +11,10 @@ class Spot < ApplicationRecord
     reject_if: proc { |attributes| attributes[:image].blank? }
   )
 
-  # spot_status
+  # spot status
   enum status: [ 'активная', 'на проверке', 'неактивная' ]
 
-  validates :route_id, :name, presence: true
+  validates :route_id, :name, :description, :tag_list, :longitude, :latitude, :status, presence: true
 
   # spots_for_map
   def coordinates
@@ -29,7 +29,7 @@ class Spot < ApplicationRecord
           coordinates: coordinates
         },
         properties: {
-          description: description,
+          name: name,
           status: status,
           author: user&.nickname,
           image: spot_images.first&.image&.url

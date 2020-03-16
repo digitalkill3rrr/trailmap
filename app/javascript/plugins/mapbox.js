@@ -48,8 +48,9 @@ const initMapbox = () => {
           'line-cap': 'round',
         },
         paint: {
-          'line-color': '#888',
-          'line-width': 8,
+          'line-color': '#EB5757',
+          'line-opacity': 0.5,
+          'line-width': 5,
         },
       });
 
@@ -58,12 +59,14 @@ const initMapbox = () => {
       collection.features.forEach((item) => {
         const {
           geometry: { coordinates },
-          properties: { description, status, author, image },
+          properties: { name, status, author, image },
         } = item;
 
 
-        const html = `<p>${description}</p><p>${status}</p><p>${author}</p> <div class="popup_image"><img src=${image}></div>`;
-        var popup = new mapboxgl.Popup({ maxWidth: '600px' }).setHTML(html);
+        const html = `<div class="spot-block__wrapper"><div class="spot-info-container"><div id="label-s--bold">${status}</div><div id="body-l">${name}</div><div id="body-m--bold">${author}</div></div><div class="spot-image--small"><img src=${image}></div></div>`;
+        // var popup = new mapboxgl.Popup({ maxWidth: '600px' }).setHTML(html);
+        var popup = new mapboxgl.Popup({ className: "spot-popup" }).setHTML(html);
+
 
         const marker = new mapboxgl.Marker()
           .setLngLat(coordinates)

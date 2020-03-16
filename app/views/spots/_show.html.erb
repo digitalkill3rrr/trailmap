@@ -1,31 +1,23 @@
-<div class="spot_info">
-  <div class="spot_images">
-    <% spot.spot_images.each do |image| %>
-      <%= image_tag image.image.url %>
+<div class="spot-block__wrapper">
+
+  <div class="spot-info-container">
+    <div id="label-s--bold"><%= spot.status %></div>
+    <div id="body-l"><%= spot.name %></div>
+    <div id="body-m--bold"><%= User.find(spot.user_id).nickname %></div>
+  </div>
+
+  <div class="spot-image--small">
+    <%# spot.spot_images.each do |image| %>
+      <%#= image_tag image.image.url %>
+    <%# end %>
+
+    <!-- show only first image -->
+    <% spot.spot_images.each_with_index do |image, i| %>
+      <%= image_tag image.image.url if i==0 %>
     <% end %>
   </div>
 
-  <p><%= spot.route.title %></p>
-  <h2><%= spot.name %></h2>
-  <h4><%= User.find(spot.user_id).nickname %></h4>
-  <p><%= spot.status %></p>
-  <p><%= spot.description %></p>
-  <p>
-    <%= spot.longitude %>
-    <%= spot.latitude %>
-  </p>
-
+  <%# if can? :update, Spot %>
+    <%#= link_to 'Edit', edit_spot_path(spot) %>
+  <%# end %>
 </div>
-
-<p>
-  <%#= @spot.tag_list %>
-  <% spot.tag_list.each do |tag| %>
-    <%= link_to tag, tagged_path(tag: tag) %>
-  <% end %>
-</p>
-
-<% if can? :update, Spot %>
-  <%= link_to 'Edit', edit_spot_path(spot) %>
-<% end %>
-
-<hr>

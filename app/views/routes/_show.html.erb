@@ -1,12 +1,12 @@
 <h1><%= link_to route.title, route %></h1>
 
-<div>
+<div class="route_cover">
   <% if route.cover.present? %>
     <%= image_tag route.cover.url %>
   <% end %>
 </div>
 
-<p><%#= route.description %></p>
+<p><%= route.description %></p>
 
 <p>
   <strong>Расстояние:</strong>

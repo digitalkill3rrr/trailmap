@@ -1,19 +1,164 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+ /* *= require_tree . */
+ /* *= require_self */
 
  * {
   box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1, #h1 {
+  font-family: AvenirNextCyr-Medium;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 64px;
+  line-height: 68px;
+  letter-spacing: -0.015em;
+  color: #333333;
+}
+
+#h1 {
+  text-transform: lowercase;
+  /* margin: 16px 0 16px 32px; */
+}
+
+#h4 {
+  font-family: AvenirNextCyr-Medium;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: -0.005em;
+  color: #333333;
+}
+
+#h5 {
+  font-family: AvenirNextCyr-Regular;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+  /* or 140% */
+
+
+  color: #000000;
+}
+
+#h5--bold {
+  font-family: AvenirNextCyr-Medium;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+
+  display: flex;
+  align-items: center;
+  color: #333333;
+}
+
+#body-l {
+  font-family: AvenirNextCyr-Regular;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+
+  display: flex;
+  align-items: center;
+  color: #333333;
+}
+
+#body-l--bold {
+  font-family: AvenirNextCyr-Medium;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+
+  display: flex;
+  align-items: center;
+  color: #333333;
+}
+
+#body-m {
+  font-family: AvenirNextCyr-Regular;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+
+  display: flex;
+  align-items: center;
+  color: #333333;
+}
+
+#body-m--bold {
+  font-family: AvenirNextCyr-Medium;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+
+  display: flex;
+  align-items: center;
+  color: #333333;
+}
+
+#body-s {
+  font-family: AvenirNextCyr-Regular;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #333333;
+}
+
+#label-s {
+  font-family: AvenirNextCyr-Medium;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  color: #828282;
+}
+
+#label-s--bold {
+
+  font-family: AvenirNextCyr-Medium;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 16px;
+
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  color: #219653;
+}
+
+#label-l--bold {
+  font-family: AvenirNextCyr-Medium;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+
+  color: #333333;
 }

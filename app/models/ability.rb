@@ -17,30 +17,13 @@ class Ability
       cannot [:update, :destroy], Comment
     elsif user.role == 'user'
       can :manage, :all
+      can :update, :spots, :status
       cannot [:create, :update, :destroy], Collection
-      cannot :index, User
+      cannot :index, [User, Comment]
     else
       can :read, :all
-      cannot :index, User
-      cannot :index, Comment
+      cannot :index, [User, Comment]
     end
-
-    # if user.role == 'admin'
-    #   can :manage, :all
-    #   cannot [:update, :destroy], Comment
-    # elsif user.role == 'content'
-    #   can :manage, :all
-    #   cannot :index, User
-    #   cannot [:update, :destroy], Comment
-    # elsif user.role == 'user'
-    #   can :read, :all
-    #   can :manage, [Spot, Comment]
-    #   cannot [:create, :update, :destroy], Collection
-    #   cannot :index, User
-    # else
-    #   can :read, :all
-    #   cannot :index, [User, Comment]
-    # end
 
     # if user.role == 'admin'
     #   can [:read, :destroy], :all

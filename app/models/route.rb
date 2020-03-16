@@ -4,7 +4,7 @@ class Route < ApplicationRecord
   belongs_to :user
   has_many :spots
   has_many :comments
-  validates :user_id, :title, presence: true
+  validates :user_id, :title, :description, :difficulty, :season, :distance, :kind, :cover, presence: true
 
 
   # route info

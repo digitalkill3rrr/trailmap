@@ -18,7 +18,11 @@
     <% @spots.each do |spot| %>
       <tr>
         <td><%= link_to spot.name, spot %></td>
-        <td><%= spot.status %></td>
+        <td>
+          <%# if can? :update, :spots %>
+            <%= spot.status %>
+          <%# end %>
+        </td>
         <td><%= spot.description %></td>
         <td><%= link_to spot.route.title, spot.route %></td>
         <td>

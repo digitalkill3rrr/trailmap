@@ -1,13 +1,14 @@
-<h4>
-  <%= comment.user.nickname %>
-  <div>
-    <small> <%= time_ago_in_words(comment.created_at) %> назад </small>
+<div class="comment-block__wrapper">
+  <div class="comment-content-container">
+    <div class="comment-heading-container">
+      <div id="body-m--bold"><%= comment.user.nickname %></div>
+      <div id="body-m"><%= time_ago_in_words(comment.created_at) %> назад</div>
+    </div>
+
+    <div id="body-l"><%= comment.body %></div>
+
+    <%# if can? :update, Comment %>
+      <%#= link_to 'Edit', edit_comment_path(comment) unless comment.new_record? %>
+    <%# end %>
   </div>
-</h4>
-<p><%= comment.body %></p>
-
-<% if can? :update, Comment %>
-  <%= link_to 'Edit', edit_comment_path(comment) unless comment.new_record? %>
-<% end %>
-
-<hr>
+</div>

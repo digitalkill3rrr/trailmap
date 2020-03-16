@@ -1,0 +1,70 @@
+.map_area-container {
+  width: 965px;
+
+  .spots-json {
+    visibility: hidden;
+  }
+
+  #map {
+    width: 100%;
+    height: 100vh;
+  }
+}
+
+.mapboxgl-popup-anchor-bottom {
+  max-width: 443px !important;
+}
+
+.spot-block__wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  border-radius: 2px;
+  background: #FBFBFB;
+
+  .spot-info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    // height: 100%;
+    height: 90px;
+
+    #label-s--bold {
+      margin-bottom: 12px;
+    }
+
+    #body-l {
+      margin-bottom: 16px;
+    }
+  }
+}
+
+
+.spot-popup .mapboxgl-popup-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  width: 443px;
+  height: 100%;
+
+  padding: 0;
+
+  box-shadow: none;
+  background-color: #fbfbfb;
+
+  .mapboxgl-popup-close-button {
+    display: none;
+  }
+
+  .spot-image--small img {
+    width: 90px;
+    height: 90px;
+    border-radius: 2px;
+  }
+}

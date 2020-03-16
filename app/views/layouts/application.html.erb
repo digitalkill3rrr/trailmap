@@ -12,22 +12,31 @@
 
   <body>
     <nav>
-      <div>
-        <%= link_to 'Routes',      routes_url %>
-        <%= link_to 'Spots',       spots_url %>
-        <%= link_to 'Collections', collections_url %>
-        <%= link_to 'Users',       users_index_url if can? :index, User %>
-        <%= link_to 'Comments',    comments_url if can? :index, Comment %>
+      <div class="nav--left">
+        <div class="logo">
+          <%= link_to routes_url do %>
+            <%= image_tag('logo.svg') %>
+          <% end %>
+        </div>
+        <div class="nav-menu">
+          <div id="body-l--bold"><%= link_to 'Routes',      routes_url %></div>
+          <div id="body-l--bold"><%= link_to 'Spots',       spots_url %></div>
+          <div id="body-l--bold"><%= link_to 'Collections', collections_url %></div>
+          <div id="body-l--bold"><%= link_to 'Comments',    comments_url if can? :index, Comment %></div>
+          <div id="body-l--bold"><%= link_to 'Users',       users_index_url if can? :index, User %></div>
+        </div>
       </div>
 
-      <div>
-        <% if user_signed_in? %>
-          <%= current_user.nickname %>
-          <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-        <% else %>
-          <%= link_to 'Login', new_user_session_path %>
-          <%= link_to 'Register', new_user_registration_path %>
-        <% end %>
+      <div class="nav--right">
+        <div id="body-l--bold" class="user-profile">
+          <% if user_signed_in? %>
+            <div class="username"><%= current_user.nickname %></div>
+            <div class="button" id="logout"><%= link_to 'Logout', destroy_user_session_path, method: :delete %></div>
+          <% else %>
+            <div class="button" id="login"><%= link_to 'Login', new_user_session_path %></div>
+            <div class="button" id="register"><%= link_to 'Register', new_user_registration_path %></div>
+          <% end %>
+        </div>
       </div>
     </nav>
     <%= yield %>
