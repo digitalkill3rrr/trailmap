@@ -6,6 +6,7 @@ class RoutesController < ApplicationController
   # GET /routes.json
   def index
     @routes = Route.all
+    @tags = Route.first.spots.joins(:tags).pluck('tags.name').uniq.sample(2)
   end
 
   # GET /routes/1
@@ -14,6 +15,7 @@ class RoutesController < ApplicationController
     @spots = @route.spots
     @comments = @route.comments
     @spots_for_map = build_geojson(@spots)
+    # @tags = Route.first.spots.joins(:tags).pluck('tags.name').sample(1)
   end
 
   # GET /routes/new

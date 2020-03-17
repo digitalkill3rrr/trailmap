@@ -1,4 +1,4 @@
-.wrapper {
+.wrapper, .wrapper--tagged {
   width: 100%;
   height: 100%;
   display: flex;
@@ -51,6 +51,16 @@ nav {
   width: 761px;
   height: 68px;
   margin: 40px 0 40px 32px;
+}
+
+.section__title--collection {
+  width: 761px;
+  height: 68px;
+  margin: 40px 0 16px 32px;
+}
+
+.section__description {
+  margin: 0 0 40px 32px;
 }
 
 .user-profile .username {

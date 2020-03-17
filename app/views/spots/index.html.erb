@@ -1,57 +1,42 @@
-<h1>Spots</h1>
+<div class="wrapper">
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Status</th>
-      <th>Description</th>
-      <th>Route</th>
-      <th>Coordinates</th>
-      <th>Tags</th>
-      <th>User</th>
-      <th colspan="4"></th>
-    </tr>
-  </thead>
+  <h1 class="section__title">все места</h1>
 
-  <tbody>
-    <% @spots.each do |spot| %>
-      <tr>
-        <td><%= link_to spot.name, spot %></td>
-        <td>
-          <%# if can? :update, :spots %>
-            <%= spot.status %>
-          <%# end %>
-        </td>
-        <td><%= spot.description %></td>
-        <td><%= link_to spot.route.title, spot.route %></td>
-        <td>
-          <%= spot.longitude %>
-          <%= spot.latitude %>
-        </td>
+  <% @spots.each do |spot| %>
 
-        <td>
-          <% spot.tag_list.each do |tag| %>
-            <%= link_to tag, tagged_path(tag: tag) %>
+    <div class="block-container--spot">
+      <div class="spot-block__wrapper">
+        <div class="spot-block"">
+          <div id="label-s--bold"><%= spot.status %></div>
+          <div id="body-l--bold"><%= link_to spot.name, spot.route %></div>
+          <div id="body-m--bold"><%= spot.route.title %></div>
+
+          <div id="body-s--bold" class="tag-list">
+            <% spot.tag_list.each do |tag| %>
+              <%= link_to tag, tagged_path(tag: tag) %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="spot-image--small">
+          <% spot.spot_images.each do |image| %>
+            <%= image_tag image.image.url %>
           <% end %>
-        </td>
+        </div>
+      </div>
 
-        <td><%= spot.user.nickname %></td>
+
+      <%# if can? :update, Spot %>
+        <%#= link_to 'Edit', edit_spot_path(spot) %>
+      <%# end %>
+
+      <%# if can? :destroy, Spot %>
+        <%#= link_to 'Destroy', spot, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%# end %>
+    </div>
+
+  <% end %>
 
 
-        <% if can? :update, Spot %>
-          <td><%= link_to 'Edit', edit_spot_path(spot) %></td>
-        <% end %>
-
-        <% if can? :destroy, Spot %>
-          <td><%= link_to 'Destroy', spot, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-
-  </tbody>
-</table>
-
-<br>
-
-<%#= link_to 'New Spot', new_spot_path %>
+  <%#= link_to 'New Spot', new_spot_path %>
+</div>

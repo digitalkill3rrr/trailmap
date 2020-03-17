@@ -9,5 +9,3 @@
 <% if can? :update, Comment %>
   <%= link_to 'Edit', edit_comment_path(@comment) unless @comment.new_record? %>
 <% end %>
-
-<hr>

@@ -90,7 +90,7 @@
             <%= render 'comments/form', comment: Comment.new %>
 
           <% else %>
-          <div>Войдите или зарегистрируйтесь, чтобы оставить комментарий</div>
+            <div>Войдите или зарегистрируйтесь, чтобы оставить комментарий</div>
             <%= link_to 'Login', new_user_session_path %>
             <%= link_to 'Register', new_user_registration_path %>
           <% end %>
@@ -101,6 +101,7 @@
 
     <!-- MAP -->
     <div class="map_area-container"><%= render 'map', spots: @spots_for_map %></div>
+    <%# рендерим _map.html.erb и передаем точки из контроллера %>
 
     <%# if can? :update, Route %>
       <%#= link_to 'Edit', edit_route_path(@route) %>

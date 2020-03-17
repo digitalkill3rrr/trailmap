@@ -54,6 +54,19 @@ const initMapbox = () => {
         },
       });
 
+      map.addSource('dem', {
+          'type': 'raster-dem',
+          'url': 'mapbox://mapbox.terrain-rgb'
+      });
+
+      map.addLayer(
+        {
+          'id': 'hillshading',
+          'source': 'dem',
+          'type': 'hillshade'
+        }
+      );
+
 
 
       collection.features.forEach((item) => {
@@ -62,9 +75,7 @@ const initMapbox = () => {
           properties: { name, status, author, image },
         } = item;
 
-
         const html = `<div class="spot-block__wrapper"><div class="spot-info-container"><div id="label-s--bold">${status}</div><div id="body-l">${name}</div><div id="body-m--bold">${author}</div></div><div class="spot-image--small"><img src=${image}></div></div>`;
-        // var popup = new mapboxgl.Popup({ maxWidth: '600px' }).setHTML(html);
         var popup = new mapboxgl.Popup({ className: "spot-popup" }).setHTML(html);
 
 

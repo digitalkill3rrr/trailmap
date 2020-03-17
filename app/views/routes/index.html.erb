@@ -1,16 +1,25 @@
 <div class="wrapper">
 
-  <h1 class="section__title">популярные маршруты</h1>
+  <h1 class="section__title">все маршруты</h1>
 
   <div class="route-list__wrapper">
     <% @routes.each do |route| %>
       <div class="route-card">
-        <div id="h4"><%= link_to route.title, route %></div>
+        <div class="route-card__wrapper">
+          <div id="h4"><%= link_to route.title, route %></div>
 
-        <div class="route-info-wrapper--inner-small">
-          <div id="body-m" class="info-container--small"><%= number_to_human(route.distance, units: :distance) %></div>
-          <div id="body-m" class="info-container--small"><%= route.difficulty %></div>
-          <div id="body-m" class="info-container--small"><%= route.kind %></div>
+          <div class="route-info-wrapper--inner-small">
+            <div id="body-m--bold" class="info-container--small"><%= number_to_human(route.distance, units: :distance) %></div>
+            <div id="body-m--bold" class="info-container--small"><%= route.difficulty %></div>
+            <div id="body-m--bold" class="info-container--small"><%= route.kind %></div>
+          </div>
+
+          <div id="body-s--bold" class="tag-list">
+            <% route.spots.joins(:tags).pluck('tags.name').uniq.sample(3).each do |tag| %>
+              <%= link_to tag, tagged_path(tag: tag) %>
+            <% end %>
+
+          </div>
         </div>
 
         <div class="route-pic">

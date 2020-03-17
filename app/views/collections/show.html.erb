@@ -1,14 +1,20 @@
-<h1><%= @collection.title %></h1>
-<p><%= @collection.description %></p>
+<div class="wrapper">
 
-<% if can? :update, Collection %>
-  <%= link_to 'Edit', edit_collection_path(@collection) %> |
-<% else %>
-  <%= link_to 'Back', collections_path %>
-<% end %>
+<div>
+  <h1 class="section__title--collection"><%= @collection.title %></h1>
+  <div id="h5" class="section__description"><%= @collection.description %></div>
+</div>
 
-<hr>
+  <div class="route-list__wrapper">
+    <% @routes.each do |route| %>
+      <%= render 'routes/show', route: route %>
+    <% end %>
 
-<% @routes.each do |route| %>
-  <%= render 'routes/show', route: route %>
-<% end %>
+    <%# if can? :update, Collection %>
+      <%#= link_to 'Edit', edit_collection_path(@collection) %>
+    <%# else %>
+      <%#= link_to 'Back', collections_path %>
+    <%# end %>
+  </div>
+
+</div>

@@ -1,35 +1,19 @@
-<h1><%= link_to route.title, route %></h1>
+<div class="route-card">
+  <div id="h4"><%= link_to route.title, route %></div>
 
-<div class="route_cover">
-  <% if route.cover.present? %>
-    <%= image_tag route.cover.url %>
-  <% end %>
+  <div class="route-info-wrapper--inner-small">
+    <div id="body-m--bold" class="info-container--small"><%= number_to_human(route.distance, units: :distance) %></div>
+    <div id="body-m--bold" class="info-container--small"><%= route.difficulty %></div>
+    <div id="body-m--bold" class="info-container--small"><%= route.kind %></div>
+  </div>
+
+  <div class="route-pic">
+    <% if route.cover.present? %>
+      <%= image_tag route.cover.url %>
+    <% end %>
+  </div>
+
+  <%# if can? :update, Route %>
+    <%#= link_to 'Edit', edit_route_path(route) %>
+  <%# end %>
 </div>
-
-<p><%= route.description %></p>
-
-<p>
-  <strong>Расстояние:</strong>
-  <%= number_to_human(route.distance, units: :distance) %>
-</p>
-
-<p>
-  <strong>Сложность:</strong>
-  <%= route.difficulty %>
-</p>
-
-<p>
-  <strong>Сезонность:</strong>
-  <%= route.difficulty %>
-</p>
-
-<p>
-  <strong>Тип маршрута:</strong>
-  <%= route.kind %>
-</p>
-
-<% if can? :update, Route %>
-  <%= link_to 'Edit', edit_route_path(route) %> |
-<% end %>
-
-<hr>

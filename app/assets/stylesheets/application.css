@@ -1,7 +1,7 @@
  /* *= require_tree . */
  /* *= require_self */
 
- * {
+* {
   box-sizing: border-box;
 }
 
@@ -46,9 +46,6 @@ h1, #h1 {
   font-weight: 500;
   font-size: 20px;
   line-height: 28px;
-  /* or 140% */
-
-
   color: #000000;
 }
 

@@ -23,6 +23,7 @@ class SpotsController < ApplicationController
   def tagged
     if params[:tag].present?
       @spots = Spot.tagged_with(params[:tag])
+      @tag = params[:tag]
     else
       @spots = Spot.all
     end

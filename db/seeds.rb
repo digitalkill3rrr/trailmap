@@ -89,7 +89,7 @@ end
 ]
 
 @collections.each do |collection|
-  c = Collection.create(collection)
+  c = Collection.new(collection)
 
   if c.save
     puts "Collection #{c.title} created"
@@ -190,16 +190,31 @@ def random_route_id
   Route.offset(rand(Route.count)).first.id
 end
 
+5.times do |n|
+  @routes.each do |route|
+    # n начнётся с нуля, поэтому +1
+    Route.create(route.merge(collection_id: n+1))
+  end
+end
+
 
 # Create spot status
 @statuses = [ 'активный', 'нужна проверка', 'неактивный' ]
 
 # Create tag_list
-@tag_list = ['храм', 'здание', 'река', 'место для ночлега', 'кормушка для животных', 'панорамный вид', 'место для рыбалки', 'перекат', 'водопад', 'мост', 'плотина', 'заповедник', 'хвойный лес', 'заброшенное здание']
+@tag_list = ['#храм', '#здание', '#река', '#место для ночлега', '#кормушка для животных', '#панорамный вид', '#место для рыбалки', '#перекат', '#водопад', '#мост', '#плотина', '#заповедник', '#хвойный лес', '#заброшенное здание']
 
 # Create random users
 def random_users
   rand(2..5)
+end
+
+# Fake route covers
+def upload_fake_spot_image
+  uploader = ImageUploader.new(SpotImage.new, :image)
+  # uploader.cache!(File.open(Dir.glob(File.join(Rails.root, 'public/uploads/genre/covers', '*')).sample))
+  uploader.cache!(File.open(Dir.glob(File.join(Rails.root, 'lib/assets/route/covers', '*')).sample))
+  uploader
 end
 
 # Create spot
@@ -213,7 +228,8 @@ end
     route_id:     random_route_id,
     user_id:      random_users,
     longitude:    56.07072,
-    latitude:     43.10256
+    latitude:     43.10256,
+    spot_images_attributes: [ {image: upload_fake_spot_image}, {image: upload_fake_spot_image}, {image: upload_fake_spot_image} ]
   }, {
     name:        'река Кишма',
     status:       1,
@@ -223,7 +239,8 @@ end
     route_id:     random_route_id,
     user_id:      random_users,
     longitude:    56.09047,
-    latitude:     43.05308
+    latitude:     43.05308,
+    spot_images_attributes: [ {image: upload_fake_spot_image}, {image: upload_fake_spot_image} ]
   }, {
     name:        'урочище Костино',
     status:       2,
@@ -233,7 +250,8 @@ end
     route_id:     random_route_id,
     user_id:      random_users,
     longitude:    56.13747,
-    latitude:     43.01523
+    latitude:     43.01523,
+    spot_images_attributes: [ {image: upload_fake_spot_image}, {image: upload_fake_spot_image}, {image: upload_fake_spot_image} ]
   }, {
     name:        'река Ока',
     status:       0,
@@ -243,7 +261,8 @@ end
     route_id:     random_route_id,
     user_id:      random_users,
     longitude:    56.10654,
-    latitude:     43.03003
+    latitude:     43.03003,
+    spot_images_attributes: [ {image: upload_fake_spot_image}, {image: upload_fake_spot_image} ]
   }, {
     name:        'г. Павлово',
     status:       0,
@@ -253,7 +272,8 @@ end
     route_id:     random_route_id,
     user_id:      random_users,
     longitude:    55.964629,
-    latitude:     43.064570
+    latitude:     43.064570,
+    spot_images_attributes: [ {image: upload_fake_spot_image} ]
   }, {
     name:        'г. Горбатов',
     status:       0,
@@ -264,7 +284,8 @@ end
     route_id:     random_route_id,
     user_id:      User.all.sample.id,
     longitude:    56.130869,
-    latitude:     43.062701
+    latitude:     43.062701,
+    spot_images_attributes: [ {image: upload_fake_spot_image} ]
   }
 ]
 

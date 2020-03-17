@@ -25,23 +25,40 @@
 
 // buttons
 
-.button--submit {
+.button-primary--submit {
   input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    width: 100%;
-    height: 20px;
+    width: 146px;
+    height: 36px;
+
     margin: 8px 0;
+
+    background-color: #f2f2f2;
     border: none;
+    border-radius: 4px;
 
     font-family: AvenirNextCyr-Medium;
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
     line-height: 20px;
-
-    display: flex;
-    align-items: center;
     color: #333333;
-    // background-color: lightgreen;
   }
+}
+
+.button-primary--back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 146px;
+  height: 36px;
+
+  margin: 8px 16px;
+
+  background-color: #fafafa;
+  border-radius: 4px;
 }

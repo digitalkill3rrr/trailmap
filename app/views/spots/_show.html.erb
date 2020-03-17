@@ -2,7 +2,7 @@
 
   <div class="spot-info-container">
     <div id="label-s--bold"><%= spot.status %></div>
-    <div id="body-l"><%= spot.name %></div>
+    <div id="body-l"><%= link_to spot.name, spot %></div>
     <div id="body-m--bold"><%= User.find(spot.user_id).nickname %></div>
   </div>
 
