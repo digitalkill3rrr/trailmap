@@ -16,7 +16,8 @@ class CollectionsController < ApplicationController
 
   # GET /collections/new
   def new
-    @collection = Collection.new
+    # @collection = Collection.new
+    @collection = current_user.collections.build
   end
 
   # GET /collections/1/edit
@@ -26,7 +27,8 @@ class CollectionsController < ApplicationController
   # POST /collections
   # POST /collections.json
   def create
-    @collection = Collection.new(collection_params)
+    # @collection = Collection.new(collection_params)
+    @collection = current_user.collections.new(collection_params)
 
     respond_to do |format|
       if @collection.save

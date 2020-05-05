@@ -1,4 +1,1 @@
-<div id='map' data-collection="<%= spots.to_json %>"></div>
-<div class="spots-json">
-  <%= spots[:features].map { |spot| spot.dig(:geometry, :coordinates) } %>
-</div>
+<div id='map' data-route-id="<%= route.id %>"></div>

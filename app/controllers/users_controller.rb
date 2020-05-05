@@ -5,4 +5,9 @@ class UsersController < ApplicationController
     authorize! :index, User
     @users = User.all
   end
+
+  def profile
+    @user = current_user.id
+
+  end
 end

@@ -22,7 +22,6 @@
           <div id="body-l--bold"><%= link_to 'Главная',        pages_home_url %></div>
           <div id="body-l--bold"><%= link_to 'Маршруты',       routes_url %></div>
           <div id="body-l--bold"><%= link_to 'Места',          spots_url %></div>
-          <div id="body-l--bold"><%= link_to 'Комментарии',    comments_url if can? :index, Comment %></div>
           <div id="body-l--bold"><%= link_to 'Пользователи',   users_index_url if can? :index, User %></div>
         </div>
       </div>
@@ -30,7 +29,7 @@
       <div class="nav--right">
         <div id="body-l--bold" class="user-profile">
           <% if user_signed_in? %>
-            <div class="username"><%= current_user.nickname %></div>
+            <div class="username"><%= link_to current_user.nickname, users_profile_url %></div>
             <div class="button" id="logout"><%= link_to 'Выйти', destroy_user_session_path, method: :delete %></div>
           <% else %>
             <div class="button" id="login"><%= link_to 'Войти', new_user_session_path %></div>

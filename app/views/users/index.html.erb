@@ -1,18 +1,10 @@
-<h1>Users</h1>
+<h1>Список пользователей</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Email</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.email %></td>
-      </tr>
-    <% end %>
-
-  </tbody>
-</table>
+<div>
+  <% @users.each do |user| %>
+    <div>email: <%= user.email %></div>
+    <div>nickname: <%= user.nickname %></div>
+    <div>banned: <%= user.banned %></div>
+    <br>
+  <% end %>
+</div>

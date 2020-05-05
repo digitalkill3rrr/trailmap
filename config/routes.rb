@@ -4,16 +4,20 @@ Rails.application.routes.draw do
   get 'users/index'
   devise_for :users
   resources :collections
-  resources :routes
+  resources :routes do
+    get :map_data, on: :member
+  end
   resources :comments
   resources :spots
   get 'pages/home'
   resources :pages
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  get 'users/profile'
+  get 'users/routes'
+  get 'users/collections'
+  get 'users/spots'
 
   get '/tagged', to: "spots#tagged", as: :tagged
 
-  # root 'spots#index'
-  # root 'routes#index'
   root 'pages#home'
 end

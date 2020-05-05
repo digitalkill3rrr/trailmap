@@ -14,26 +14,26 @@ class Spot < ApplicationRecord
   # spot status
   enum status: [ 'активная', 'на проверке', 'неактивная' ]
 
-  validates :route_id, :name, :description, :tag_list, :longitude, :latitude, :status, presence: true
+  validates :user_id, :route_id, :name, :tag_list, :longitude, :latitude, :status, presence: true
 
   # spots_for_map
   def coordinates
-    [latitude, longitude]
+    [longitude, latitude]
   end
 
   def to_map_point
-      {
-        type: "Feature",
-        geometry: {
-          type: "Point",
-          coordinates: coordinates
-        },
-        properties: {
-          name: name,
-          status: status,
-          author: user&.nickname,
-          image: spot_images.first&.image&.url
-        }
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: coordinates
+      },
+      properties: {
+        name: name,
+        status: status,
+        author: user&.nickname,
+        image: spot_images.first&.image&.url
       }
-    end
+    }
+  end
 end
