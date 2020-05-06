@@ -3,5 +3,5 @@ class Collection < ApplicationRecord
   has_many :spots, through: :routes
   belongs_to :user
 
-  validates :user_id, :title, :description, presence: true
+  validates :title, :description, presence: true
 end

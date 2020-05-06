@@ -8,6 +8,5 @@ class UsersController < ApplicationController
 
   def profile
     @user = current_user.id
-
   end
 end

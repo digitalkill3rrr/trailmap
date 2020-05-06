@@ -2,30 +2,22 @@ class RoutesController < ApplicationController
   load_and_authorize_resource
   before_action :set_route, only: [:show, :edit, :update, :destroy, :map_data]
 
-  # GET /routes
-  # GET /routes.json
   def index
     @routes = Route.all
   end
 
-  # GET /routes/1
-  # GET /routes/1.json
   def show
     @spots = @route.spots.includes(:user, :spot_images)
     @comments = @route.comments
   end
 
-  # GET /routes/new
   def new
     @route = current_user.routes.build
   end
 
-  # GET /routes/1/edit
   def edit
   end
 
-  # POST /routes
-  # POST /routes.json
   def create
     @route = current_user.routes.new(route_params)
     handle_file(params.dig(:route, :track), @route)
@@ -41,8 +33,6 @@ class RoutesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /routes/1
-  # PATCH/PUT /routes/1.json
   def update
     respond_to do |format|
       if @route.update(route_params)
@@ -55,8 +45,6 @@ class RoutesController < ApplicationController
     end
   end
 
-  # DELETE /routes/1
-  # DELETE /routes/1.json
   def destroy
     @route.destroy
     respond_to do |format|
@@ -71,12 +59,10 @@ class RoutesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_route
       @route = Route.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def route_params
       params.require(:route).permit(
         :title,

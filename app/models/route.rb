@@ -10,7 +10,6 @@ class Route < ApplicationRecord
 
   validates :title, :description, :difficulty, :season, :distance, :kind, :cover, :track, presence: true
 
-  # route info
   enum difficulty: [ 'лёгкий', 'средний', 'сложный' ]
   enum season: [ 'лето', 'осень', 'зима', 'весна' ]
   enum kind: [ 'пеший', 'вело' ]

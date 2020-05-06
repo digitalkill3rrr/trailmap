@@ -3,7 +3,6 @@ class Spot < ApplicationRecord
 
   belongs_to :route
   belongs_to :user
-
   has_many :spot_images
   accepts_nested_attributes_for(
     :spot_images,
@@ -11,10 +10,9 @@ class Spot < ApplicationRecord
     reject_if: proc { |attributes| attributes[:image].blank? }
   )
 
-  # spot status
   enum status: [ 'активная', 'на проверке', 'неактивная' ]
 
-  validates :user_id, :route_id, :name, :tag_list, :longitude, :latitude, :status, presence: true
+  validates :name, :tag_list, :longitude, :latitude, :status, presence: true
 
   # spots_for_map
   def coordinates

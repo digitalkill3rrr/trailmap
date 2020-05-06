@@ -9,12 +9,6 @@
     <% @routes.each do |route| %>
       <%= render 'routes/show', route: route %>
     <% end %>
-
-    <%# if can? :update, Collection %>
-      <%#= link_to 'Edit', edit_collection_path(@collection) %>
-    <%# else %>
-      <%#= link_to 'Back', collections_path %>
-    <%# end %>
   </div>
 
 </div>
