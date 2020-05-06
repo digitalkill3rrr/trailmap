@@ -36,34 +36,34 @@
     <%= form.select :difficulty, Route.difficulties.keys %>
   </div>
 
-  <div class="field">
-    <%= form.label 'Сезонность' %>
-    <%= form.select :season, Route.seasons.keys %>
-  </div>
+  <!-- <div class="field"> -->
+    <%#= form.label 'Сезонность' %>
+    <%#= form.select :season, Route.seasons.keys %>
+  <!-- </div> -->
 
   <div class="field">
     <%= form.label 'Тип маршрута' %>
     <%= form.select :kind, Route.kinds.keys %>
   </div>
 
-  <div class="field">
-    <%= form.label 'Что с собой взять' %>
-    <%= form.text_area :takeaway %>
-  </div>
+  <!-- <div class="field"> -->
+    <%#= form.label 'Что с собой взять' %>
+    <%#= form.text_area :takeaway %>
+  <!-- </div> -->
 
-  <div class="field">
-    <%= form.label 'Как добраться' %>
-    <%= form.text_area :timetable %>
-  </div>
+  <!-- <div class="field"> -->
+    <%#= form.label 'Как добраться' %>
+    <%#= form.text_area :timetable %>
+  <!-- </div> -->
 
-  <div class="field">
-    <%= form.label 'Предупреждения' %>
-    <%= form.text_area :warning %>
-  </div>
+  <!-- <div class="field"> -->
+    <%#= form.label 'Предупреждения' %>
+    <%#= form.text_area :warning %>
+  <!-- </div> -->
 
   <div class="field">
     <%= form.label 'Коллекция' %>
-    <%= select("route", "collection_id", Collection.all.collect { |c| [ c.title, c.id ] }) %>
+    <%= select("route", "collection_id", Collection.all.collect { |c| [ c.title, c.id ] }, { include_blank: true }) %>
   </div>
 
   <% if form.object.new_record? %>

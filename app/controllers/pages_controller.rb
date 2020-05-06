@@ -4,4 +4,8 @@ class PagesController < ApplicationController
     @routes = Route.all
     @spots = Spot.all
   end
+
+  def constructor
+    @route = current_user.routes.build
+  end
 end

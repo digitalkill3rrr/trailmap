@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :comments
   resources :spots
   get 'pages/home'
+  get 'pages/constructor'
   resources :pages
 
   get 'users/profile'

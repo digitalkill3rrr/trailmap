@@ -13,7 +13,7 @@ class Ability
       can :read, :all
       can :map_data, Route
       can :destroy, Comment
-      cannot [:create, :update, :destroy], [Route, Collection]
+      cannot [:create, :update, :destroy], [Route, Collection, Spot]
 
     elsif user.role == 'content'
       can :crud, [Collection, Route, Spot]
