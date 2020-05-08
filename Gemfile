@@ -34,6 +34,9 @@ gem 'carrierwave', '~> 2.0'
 gem 'devise'
 gem 'cancancan'
 
+gem 'devise_invitable', '~> 2.0.0'
+gem 'letter_opener'
+
 gem 'geocoder'
 
 group :development, :test do

@@ -1,4 +1,5 @@
 <div class="wrapper">
+  <div><%= link_to 'Настройки профиля', edit_user_registration_path %></div>
   <% if can? :create, Route %>
     <h1 class="section__title"><%= link_to 'Мои маршруты', users_routes_url %></h1>
   <% end %>

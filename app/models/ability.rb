@@ -29,6 +29,7 @@ class Ability
       cannot [:create, :update, :delete], [Route, Collection]
     else
       can :read, :all
+      cannot :index, User
     end
   end
 end
