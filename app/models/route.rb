@@ -8,7 +8,7 @@ class Route < ApplicationRecord
 
   accepts_nested_attributes_for :spots, allow_destroy: true
 
-  validates :title, :description, :difficulty, :season, :distance, :kind, :cover, :track, presence: true
+  validates :track, presence: true
 
   enum difficulty: [ 'лёгкий', 'средний', 'сложный' ]
   enum season: [ 'лето', 'осень', 'зима', 'весна' ]
