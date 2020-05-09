@@ -25,10 +25,11 @@ class Ability
       can :manage, :all, :user_id => user.id
       can :read, :all
       can :map_data, Route
-      cannot :index, User
       cannot [:create, :update, :delete], [Route, Collection]
     else
       can :read, :all
+      can :map_data, Route
+      cannot :index, User
     end
   end
 end
