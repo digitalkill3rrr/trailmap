@@ -16,8 +16,9 @@ class Ability
       cannot [:create, :update, :destroy], [Route, Collection, Spot]
 
     elsif user.role == 'content'
-      can :crud, [Collection, Route, Spot]
       can :manage, :all, :user_id => user.id
+      can :read, :all
+      can :crud, [Collection, Route, Spot]
       can :map_data, Route
       cannot :index, [User, Comment]
 
@@ -25,11 +26,13 @@ class Ability
       can :manage, :all, :user_id => user.id
       can :read, :all
       can :map_data, Route
-      cannot [:create, :update, :delete], [Route, Collection]
+      cannot :index, User
+      cannot [:create, :update, :destroy], [Route, Collection]
     else
       can :read, :all
-      can :map_data, Route
       cannot :index, User
+      can :map_data, Route
+      can :profile, User
     end
   end
 end

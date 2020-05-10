@@ -1,8 +1,8 @@
 import mapboxgl from 'mapbox-gl';
 
-const fitMapToMarkers = (map, features) => {
+const fitMapToMarkers = (map, coordinates) => {
   const bounds = new mapboxgl.LngLatBounds();
-  features.forEach(({ geometry }) => bounds.extend(geometry.coordinates));
+  coordinates.forEach((coordinate) => bounds.extend(coordinate));
   map.fitBounds(bounds, { padding: 80, maxZoom: 15 });
 };
 
@@ -95,7 +95,8 @@ const initMapbox = () => {
               .addTo(map);
           });
 
-          fitMapToMarkers(map, response.spots);
+          const track = JSON.parse(response.track);
+          fitMapToMarkers(map, track);
         });
     });
   }

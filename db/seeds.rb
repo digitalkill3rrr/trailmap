@@ -7,23 +7,23 @@ Rake::Task['db:migrate'].invoke
   {
     email: 'admin@admin.com',
     nickname: 'true admin',
-    role:  'admin'
+    role:  0
   }, {
     email: 'content@content.com',
     nickname: 'makes content here',
-    role:  'content'
+    role:  1
   }, {
     email: 'user@user.com',
     nickname: 'user 1',
-    role:  'user'
+    role:  2
   }, {
     email: 'user2@user.com',
     nickname: 'user 2',
-    role:  'user'
+    role:  2
   }, {
     email: 'user3@user.com',
     nickname: 'user 3',
-    role:  'user'
+    role:  2
   }
 ]
 
@@ -82,11 +82,11 @@ end
   {
     title:       'походы МО',
     description: 'походы по Московской Области',
-    user_id:       2,
+    user_id:      2
   }, {
     title:       'походы выходного дня',
     description: 'походы на выходных',
-    user_id:       2,
+    user_id:      2
   }
 ]
 
@@ -219,23 +219,8 @@ track = "[[43.058748,56.132651],[43.05877,56.132544],[43.057139,56.132523],[43.0
   }
 ]
 
-def create_route(route)
-  Route.create(
-    user_id:       route[:user_id],
-    title:         route[:title],
-    description:   route[:description],
-    distance:      route[:distance],
-    difficulty:    route[:difficulty],
-    season:        route[:season],
-    kind:          route[:kind],
-    collection_id: route[:collection_id],
-    cover:         route[:cover],
-    track:         route[:track]
-  )
-end
-
-@routes.each do |route|
-  r = create_route(route)
+@routes.each do |params|
+  r = Route.new(params)
 
   if r.save
     puts "Route #{r.title} created"
@@ -335,7 +320,7 @@ end
 ]
 
 @spots.each do |spot|
-  s = Spot.create(spot)
+  s = Spot.new(spot)
 
   if s.save
     puts "Spot #{s.name} created"
@@ -350,8 +335,6 @@ end
     Spot.create(spot.merge(route_id: n+1))
   end
 end
-
-
 
 # Create comment
 @comments = [
@@ -371,7 +354,7 @@ end
 ]
 
 @comments.each do |comment|
-  c = Comment.create(comment)
+  c = Comment.new(comment)
 
   if c.save
     puts "Comment created"

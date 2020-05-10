@@ -17,11 +17,6 @@
   </div>
 
   <div class="field">
-    <%= form.label 'Название маршрута' %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
     <%= form.label 'Описание маршрута' %>
     <%= form.text_area :description %>
   </div>
@@ -65,13 +60,6 @@
     <%= form.label 'Коллекция' %>
     <%= select("route", "collection_id", Collection.all.collect { |c| [ c.title, c.id ] }, { include_blank: true }) %>
   </div>
-
-  <% if form.object.new_record? %>
-    <div class="field">
-      <%= form.label 'Файл' %>
-      <%= form.file_field :track %>
-    </div>
-  <% end %>
 
   <div class="actions">
     <%= form.submit %>

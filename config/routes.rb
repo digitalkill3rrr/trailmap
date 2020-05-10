@@ -1,22 +1,25 @@
 Rails.application.routes.draw do
   resources :spot_images
   resources :images
-  get 'users/index'
   devise_for :users
+  resources :users, only: [:index] do
+    collection do
+      get :profile
+      get :routes
+      get :collections
+      get :spots
+    end
+  end
+
   resources :collections
   resources :routes do
     get :map_data, on: :member
   end
   resources :comments
   resources :spots
+
   get 'pages/home'
   get 'pages/constructor'
-  resources :pages
-
-  get 'users/profile'
-  get 'users/routes'
-  get 'users/collections'
-  get 'users/spots'
 
   get '/tagged', to: "spots#tagged", as: :tagged
 

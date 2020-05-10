@@ -7,8 +7,6 @@ class RoutesController < ApplicationController
   end
 
   def show
-    @spots = @route.spots.includes(:user, :spot_images)
-    @comments = @route.comments
   end
 
   def new
@@ -27,6 +25,8 @@ class RoutesController < ApplicationController
         format.html { redirect_to @route, notice: 'Route was successfully created.' }
         format.json { render :show, status: :created, location: @route }
       else
+        p @route
+        p @route.errors
         format.html { render :new }
         format.json { render json: @route.errors, status: :unprocessable_entity }
       end

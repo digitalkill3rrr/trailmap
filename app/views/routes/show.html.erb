@@ -1,5 +1,7 @@
 <div class="wrapper">
 
+  <%= link_to 'Редактировать маршрут', edit_route_path(@route) %>
+
 <!-- ----- section 1 ----- -->
   <div class="route-page__wrapper">
     <div class="route-cover">
@@ -17,10 +19,12 @@
       <div id="body-l" class="route-description"><%= @route.description %></div>
 
       <div class="route-info-wrapper--inner-big">
-        <div class="info-container--big">
-          <div id="h4"><%= number_to_human(@route.distance, units: :distance) %></div>
-          <div id="label-s">Расстояние</div>
-        </div>
+        <% if @route.distance %>
+          <div class="info-container--big">
+            <div id="h4"><%= number_to_human(@route.distance, units: :distance) %></div>
+            <div id="label-s">Расстояние</div>
+          </div>
+        <% end %>
 
         <div class="info-container--big">
           <div id="h4"><%= @route.kind %></div>
@@ -48,14 +52,7 @@
       <div class="scroll-container">
         <div id="info" class="section-container">
 
-          <!-- ----- >> spots >> _show.html.erb ----- -->
-          <div class="block-container">
-            <div id="label-l--bold">Точки маршрута</div>
-            <% @spots.each do |spot| %>
-              <%= render 'spots/show', spot: spot %>
-            <% end %>
-          </div>
-          <!-- ----- >> spots >> _show.html.erb ----- -->
+          <div id="spots-sidebar" data-route-id=<%= @route.id %>></div>
 
           <div class="block-container">
             <div id="label-l--bold">Что с собой взять:</div>
@@ -96,7 +93,7 @@
 
 
     <!-- MAP -->
-    <div class="map_area-container"><%= render 'map', spots: @spots_for_map %></div>
+    <div class="map_area-container"><%= render 'map', route: @route %></div>
 
   </div>
 

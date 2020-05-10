@@ -1,20 +1,21 @@
 <div class="wrapper">
+  <div><%= link_to 'Настройки профиля', edit_user_registration_path %></div>
   <% if can? :create, Route %>
-    <h1 class="section__title"><%= link_to 'Мои маршруты', users_routes_url %></h1>
+    <h1 class="section__title"><%= link_to 'Мои маршруты', routes_users_url %></h1>
   <% end %>
 
   <% if can? :create, Collection %>
-    <h1 class="section__title"><%= link_to 'Мои колекции', users_collections_url %></h1>
+    <h1 class="section__title"><%= link_to 'Мои колекции', collections_users_url %></h1>
   <% end %>
 
   <% if can? :create, Spot %>
-    <h1 class="section__title"><%= link_to 'Мои споты', users_spots_url %></h1>
+    <h1 class="section__title"><%= link_to 'Мои споты', spots_users_url %></h1>
+  <% end %>
+
+  <% if can? :index, User %>
+    <h1 class="section__title"><%= link_to 'Список пользователей', users_url %></h1>
   <% end %>
 
   <h1 class="section__title"><%= 'Репорты' %></h1>
   <h1 class="section__title"><%= 'Статьи (beta)' %></h1>
-
-  <% if can? :index, User %>
-    <h1 class="section__title"><%= link_to 'Список пользователей', users_index_url %></h1>
-  <% end %>
 </div>

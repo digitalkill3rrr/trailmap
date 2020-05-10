@@ -1,6 +1,6 @@
 <div class="wrapper">
   <% if can? :create, Route %>
-    <%= link_to 'Перейти в конструктор маршрутов', pages_constructor_url %>
+    <%= link_to 'Создать маршрут с нуля', new_route_path(@route) %>
   <% end %>
 
   <h1 class="section__title">мои маршруты</h1>
