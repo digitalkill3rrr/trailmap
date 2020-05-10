@@ -1,9 +1,9 @@
 <div class="wrapper">
+  <%= link_to 'Новая точка', new_spot_path %>
+  
+  <h1 class="section__title">мои точки</h1>
 
-  <h1 class="section__title">все места</h1>
-
-  <% @spots.each do |spot| %>
-
+  <% current_user.spots.each do |spot| %>
     <div class="block-container--spot">
       <div class="spot-block__wrapper">
         <div class="spot-block"">
@@ -24,7 +24,15 @@
           <% end %>
         </div>
       </div>
-    </div>
 
+
+      <% if can? :update, Spot %>
+        <%= link_to 'Edit', edit_spot_path(spot) %>
+      <% end %>
+
+      <% if can? :destroy, Spot %>
+        <%= link_to 'Destroy', spot, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+    </div>
   <% end %>
 </div>

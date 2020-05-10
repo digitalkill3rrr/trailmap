@@ -1,0 +1,46 @@
+<div class="wrapper">
+  <% current_user.collections.each do |collection| %>
+
+    <% if can? :create, Collection %>
+      <%= link_to 'Новая коллекция', new_collection_path(collection) %>
+    <% end %>
+
+    <h1 class="section__title"><%= collection.title %></h1>
+    <% if can? :update, Collection %>
+      <%= link_to 'Редактировать коллекцию', edit_collection_path(collection) %>
+    <% end %>
+
+    <% if can? :destroy, Collection %>
+      <%= link_to 'Удалить коллекцию', collection, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+
+    <div class="route-list__wrapper">
+      <% collection.routes.each do |route|%>
+        <div class="route-card">
+          <div class="route-card__wrapper">
+            <div id="h4"><%= link_to route.title, route %></div>
+
+            <div class="route-info-wrapper--inner-small">
+              <div id="body-m--bold" class="info-container--small"><%= number_to_human(route.distance, units: :distance) %></div>
+              <div id="body-m--bold" class="info-container--small"><%= route.difficulty %></div>
+              <div id="body-m--bold" class="info-container--small"><%= route.kind %></div>
+            </div>
+
+            <div id="body-s--bold" class="tag-list">
+              <% route.spots.joins(:tags).pluck('tags.name').uniq.sample(3).each do |tag| %>
+                <%= link_to tag, tagged_path(tag: tag) %>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="route-pic">
+            <% if route.cover.present? %>
+              <%= image_tag route.cover.url %>
+            <% end %>
+          </div>
+
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

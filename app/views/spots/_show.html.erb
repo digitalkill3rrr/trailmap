@@ -3,21 +3,14 @@
   <div class="spot-info-container">
     <div id="label-s--bold"><%= spot.status %></div>
     <div id="body-l"><%= link_to spot.name, spot %></div>
-    <div id="body-m--bold"><%= User.find(spot.user_id).nickname %></div>
+    <div id="body-m--bold"><%= spot.user.nickname %></div>
   </div>
 
   <div class="spot-image--small">
-    <%# spot.spot_images.each do |image| %>
-      <%#= image_tag image.image.url %>
-    <%# end %>
 
     <!-- show only first image -->
     <% spot.spot_images.each_with_index do |image, i| %>
       <%= image_tag image.image.url if i==0 %>
     <% end %>
   </div>
-
-  <%# if can? :update, Spot %>
-    <%#= link_to 'Edit', edit_spot_path(spot) %>
-  <%# end %>
 </div>

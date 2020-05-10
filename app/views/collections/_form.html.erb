@@ -21,6 +21,15 @@
     <%= form.text_field :description %>
   </div>
 
+  <% if @collection %>
+    <%= form.hidden_field :collection_id, value: @collection.id %>
+  <% else %>
+    <div class="collection_id">
+      <%= form.label :collection_id %>
+      <%= select("spot", "collection_id", Collection.all.collect { |c| [ c.title, c.id ] }, { include_blank: true }) %>
+    </div>
+  <% end %>
+
   <div class="actions">
     <%= form.submit %>
   </div>

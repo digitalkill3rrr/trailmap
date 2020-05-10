@@ -10,38 +10,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_09_200154) do
+ActiveRecord::Schema.define(version: 2020_04_28_113415) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "collections", force: :cascade do |t|
     t.string "title"
     t.string "description"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "comments", force: :cascade do |t|
     t.text "body"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.integer "route_id"
     t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "routes", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "distance"
-    t.integer "collection_id"
     t.integer "user_id"
     t.string "cover"
+    t.integer "difficulty"
+    t.integer "season"
+    t.integer "distance"
+    t.integer "kind"
     t.text "takeaway"
     t.text "timetable"
     t.text "warning"
-    t.integer "difficulty"
-    t.integer "season"
-    t.integer "kind"
+    t.integer "collection_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "track"
   end
 
   create_table "spot_images", force: :cascade do |t|
@@ -54,16 +59,16 @@ ActiveRecord::Schema.define(version: 2020_03_09_200154) do
   create_table "spots", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "route_id"
+    t.integer "status"
     t.float "longitude"
     t.float "latitude"
+    t.integer "route_id"
     t.integer "user_id"
-    t.integer "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "taggings", force: :cascade do |t|
+  create_table "taggings", id: :serial, force: :cascade do |t|
     t.integer "tag_id"
     t.string "taggable_type"
     t.integer "taggable_id"
@@ -82,7 +87,7 @@ ActiveRecord::Schema.define(version: 2020_03_09_200154) do
     t.index ["tagger_id"], name: "index_taggings_on_tagger_id"
   end
 
-  create_table "tags", force: :cascade do |t|
+  create_table "tags", id: :serial, force: :cascade do |t|
     t.string "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -96,11 +101,11 @@ ActiveRecord::Schema.define(version: 2020_03_09_200154) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.string "role", default: "guest"
     t.boolean "banned", default: false
     t.string "nickname"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

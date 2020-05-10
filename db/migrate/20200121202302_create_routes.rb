@@ -3,10 +3,16 @@ class CreateRoutes < ActiveRecord::Migration[6.0]
     create_table :routes do |t|
       t.string :title
       t.text :description
-      t.string :difficulty
-      t.string :season
+      t.integer :user_id
+      t.string :cover
+      t.integer :difficulty
+      t.integer :season
       t.integer :distance
-      t.string :kind
+      t.integer :kind
+      t.text :takeaway
+      t.text :timetable
+      t.text :warning
+      t.integer :collection_id
 
       t.timestamps
     end

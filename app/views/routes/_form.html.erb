@@ -63,9 +63,15 @@
 
   <div class="field">
     <%= form.label 'Коллекция' %>
-    <%#= form.text_field :kind %>
     <%= select("route", "collection_id", Collection.all.collect { |c| [ c.title, c.id ] }) %>
   </div>
+
+  <% if form.object.new_record? %>
+    <div class="field">
+      <%= form.label 'Файл' %>
+      <%= form.file_field :track %>
+    </div>
+  <% end %>
 
   <div class="actions">
     <%= form.submit %>

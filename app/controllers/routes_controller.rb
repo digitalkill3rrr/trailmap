@@ -1,26 +1,22 @@
 class RoutesController < ApplicationController
   load_and_authorize_resource
-  before_action :set_route, only: [:show, :edit, :update, :destroy]
+  before_action :set_route, only: [:show, :edit, :update, :destroy, :map_data]
 
   # GET /routes
   # GET /routes.json
   def index
     @routes = Route.all
-    @tags = Route.first.spots.joins(:tags).pluck('tags.name').uniq.sample(2)
   end
 
   # GET /routes/1
   # GET /routes/1.json
   def show
-    @spots = @route.spots
+    @spots = @route.spots.includes(:user, :spot_images)
     @comments = @route.comments
-    @spots_for_map = build_geojson(@spots)
-    # @tags = Route.first.spots.joins(:tags).pluck('tags.name').sample(1)
   end
 
   # GET /routes/new
   def new
-    # @route = Route.new
     @route = current_user.routes.build
   end
 
@@ -32,6 +28,7 @@ class RoutesController < ApplicationController
   # POST /routes.json
   def create
     @route = current_user.routes.new(route_params)
+    handle_file(params.dig(:route, :track), @route)
 
     respond_to do |format|
       if @route.save
@@ -68,6 +65,11 @@ class RoutesController < ApplicationController
     end
   end
 
+  def map_data
+    @spots = @route.spots.includes(:user, :spot_images)
+    render json: { track: @route.track, spots: @spots.map(&:to_map_point) }, status: :ok
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_route
@@ -76,13 +78,24 @@ class RoutesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def route_params
-      params.require(:route).permit(:title, :description, :difficulty, :season, :distance, :kind, :collection_id, :cover, :takeaway, :timetable, :warning )
+      params.require(:route).permit(
+        :title,
+        :description,
+        :difficulty,
+        :season,
+        :distance,
+        :kind,
+        :collection_id,
+        :cover,
+        :takeaway,
+        :timetable,
+        :warning
+      )
     end
 
-    def build_geojson(records)
-      {
-        type: "FeatureCollection",
-        features: records.map(&:to_map_point)
-      }
+    def handle_file(file, route)
+      return if file.blank?
+
+      TrackSaver.new(file, route).call
     end
 end

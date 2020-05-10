@@ -1,0 +1,43 @@
+<div class="wrapper">
+  <% if can? :create, Route %>
+    <%= link_to 'Новый маршрут', new_route_path(@route) %>
+  <% end %>
+
+  <h1 class="section__title">мои маршруты</h1>
+  <div class="route-list__wrapper">
+    <% current_user.routes.each do |route| %>
+      <div class="route-card">
+        <div class="route-card__wrapper">
+          <div id="h4"><%= link_to route.title, route %></div>
+
+          <div class="route-info-wrapper--inner-small">
+            <div id="body-m--bold" class="info-container--small"><%= number_to_human(route.distance, units: :distance) %></div>
+            <div id="body-m--bold" class="info-container--small"><%= route.difficulty %></div>
+            <div id="body-m--bold" class="info-container--small"><%= route.kind %></div>
+          </div>
+
+          <div id="body-s--bold" class="tag-list">
+            <% route.spots.joins(:tags).pluck('tags.name').uniq.sample(3).each do |tag| %>
+              <%= link_to tag, tagged_path(tag: tag) %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="route-pic">
+          <% if route.cover.present? %>
+            <%= image_tag route.cover.url %>
+          <% end %>
+        </div>
+
+        <% if can? :update, Route %>
+          <%= link_to 'Редактировать маршрут', edit_route_path(route) %>
+        <% end %>
+
+        <% if can? :destroy, Route %>
+          <%= link_to 'Удалить маршрут', route, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+
+      </div>
+    <% end %>
+  </div>
+</div>

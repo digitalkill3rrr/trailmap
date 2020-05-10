@@ -1,5 +1,5 @@
-<h1>New Spot</h1>
+<h1 class="section__title"><%= 'Новая точка' %></h1>
 
 <%= render 'form', spot: @spot %>
 
-<%= link_to 'Back', spots_path %>
+<%= link_to 'Back', request.referer %>

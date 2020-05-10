@@ -22,12 +22,20 @@ h1, #h1 {
   font-size: 64px;
   line-height: 68px;
   letter-spacing: -0.015em;
+  text-transform: lowercase;
   color: #333333;
 }
 
-#h1 {
-  text-transform: lowercase;
-  /* margin: 16px 0 16px 32px; */
+#h3 {
+  font-family: AvenirNextCyr-Medium;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 40px;
+
+  letter-spacing: -0.005em;
+
+  color: #000000;
 }
 
 #h4 {
@@ -118,6 +126,15 @@ h1, #h1 {
   color: #333333;
 }
 
+#body-s--bold {
+  font-family: AvenirNextCyr-Medium;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #333333;
+}
+
 #label-s {
   font-family: AvenirNextCyr-Medium;
   font-style: normal;
@@ -132,19 +149,17 @@ h1, #h1 {
 }
 
 #label-s--bold {
-
-  font-family: AvenirNextCyr-Medium;
+  font-family: Avenir Next;
   font-style: normal;
   font-weight: bold;
   font-size: 12px;
   line-height: 16px;
+  /* or 133% */
 
   display: flex;
   align-items: center;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-
-  color: #219653;
 }
 
 #label-l--bold {

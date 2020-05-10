@@ -4,7 +4,7 @@
   <% collection.routes.take(4).each do |route|%>
     <div class="route-card">
       <div class="route-card__wrapper">
-        <div id="h4"><%= link_to route.title %></div>
+        <div id="h4"><%= link_to route.title, route %></div>
 
         <div class="route-info-wrapper--inner-small">
           <div id="body-m--bold" class="info-container--small"><%= number_to_human(route.distance, units: :distance) %></div>
@@ -13,7 +13,7 @@
         </div>
 
         <div id="body-s--bold" class="tag-list">
-          <% route.spots.joins(:tags).pluck('tags.name').uniq.sample(4).each do |tag| %>
+          <% route.spots.joins(:tags).pluck('tags.name').uniq.sample(3).each do |tag| %>
             <%= link_to tag, tagged_path(tag: tag) %>
           <% end %>
         </div>

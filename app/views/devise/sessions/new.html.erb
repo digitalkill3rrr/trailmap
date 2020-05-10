@@ -1,26 +1,35 @@
-<h2>Log in</h2>
+<div class="session-page--wrapper">
+  <h1 class="section__title--session-page">Вход</h1>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="field--email">
+      <div id="label-s">email</div>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => 'user@user.com' %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+    <div class="field--password">
+      <div id="label-s">пароль</div>
+      <%= f.password_field :password, autocomplete: "current-password", :placeholder => 'testtest' %>
+    </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+    <div class="remember_me__wrapper">
+      <% if devise_mapping.rememberable? %>
+        <div class="remember_me__container">
+          <%= f.check_box :remember_me %>
+          <div id="body-m">Запомнить меня</div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="button--login-primary">
+      <div id="body-l--bold"><%= f.submit "Войти" %></div>
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+  <div class="button--sign-up-secondary">
+    <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+      <%= link_to "Регистрация", new_registration_path(resource_name) %><br />
+    <% end %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+  <%#= render "devise/shared/links" %>
+</div>
