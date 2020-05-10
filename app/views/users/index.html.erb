@@ -3,17 +3,28 @@
   <div class="button-primary--back"><%= link_to 'Отправить инвайт', new_user_invitation_path %></div> <br>
 
   <div>
+    <h3>Invited users</h3>
     <% @users.each do |user| %>
-      <div>email: <%= user.email %></div>
-      <div>nickname: <%= user.nickname %></div>
-      <div>banned: <%= user.banned %></div>
-      <div>role: <%= user.role %></div>
-      <div>
-        <% if user.invitation_token.present? %>
-          invitation token: <%= user.invitation_token %>
+      <% if user.invitation_token.present? %>
+        <div>email: <%= user.email %></div>
+        <div>nickname: <%= user.nickname %></div>
+        <div>banned: <%= user.banned %></div>
+        <div>role: <%= user.role %></div>
+        <div>invitation token: <%= user.invitation_token %></div><br>
+        <h5><%#= link_to 'Edit', edit_user_path(user) %></h5>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div>
+    <h3>Other users</h3>
+    <% @users.each do |user| %>
+      <% if user.invitation_token.nil? %>
+        <div>email: <%= user.email %></div>
+        <div>nickname: <%= user.nickname %></div>
+        <div>banned: <%= user.banned %></div>
+        <div>role: <%= user.role %></div><br>
         <% end %>
-      </div>
-      <br>
     <% end %>
   </div>
 </div>

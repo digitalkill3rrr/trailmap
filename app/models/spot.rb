@@ -12,7 +12,7 @@ class Spot < ApplicationRecord
 
   enum status: [ 'активная', 'на проверке', 'неактивная' ]
 
-  validates :name, :tag_list, :longitude, :latitude, :status, presence: true
+  validates :name, :longitude, :latitude, :status, presence: true
 
   # spots_for_map
   def coordinates

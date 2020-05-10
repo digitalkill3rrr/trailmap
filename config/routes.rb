@@ -1,18 +1,15 @@
 Rails.application.routes.draw do
   resources :spot_images
   resources :images
-  get 'users/index'
   devise_for :users
-  as :user do
-    get 'signin' => 'devise/sessions#new'
-    post 'signin' => 'devise/sessions#create'
-    delete 'signout' => 'devise/sessions#destroy'
+  resources :users, only: [:index] do
+    collection do
+      get :profile
+      get :routes
+      get :collections
+      get :spots
+    end
   end
-
-  get 'users/profile'
-  get 'users/routes'
-  get 'users/collections'
-  get 'users/spots'
 
   resources :collections
   resources :routes do
@@ -21,7 +18,6 @@ Rails.application.routes.draw do
   resources :comments
   resources :spots
 
-  resources :pages
   get 'pages/home'
   get 'pages/constructor'
 
