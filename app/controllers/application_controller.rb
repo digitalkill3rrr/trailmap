@@ -10,6 +10,14 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  # def set_layout
+  #   @resource.update(role: :content)
+  # end
+
+  # def selected_layout
+  #   [:admin].find { |layout_option| layout_option == params[:layout] }
+  # end
+
   def configure_permitted_parameters
     added_attrs = [:email, :password, :password_confirmation, :remember_me]
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs

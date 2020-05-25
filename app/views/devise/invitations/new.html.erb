@@ -11,7 +11,7 @@
 
     <div class="field">
       <%= f.label 'role' %><br />
-      <%= f.select :role, User.roles.keys %>
+      <%= f.select :role, User.roles.keys, selected: :content %>
     </div>
   <% end -%>
 
