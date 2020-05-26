@@ -81,33 +81,37 @@
 
   .modal {
     position: absolute;
-    top: 5%;
-    left: 15%;
-    width: 70%;
+    top: 161px;
+    left: 360px;
+    width: 50%;
     height: 65%;
-    background: #b5e6c2;
+    background: #fff;
     z-index: 999;
+  }
+
+  .modal-header {
+    margin: 16px 20px 0;
   }
 
   .modal-content {
     position: relative;
-    background-color: white;
+    background-color: #fff;
     padding: 20px;
     margin: auto;
-    width: 75%;
+    width: 100%;
     height: 100%;
     overflow: scroll;
   }
 
   .close-btn {
     float: right;
-    color: green;
+    color: #111;
     font-size: 24px;
     font-weight: bold;
   }
 
   .close-btn:hover {
-    color: black;
+    color: #333;
   }
 
   .display-block {
@@ -121,13 +125,14 @@
   .images-wrapper {
     display: inline-block;
     max-width: 30%;
-    margin-right: 24px;
+    margin: 0 4px 0 0;
 
     .checkbox {
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 120px;
+      width: 130px;
+      margin-bottom: 0;
 
       label {
         width: 400%;
@@ -153,15 +158,29 @@
     width: 100%;
   }
 
+  // .separator {
+  //   height: 1px;
+  //   background: lightgrey;
+  //   position: fixed;
+  //   display: flex;
+  //   align-items: center;
+  //   left: 50%;
+  //   top: 50%;
+  //   transform: translate(-50%, 26330%);
+  //   width: 720px;
+  // }
+
   .modal-buttons {
     position: fixed;
     display: flex;
     align-items: center;
-    top: 541px;
-    left: 252px;
-    width: 558px;
-    height: 30px;
-    background: red;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, 467%);
+    width: 720px;
+    height: 60px;
+    padding: 0 20px;
+    background: #fff;
   }
 
   button {

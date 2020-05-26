@@ -132,6 +132,7 @@ class SpotModalForm extends React.Component {
               &times;
             </span>
             <h4>{spot.id ? `Редактировать ${spot.name}` : 'Создать точку'}</h4>
+            <div className="body16-bold">{spot.user}</div>
           </div>
           <div className="modal-content">
             <form onSubmit={this.handleSubmit}>
@@ -195,7 +196,7 @@ class SpotModalForm extends React.Component {
               </div>
 
               <div>
-                <label className={this.validate('tag_list')}>Теги</label>
+                <label className={this.validate('tag_list')}>Теги (не более двух)</label>
                 <input
                   className={this.validate('tag_list')}
                   type="text"
@@ -207,6 +208,7 @@ class SpotModalForm extends React.Component {
               </div>
 
               <div>
+                <label>Фото точки</label>
                 {spot.images.map((image, index) => {
                   return (
                     <div key={image.id} className="images-wrapper">
@@ -227,23 +229,28 @@ class SpotModalForm extends React.Component {
 
               <div>
                 <label>Добавить фото</label>
-                <input
-                  multiple="multiple"
-                  name="images"
-                  type="file"
-                  value={this.state.fileName}
-                  onChange={this.handleFileChange}
-                />
+                <div className="file-upload">
+                  <input
+                    multiple="multiple"
+                    name="images"
+                    type="file"
+                    value={this.state.fileName}
+                    onChange={this.handleFileChange}
+                  />
+                </div>
               </div>
 
+              <span className="separator"></span>
               <div className="modal-buttons">
-                <button type="submit">Сохранить</button>
+                <button type="submit">
+                  <div className="body16-bold">Сохранить</div>
+                </button>
                 <button type="button" onClick={this.handleCloseForm}>
-                  Отмена
+                  <div className="body16-bold">Отменить</div>
                 </button>
               </div>
+
             </form>
-            <div>Создал: {spot.user}</div>
           </div>
         </div>
       </div>
