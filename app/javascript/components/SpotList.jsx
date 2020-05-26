@@ -66,8 +66,7 @@ class SpotList extends React.Component {
     const { spots } = this.state;
 
     return (
-      <div className="block-container">
-        <div id="label-l--bold">Точки маршрута</div>
+      <div className="spots-container">
         {spots.length > 0 &&
           spots.map((spot) => {
             return (

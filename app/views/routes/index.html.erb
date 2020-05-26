@@ -1,35 +1,31 @@
 <div class="wrapper">
 
-  <h1 class="section__title">все маршруты</h1>
+  <div class="route-header">
+    <h2>Все маршруты</h2>
+  </div>
 
-  <div class="route-list__wrapper">
+  <div class="route-card__container">
     <% @routes.each do |route| %>
       <div class="route-card">
-        <div class="route-card__wrapper">
-          <div id="h4"><%= link_to route.title, route %></div>
-
-          <div class="route-info-wrapper--inner-small">
-            <div id="body-m--bold" class="info-container--small"><%= number_to_human(route.distance, units: :distance) %></div>
-            <div id="body-m--bold" class="info-container--small"><%= route.difficulty %></div>
-            <div id="body-m--bold" class="info-container--small"><%= route.kind %></div>
-          </div>
-
-          <div id="body-s--bold" class="tag-list">
-            <% route.spots.joins(:tags).pluck('tags.name').uniq.sample(3).each do |tag| %>
-              <%= link_to tag, tagged_path(tag: tag) %>
-            <% end %>
-
-          </div>
-        </div>
-
         <div class="route-pic">
           <% if route.cover.present? %>
             <%= image_tag route.cover.url %>
           <% end %>
         </div>
-      </div>
 
+        <div class="card-content__frame">
+          <div class="header-caption12">НИЖЕГОРОДСКАЯ ОБЛАСТЬ</div>
+          <h4><%= link_to route.title, route %></h4>
+
+          <div class="route-info">
+            <div class="body16-bold"><%= number_to_human(route.distance, units: :distance) %></div>
+            <div>
+              <span></span>
+              <div class="body16-bold"><%= route.difficulty %></div>
+            </div>
+          </div>
+        </div>
+      </div>
     <% end %>
   </div>
-
 </div>

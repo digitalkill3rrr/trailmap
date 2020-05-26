@@ -131,7 +131,7 @@ class SpotModalForm extends React.Component {
             <span className="close-btn" onClick={this.handleCloseForm}>
               &times;
             </span>
-            <h1>{spot.id ? `Редактировать ${spot.name}` : 'Создать точку'}</h1>
+            <h4>{spot.id ? `Редактировать ${spot.name}` : 'Создать точку'}</h4>
           </div>
           <div className="modal-content">
             <form onSubmit={this.handleSubmit}>
@@ -210,14 +210,16 @@ class SpotModalForm extends React.Component {
                 {spot.images.map((image, index) => {
                   return (
                     <div key={image.id} className="images-wrapper">
-                      <input
-                        type="checkbox"
-                        name="imagesToDelete"
-                        value={image.id}
-                        onChange={this.handleImageDeleteChange}
-                      />
-                      <label>Удалить фото</label>
                       <img className="spot-image" src={image.src} />
+                      <div className="checkbox">
+                        <input
+                          type="checkbox"
+                          name="imagesToDelete"
+                          value={image.id}
+                          onChange={this.handleImageDeleteChange}
+                        />
+                        <label>Удалить фото</label>
+                      </div>
                     </div>
                   );
                 })}
@@ -234,7 +236,7 @@ class SpotModalForm extends React.Component {
                 />
               </div>
 
-              <div>
+              <div className="modal-buttons">
                 <button type="submit">Сохранить</button>
                 <button type="button" onClick={this.handleCloseForm}>
                   Отмена

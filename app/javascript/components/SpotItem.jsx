@@ -17,7 +17,7 @@ class SpotItem extends React.Component {
     const { spot, onSubmit, onDelete } = this.props;
 
     return (
-      <div className="spot-block__wrapper">
+      <div className="spot-card">
         {spot.manage ? (
           <SpotModalForm
             show={this.state.showModal}
@@ -34,24 +34,30 @@ class SpotItem extends React.Component {
         )}
         {spot.id ? (
           <>
-            <div className="spot-info-container" onClick={this.onShowModal}>
-              <div id="label-s--bold">{spot.status}</div>
-              <div id="body-l">{spot.name}</div>
-              <div id="body-m--bold">{spot.user}</div>
-            </div>
-
-            <div className="spot-image--small">
+            <div className="spot-image">
               {spot.images.length > 0 && <img src={spot.images[0].src} />}
+
+              <div className="spot-status">
+                <div className="body14">{spot.status}</div>
+              </div>
             </div>
-            <div className="line-break"></div>
+            <div className="spot-info__container" onClick={this.onShowModal}>
+              <div className="spot-header">
+                <div className="body18-bold">{spot.name}</div>
+                <div className="body14">{spot.description.substr(0, 70) + '...'}</div>
+              </div>
 
-            {spot.manage ? (
-              <button onClick={() => onDelete(spot.id)}>Удалить точку</button>
-            ) : ('')}
-
+              {spot.manage ? (
+                <div className="spot-edit" onClick={() => onDelete(spot.id)}>
+                  <div className="body14">Удалить точку</div>
+                </div>
+              ) : ('')}
+            </div>
           </>
         ) : (
-          <button onClick={this.onShowModal}>Создать точку</button>
+          <div className="spot-new" onClick={this.onShowModal}>
+            <div className="body14">+ Создать точку</div>
+          </div>
         )}
       </div>
     );

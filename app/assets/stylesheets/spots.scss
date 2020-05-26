@@ -1,18 +1,72 @@
-// _show.html.erb
-
-.spot-block__wrapper {
+// SPOT CARD
+.spot-card {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-
+  justify-content: flex-start;
+  align-items: start;
   width: 100%;
-  height: 100%;
-  padding: 16px;
+  height: 197px;
+  margin-bottom: 24px;
+  background: #fff;
 
-  background: #fbfbfb;
-  border-bottom: #e9e9e9 solid 1px;
+  .spot-image img {
+    width: 267px;
+    height: 197px;
+  }
+
+  .spot-info__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    margin: 20px;
+    height: 157px;
+    width: 0;
+
+    .spot-header {
+      display: flex;
+      flex-direction: column;
+
+      .body14 {
+        width: 238px;
+        height: 72px;
+      }
+
+      .body18-bold {
+        margin-bottom: 8px;
+      }
+
+      .body16-bold {
+        margin-bottom: 8px;
+        color: #828282;
+      }
+    }
+  }
+
+  .spot-status {
+    position: relative;
+    bottom: 189px;
+    left: 12px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+    width: 110px;
+
+    background: #FFFFFF;
+    border-radius: 18px;
+
+    .active {
+      color: green;
+    }
+
+    .inactive {
+      color: grey;
+    }
+  }
+
+  // MODAL
 
   .backdrop {
     position: fixed;
@@ -22,17 +76,17 @@
     height: 100%;
     background-color: rgba(128, 128, 128, 0.5);
     display: none;
-    z-index: 1;
+    z-index: 999;
   }
 
   .modal {
-    position: fixed;
+    position: absolute;
     top: 5%;
     left: 15%;
     width: 70%;
-    height: 90%;
+    height: 65%;
     background: #b5e6c2;
-    z-index: 1;
+    z-index: 999;
   }
 
   .modal-content {
@@ -41,6 +95,8 @@
     padding: 20px;
     margin: auto;
     width: 75%;
+    height: 100%;
+    overflow: scroll;
   }
 
   .close-btn {
@@ -65,16 +121,23 @@
   .images-wrapper {
     display: inline-block;
     max-width: 30%;
-  }
+    margin-right: 24px;
 
-  .spot-image {
-    margin: 10px;
-    width: 30%;
+    .checkbox {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 120px;
+
+      label {
+        width: 400%;
+      }
+    }
   }
 
   .images-wrapper .spot-image {
-    margin: 10px;
-    width: 80%;
+    width: 120px;
+    height: 89px;
   }
 
   label.error,
@@ -90,123 +153,44 @@
     width: 100%;
   }
 
+  .modal-buttons {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    top: 541px;
+    left: 252px;
+    width: 558px;
+    height: 30px;
+    background: red;
+  }
+
   button {
     cursor: pointer;
   }
 }
 
-.spot-info-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  cursor: pointer;
 
-  // height: 100%;
-  height: 90px;
-
-  #label-s--bold {
-    margin-bottom: 12px;
-  }
-
-  #body-l {
-    margin-bottom: 16px;
-  }
-}
-
-.spot-image--small {
-  max-height: 90px;
-}
-
-.spot-image--small img {
-  width: 90px;
-  height: 90px;
-  border-radius: 2px;
-}
-
-.spot-image--big img {
-  width: 475px;
-  height: 309px;
-  border-radius: 2px;
-}
-
-// spots-block from routes >> show.html.erb
-
-.block-container #label-l--bold {
-  margin: 16px 0 16px 16px;
-}
-
-// index.html.erb
-
-.block-container--spot {
-  padding: 0 16px;
-  margin-top: 12px;
-}
-
-.spot-block {
-  width: 70%;
-
-  #body-m--bold {
-    margin-bottom: 12px;
-    color: #828282;
-  }
-
-  #body-l--bold {
-    margin: 12px 0 4px 0;
-  }
-}
-
-.tag-list {
-  width: 100%;
-  height: 16px;
-  overflow: hidden;
-
-  a {
-    color: #828282;
-  }
-
-  a:hover {
-    color: #333;
-  }
-}
-
-// spots show.html.erb
-
-.spot-block__wrapper--show {
-  width: 100%;
-  height: 100%;
-  padding: 0 16px;
-  margin-bottom: 24px;
-}
-
-.spot-info-container--show {
+.spots-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-
-  width: 100%;
   height: 100%;
-
-  margin-top: 24px;
-
-  #body-l {
-    margin: 24px 0;
-  }
-  //
-  #label-s--bold {
-    margin-right: 24px;
-  }
+  // margin-right: 40px;
 }
 
-.spot-heading--show {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
+// не путать с #spots-sidebar
+.spots-sidebar {
+  width: 543px;
+}
 
-  width: 100%;
-  height: 100%;
 
-  margin-bottom: 12px;
+// .scroll-container {
+//   overflow: auto;
+//   max-height: 100vh;
+// }
+
+// Remove scrollbar space
+::-webkit-scrollbar {
+    width: 0px;
 }

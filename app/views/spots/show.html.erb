@@ -1,12 +1,12 @@
-<div class="spot-block__wrapper--show">
+<div class="spot-card--show">
   <div class="spot-image--big">
     <% @spot.spot_images.each do |image| %>
-    <%= image_tag image.image.url %>
+      <%= image_tag image.image.url %>
     <% end %>
   </div>
 
 
-  <div class="spot-info-container--show">
+  <div class="spot-info__container--show">
     <div class="spot-heading--show">
       <div id="label-s--bold"><%= @spot.status %></div>
       <div id="body-m--bold"><%= User.find(@spot.user_id).nickname %></div>

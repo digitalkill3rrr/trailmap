@@ -4,8 +4,8 @@
   <h1 class="section__title">мои точки</h1>
 
   <% current_user.spots.each do |spot| %>
-    <div class="block-container--spot">
-      <div class="spot-block__wrapper">
+    <div class="spots-container--spot">
+      <div class="spot-card">
         <div class="spot-block"">
           <div id="label-s--bold"><%= spot.status %></div>
           <div id="body-l--bold"><%= link_to spot.name, spot.route %></div>
@@ -18,7 +18,7 @@
           </div>
         </div>
 
-        <div class="spot-image--small">
+        <div class="spot-image">
           <% spot.spot_images.each do |image| %>
             <%= image_tag image.image.url %>
           <% end %>

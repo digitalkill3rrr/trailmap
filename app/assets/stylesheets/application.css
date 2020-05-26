@@ -8,6 +8,7 @@
 body {
   margin: 0;
   overflow-x: hidden;
+  background-color: #F2F2F2;
 }
 
 a {
@@ -15,162 +16,134 @@ a {
   text-decoration: none;
 }
 
-h1, #h1 {
-  font-family: AvenirNextCyr-Medium;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 64px;
-  line-height: 68px;
-  letter-spacing: -0.015em;
-  text-transform: lowercase;
-  color: #333333;
+
+h1, h2, h3, h4, p, a {
+  margin: 0
 }
 
-#h3 {
-  font-family: AvenirNextCyr-Medium;
+
+h1 {
+  font-family: TT Travels;
   font-style: normal;
-  font-weight: 500;
-  font-size: 32px;
+  font-weight: bold;
+  font-size: 96px;
+  line-height: 106px;
+}
+
+h2 {
+  font-family: TT Travels;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 58px;
+  line-height: 64px;
+}
+
+h3 {
+  font-family: TT Travels;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 36px;
   line-height: 40px;
-
-  letter-spacing: -0.005em;
-
-  color: #000000;
 }
 
-#h4 {
+h4 {
   font-family: AvenirNextCyr-Medium;
   font-style: normal;
   font-weight: 500;
-  font-size: 24px;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.section-header32 {
+  font-family: AvenirNextCyr-Bold;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
   line-height: 32px;
-  letter-spacing: -0.005em;
-  color: #333333;
+
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
 }
 
-#h5 {
-  font-family: AvenirNextCyr-Regular;
+.section-header24 {
+  font-family: AvenirNextCyr-Bold;
   font-style: normal;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 28px;
-  color: #000000;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 24px;
+
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
 }
 
-#h5--bold {
+.header-caption16 {
+  font-family: AvenirNextCyr-Bold;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 16px;
+
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.header-caption14 {
+  font-family: AvenirNextCyr-Bold;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 14px;
+
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.header-caption12 {
+  font-family: AvenirNextCyr-Bold;
+  font-size: 12px;
+  line-height: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.body18 {
+  font-family: AvenirNextCyr-Medium;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+}
+
+.body18-bold {
   font-family: AvenirNextCyr-Medium;
   font-style: normal;
   font-weight: 500;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 28px;
-
-  display: flex;
-  align-items: center;
-  color: #333333;
 }
 
-#body-l {
-  font-family: AvenirNextCyr-Regular;
+.body16-bold {
+  font-family: AvenirNextCyr-Medium;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-
-  display: flex;
-  align-items: center;
-  color: #333333;
 }
 
-#body-l--bold {
+.body14 {
   font-family: AvenirNextCyr-Medium;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
-
-  display: flex;
-  align-items: center;
-  color: #333333;
-}
-
-#body-m {
-  font-family: AvenirNextCyr-Regular;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
-
-  display: flex;
-  align-items: center;
-  color: #333333;
 }
 
-#body-m--bold {
-  font-family: AvenirNextCyr-Medium;
+.caption {
+  font-family: AvenirNextCyr-Regular;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
-
-  display: flex;
-  align-items: center;
-  color: #333333;
 }
 
-#body-s {
-  font-family: AvenirNextCyr-Regular;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 16px;
-  color: #333333;
-}
-
-#body-s--bold {
-  font-family: AvenirNextCyr-Medium;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 16px;
-  color: #333333;
-}
-
-#label-s {
-  font-family: AvenirNextCyr-Medium;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 16px;
-
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-
-  color: #828282;
-}
-
-#label-s--bold {
-  font-family: Avenir Next;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 12px;
-  line-height: 16px;
-  /* or 133% */
-
-  display: flex;
-  align-items: center;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-#label-l--bold {
-  font-family: AvenirNextCyr-Medium;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 16px;
-  line-height: 24px;
-
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-
-  color: #333333;
-}
+a {}

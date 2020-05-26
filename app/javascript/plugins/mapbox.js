@@ -78,14 +78,14 @@ const initMapbox = () => {
               properties: { name, status, author, image },
             } = item;
 
-            let html = `<div class="spot-block__wrapper">
-              <div class="spot-info-container">
+            let html = `<div class="spot-card">
+              <div class="spot-info__container">
                 <div id="label-s--bold">${status}</div>
                 <div id="body-l">${name}</div>
                 <div id="body-m--bold">${author}</div>
               </div>`;
             if (image) {
-              html += `<div class="spot-image--small"><img src=${image}></div>`;
+              html += `<div class="spot-image"><img src=${image}></div>`;
             }
             html += '</div>';
             var popup = new mapboxgl.Popup({ className: 'spot-popup' }).setHTML(html);

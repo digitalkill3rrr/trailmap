@@ -1,85 +1,17 @@
 <div class="wrapper">
 
-  <%= link_to 'Редактировать маршрут', edit_route_path(@route) %>
-
-<!-- ----- section 1 ----- -->
   <div class="route-page__wrapper">
-    <div class="route-cover">
-      <% if @route.cover.present? %>
-        <%= image_tag @route.cover.url %>
-      <% end %>
-    </div>
-
-    <div class="route-heading-container">
-      <div id="h1"><%= @route.title %></div>
-      <div id="body-l--bold"><%= @route.user.nickname %></div>
-    </div>
-
-    <div class="route-info-wrapper--external">
-      <div id="body-l" class="route-description"><%= @route.description %></div>
-
-      <div class="route-info-wrapper--inner-big">
-        <% if @route.distance %>
-          <div class="info-container--big">
-            <div id="h4"><%= number_to_human(@route.distance, units: :distance) %></div>
-            <div id="label-s">Расстояние</div>
-          </div>
-        <% end %>
-
-        <div class="info-container--big">
-          <div id="h4"><%= @route.kind %></div>
-          <div id="label-s">Тип маршрута</div>
-        </div>
-
-        <div class="info-container--big">
-          <div id="h4"><%= @route.difficulty %></div>
-          <div id="label-s">Сложность</div>
-        </div>
-
-        <div class="info-container--big">
-          <div id="h4"><%= @route.season %></div>
-          <div id="label-s">Сезонность</div>
-        </div>
+    <div class="route-container">
+      <div class="route-header">
+        <div class="header-caption16">НИЖЕГОРОДСКАЯ ОБЛАСТЬ</div>
+        <h2><%= @route.title %></h2>
+        <div class="body18"><%= @route.description %></div>
       </div>
+
+      <div id="spots-sidebar" data-route-id=<%= @route.id %>></div>
     </div>
 
-  </div>
-  <!-- ----- section 1 ----- -->
-
-  <div class="route-page__wrapper--section-2">
-
-    <div class="info-area-container">
-      <div class="scroll-container">
-        <div id="info" class="section-container">
-
-          <div id="spots-sidebar" data-route-id=<%= @route.id %>></div>
-        </div>
-
-        <div class="comments-container">
-          <div id="label-l--bold">Комментарии <%= @route.comments.count %></div>
-
-          <div class="comment-block-container">
-            <% @route.comments.each do |comment| %>
-              <%= render 'comments/show', comment: comment %>
-            <% end %>
-          </div>
-
-          <% if can? :create, Comment %>
-            <%= render 'comments/form', comment: Comment.new %>
-
-          <% else %>
-            <div>Войдите или зарегистрируйтесь, чтобы оставить комментарий</div>
-            <%= link_to 'Login', new_user_session_path %>
-            <%= link_to 'Register', new_user_registration_path %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-
-
-    <!-- MAP -->
-    <div class="map_area-container"><%= render 'map', route: @route %></div>
-
+    <div class="map-container"><%= render 'map', route: @route %></div>
   </div>
 
 </div>

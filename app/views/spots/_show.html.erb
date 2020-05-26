@@ -1,12 +1,12 @@
-<div class="spot-block__wrapper">
+<div class="spot-card">
 
-  <div class="spot-info-container">
+  <div class="spot-info__container">
     <div id="label-s--bold"><%= spot.status %></div>
     <div id="body-l"><%= link_to spot.name, spot %></div>
     <div id="body-m--bold"><%= spot.user.nickname %></div>
   </div>
 
-  <div class="spot-image--small">
+  <div class="spot-image">
 
     <!-- show only first image -->
     <% spot.spot_images.each_with_index do |image, i| %>

@@ -9,33 +9,31 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
   </head>
-
   <body>
     <nav>
-      <div class="nav--left">
+      <div class="nav-left">
         <div class="logo">
           <%= link_to pages_home_url do %>
             <%= image_tag('logo.svg') %>
           <% end %>
         </div>
         <div class="nav-menu">
-          <div id="body-l--bold"><%= link_to 'Главная',        pages_home_url %></div>
-          <div id="body-l--bold"><%= link_to 'Маршруты',       routes_url %></div>
-          <div id="body-l--bold"><%= link_to 'Места',          spots_url %></div>
-          <div id="body-l--bold"><%= link_to 'Пользователи',   users_url if can? :index, User %></div>
+          <div class="body16-bold"><%= link_to 'Главная',        pages_home_url %></div>
+          <div class="body16-bold"><%= link_to 'Маршруты',       routes_url %></div>
+          <div class="body16-bold"><%= link_to 'Места',          spots_url %></div>
+          <div class="body16-bold"><%= link_to 'Пользователи',   users_url if can? :index, User %></div>
         </div>
       </div>
 
-      <div class="nav--right">
-        <div id="body-l--bold" class="user-profile">
+      <div class="nav-right">
           <% if user_signed_in? %>
-            <div class="username"><%= link_to current_user.nickname, profile_users_url %></div>
-            <div class="button" id="logout"><%= link_to 'Выйти', destroy_user_session_path, method: :delete %></div>
+            <div class="body16-bold"><%= link_to current_user.nickname, profile_users_url %></div>
+            <div class="body16-bold" id="logout"><%= link_to 'Выйти', destroy_user_session_path, method: :delete %></div>
           <% else %>
-            <div class="button" id="login"><%= link_to 'Войти', new_user_session_path %></div>
-            <div class="button" id="register"><%= link_to 'Регистрация', new_user_registration_path %></div>
+            <div class="body16-bold" id="login"><%= link_to 'Войти', new_user_session_path %></div>
+            <div class="body16-bold" id="register"><%= link_to 'Регистрация', new_user_registration_path %></div>
           <% end %>
-        </div>
+
       </div>
     </nav>
     <%= yield %>

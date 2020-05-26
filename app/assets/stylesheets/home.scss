@@ -1,0 +1,239 @@
+//SECTION WIDE
+.section-wide {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 252px 0 52px;
+  width: 1440px;
+  height: 100vh;
+  margin-top: 0;
+
+  background-image: url('bg-image1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.card-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  h1 {
+    text-align: center;
+    color: #fff;
+  }
+
+  div {
+    margin-bottom: 40px;
+  }
+
+  .header-caption16 {
+    color: #fff;
+  }
+}
+
+.info-container {
+  display: flex;
+  justify-content: space-between;
+
+  div {
+    margin-left: 40px;
+  }
+
+  .header-caption16 {
+    color: #fff;
+  }
+}
+
+
+//SECTION 2, SECTION 4
+.section#second, .section#third {
+  margin-top: 52px;
+}
+
+.section-content-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+// BIG COLLECTION
+
+.collection-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 893px;
+  height: 907px;
+}
+
+.big-collection-card-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 212px;
+
+  h2 {
+    color: #fff;
+  }
+
+  .header-caption16 {
+    color: #fff;
+  }
+}
+
+// SMALL COLLECTIONS
+
+.small-collections-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.small-collection-card-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 146px;
+
+  h3 {
+    color: #fff;
+  }
+
+  .header-caption14 {
+    color: #fff;
+  }
+}
+
+// LOCATIONS
+
+.location-card-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 116px;
+
+  h3 {
+    color: #fff;
+  }
+
+  .header-caption14 {
+    color: #fff;
+  }
+}
+
+// PLACES
+
+.places-container {
+  display: flex;
+  flex-direction: column;
+  width: 427px;
+
+  .section-header24 {
+    margin-bottom: 40px;
+  }
+}
+
+// CARDS, PLACE-ITEMS, LOCATION-CARDs
+
+.collection-card-big {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 893px;
+  height: 552px;
+  padding: 40px;
+
+  background-image: url('bg-image2.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.collection-card-small, .location-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 427px;
+  height: 315px;
+  padding: 24px;
+
+  background-image: url('bg-image3.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+.place-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+
+  .place-pic {
+    width: 90px;
+    height: 90px;
+    background-image: url('bg-image2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .place-info {
+    display: flex;
+    flex-direction: column;
+    width: 317px;
+
+    .header-caption14 {
+      margin-bottom: 8px;
+    }
+  }
+}
+
+// BANNER
+.banner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 72px;
+  width: 1440px;
+  height: 400px;
+
+  background-image: url('bg-image4.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  .caption {
+    text-align: center;
+    margin-bottom: 24px;
+    color: #fafafa;
+  }
+
+  h3 {
+    text-align: center;
+  }
+
+  .body16-bold {
+    width: 552px;
+    color: #fff;
+    text-align: center;
+  }
+}
+
+.banner-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 212px;
+
+  h2 {
+    text-align: center;
+    color: #fafafa;
+  }
+
+  .body18-bold {
+    width: 852px;
+    margin-bottom: 24px;
+    color: #fafafa;
+  }
+}

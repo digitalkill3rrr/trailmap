@@ -1,5 +1,156 @@
+<div class="section-wide">
+  <div class="card-title">
+    <div class="header-caption16">Заголовок</div>
+    <h1>Большой <br> заголовок</h1>
+  </div>
+  <div class="info-container">
+    <div class="header-caption16">
+      <%= link_to '115 маршрутов', routes_url %>
+    </div>
+    <div class="header-caption16">
+      <%= link_to '402 места', spots_url %>
+    </div>
+    <div class="header-caption16">
+      <%= link_to '12 направлений' %>
+    </div>
+  </div>
+</div>
+
 <div class="wrapper">
-  <% @collections.each do |collection| %>
-    <%= render 'collections/show', collection: collection %>
-  <% end %>
+  <div id="second" class="section">
+    <% @collections.take(1).each do |collection| %>
+      <%= render 'collections/show', collection: collection %>
+    <% end %>
+  </div>
+
+  <div id="third" class="section">
+    <div class="section-heading">
+      <span></span>
+      <div class="section-header32">Куда сходить на выходные?</div>
+    </div>
+
+    <div class="section-content-container">
+      <div class="collection-container">
+        <div class="collection-card-big">
+          <div class="big-collection-card-title">
+            <div class="header-caption16">Заголовок</div>
+            <h2>Покататься <br> на велосипедах</h2>
+            <div class="header-caption16">9 маршрутов</div>
+          </div>
+        </div>
+
+        <div class="small-collections-container">
+          <div class="collection-card-small">
+            <div class="small-collection-card-title">
+              <div class="header-caption14">Маршруты</div>
+              <h3>Всей семьёй <br> в поход</h3>
+              <div class="header-caption14">19 маршрутов</div>
+            </div>
+          </div>
+
+          <div class="collection-card-small">
+            <div class="small-collection-card-title">
+              <div class="header-caption14">Маршруты</div>
+              <h3>Всей семьёй <br> в поход</h3>
+              <div class="header-caption14">19 маршрутов</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="places-container">
+        <div class="section-header24">Интересные места</div>
+        <div class="place-item">
+          <div class="place-pic"></div>
+          <div class="place-info">
+            <div class="header-caption14">заброшки</div>
+            <div class="body16-bold">Горбатов сохранил в себе облик старинного уездного города</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-wide">
+  <div class="card-title">
+    <div class="header-caption16">Заголовок</div>
+    <h1>Большой <br> заголовок</h1>
+  </div>
+  <div class="info-container">
+    <div class="header-caption16">115 маршрутов</div>
+    <div class="header-caption16">402 места</div>
+    <div class="header-caption16">12 направлений</div>
+  </div>
+</div>
+
+<div class="wrapper">
+
+  <div id="third" class="section">
+    <div class="section-heading">
+      <span></span>
+      <div class="section-header32">Куда сходить на выходные?</div>
+    </div>
+
+    <div class="section-content-container">
+      <div class="places-container">
+        <div class="section-header24">Интересные места</div>
+        <div class="place-item">
+          <div class="place-pic"></div>
+          <div class="place-info">
+            <div class="header-caption14">заброшки</div>
+            <div class="body16-bold">Горбатов сохранил в себе облик старинного уездного города</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="collection-container">
+        <div class="collection-card-big">
+          <div class="big-collection-card-title">
+            <div class="header-caption16">Заголовок</div>
+            <h2>Покататься <br> на велосипедах</h2>
+            <div class="header-caption16">9 маршрутов</div>
+          </div>
+        </div>
+        <div class="small-collections-container">
+          <div class="location-card">
+            <div class="location-card-title">
+              <h3>Нижегородская <br> область</h3>
+              <div class="header-caption14">19 маршрутов</div>
+            </div>
+          </div>
+          <div class="location-card">
+            <div class="location-card-title">
+              <h3>Нижегородская <br> область</h3>
+              <div class="header-caption14">19 маршрутов</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="second" class="section">
+      <% @collections.take(1).each do |collection| %>
+        <%= render 'collections/show', collection: collection %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="banner">
+  <div class="banner-text">
+    <h2>Есть идея классного маршрута?</h2>
+    <div class="body18-bold">Если у тебя есть опыт создания маршрутов, напиши нам на наш email, опиши себя, свой опыт <br> и идею маршрута. Если нам понравится твоё предложение, мы свяжемся с тобой.</div>
+
+    <div id="button" class="submit-idea">
+      <div class="body16-bold">
+        <%= mail_to 'tm-team@trailmap.com', 'Отправить идею', subject: "Идеи для маршрутов" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="caption">trailmap © 2019-2020</div>
 </div>

@@ -1,6 +1,6 @@
-.map_area-container {
-  // width: 965px;
-  width: 100%;
+.map-container {
+  margin-top: 140px;
+  // width: 100%;
 
 
   .spots-json {
@@ -8,7 +8,7 @@
   }
 
   #map {
-    width: 100%;
+    width: 777px;
     height: 100vh;
   }
 }
@@ -17,7 +17,7 @@
   max-width: 443px !important;
 }
 
-.spot-block__wrapper {
+.spot-card {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -26,7 +26,7 @@
   border-radius: 2px;
   background: #FBFBFB;
 
-  .spot-info-container {
+  .spot-info__container {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -64,7 +64,7 @@
     display: none;
   }
 
-  .spot-image--small img {
+  .spot-image img {
     width: 90px;
     height: 90px;
     border-radius: 2px;

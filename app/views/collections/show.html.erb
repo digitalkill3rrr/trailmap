@@ -2,13 +2,11 @@
 
 <div>
   <h1 class="section__title--collection"><%= @collection.title %></h1>
-  <div id="h5" class="section__description"><%= @collection.description %></div>
 </div>
 
-  <div class="route-list__wrapper">
+  <div class="route-card__container">
     <% @routes.each do |route| %>
       <%= render 'routes/show', route: route %>
     <% end %>
   </div>
-
 </div>
