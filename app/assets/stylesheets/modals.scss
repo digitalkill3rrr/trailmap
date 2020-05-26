@@ -1,0 +1,144 @@
+// EDIT & NEW MODAL
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(128, 128, 128, 0.5);
+  display: none;
+  z-index: 999;
+}
+
+.modal, .report-modal, .spot-modal {
+  position: absolute;
+  top: 161px;
+  left: 360px;
+  width: 50%;
+  height: 65%;
+  background: #fff;
+  z-index: 999;
+}
+
+.modal-header, .report-modal-header, .spot-modal-header {
+  margin: 16px 20px 0;
+}
+
+.modal-content, .report-modal-content, .spot-modal-content {
+  position: relative;
+  background-color: #fff;
+  padding: 20px;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+}
+
+.close-btn {
+  float: right;
+  color: #111;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.close-btn:hover {
+  color: #333;
+}
+
+.display-block {
+  display: block;
+}
+
+// MODAL
+.images-wrapper {
+  display: inline-block;
+  max-width: 30%;
+  margin: 0 4px 0 0;
+
+  .checkbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 130px;
+    margin-bottom: 0;
+
+    label {
+      width: 400%;
+    }
+  }
+}
+
+.images-wrapper .spot-image {
+  width: 120px;
+  height: 89px;
+}
+
+label.error,
+div.error {
+  color: red;
+}
+
+input.error {
+  border-color: red;
+}
+
+.line-break {
+  width: 100%;
+}
+
+.modal-buttons, .report-modal-buttons {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, 467%);
+  width: 720px;
+  height: 60px;
+  padding: 0 20px;
+  background: #fff;
+}
+
+button {
+  cursor: pointer;
+}
+
+// SHOW MODAL
+.spot-modal {
+  height: 42%;
+}
+
+.spot-images {
+  width: 188px;
+  height: 125px;
+  margin-right: 16px;
+}
+
+.coordinates-container {
+  display: flex;
+
+  .body14 {
+    margin-right: 8px;
+  }
+}
+
+.spot-modal-content {
+  .body14 {
+    margin-bottom: 24px;
+  }
+}
+
+// REPORT MODAL
+.report-modal {
+  height: 30%;
+}
+
+.report-modal-buttons {
+  position: relative;
+  display: flex;
+  align-items: center;
+  left: 0;
+  top: 0;
+  transform: none;
+  padding: 0;
+}

@@ -7,23 +7,25 @@ class SpotModalItem extends React.Component {
 
     return (
       <div className={showHideClassName}>
-        <div className="modal">
-          <div className="modal-header">
+        <div className="spot-modal">
+          <div className="spot-modal-header">
             <span className="close-btn" onClick={handleClose}>
               &times;
             </span>
-            <h1>{spot.name}</h1>
+            <h4>{spot.name}</h4>
+            <div className="body16-bold">{spot.user}</div>
+            <div className="body16-bold">{spot.status}</div>
           </div>
-          <div className="modal-content">
+          <div className="spot-modal-content">
+            <div className="body14">{spot.description}</div>
             {spot.images.map((image) => {
-              return <img key={image.id} className="spot-image" src={image.src} />;
+              return <img key={image.id} className="spot-images" src={image.src} />;
             })}
-            <p>{spot.description}</p>
-            <p>Статус: {spot.status}</p>
-            <p>Широта: {spot.latitude}</p>
-            <p>Долгота: {spot.longitude}</p>
-            <p>{spot.tag_list}</p>
-            <p>Пользователь: {spot.user}</p>
+            <div className="coordinates-container">
+              <div className="body14">ш {spot.latitude}</div>
+              <div className="body14">д {spot.longitude}</div>
+            </div>
+            <div className="body14">{spot.tag_list}</div>
           </div>
         </div>
       </div>
