@@ -14,7 +14,7 @@ class SpotItem extends React.Component {
   };
 
   render() {
-    const { spot, onSubmit, onDelete } = this.props;
+    const { spot, onSubmit, onDelete, onShowReportModal } = this.props;
 
     return (
       <div className="spot-card">
@@ -46,12 +46,18 @@ class SpotItem extends React.Component {
                 <div className="body18-bold">{spot.name}</div>
                 <div className="body14">{spot.description.substr(0, 70) + '...'}</div>
               </div>
-
+            </div>
+            <div className="spot-buttons">
               {spot.manage ? (
                 <div className="spot-edit" onClick={() => onDelete(spot.id)}>
                   <div className="body14">Удалить точку</div>
                 </div>
-              ) : ('')}
+              ) : (
+                ''
+              )}
+              <div className="spot-edit" onClick={() => onShowReportModal(spot.id)}>
+                <div className="body14">Сообщить о статусе</div>
+              </div>
             </div>
           </>
         ) : (

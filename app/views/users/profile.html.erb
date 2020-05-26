@@ -16,6 +16,9 @@
     <h1 class="section__title"><%= link_to 'Список пользователей', users_url %></h1>
   <% end %>
 
-  <h1 class="section__title"><%= 'Репорты' %></h1>
+  <% if can? :index, Report %>
+    <h1 class="section__title"><%= link_to 'Репорты', reports_url %></h1>
+  <% end %>
+
   <h1 class="section__title"><%= 'Статьи (beta)' %></h1>
 </div>

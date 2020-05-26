@@ -5,7 +5,17 @@ class SpotModalForm extends React.Component {
     super(props);
 
     const { spot } = props;
-    this.state = {
+    this.state = this.emptyState(spot);
+  }
+
+  resetForm = () => {
+    const { spot } = this.props;
+
+    this.setState(this.emptyState(spot));
+  };
+
+  emptyState = (spot) => {
+    return {
       id: spot.id || '',
       name: spot.name || '',
       status: spot.status || spot.status_options[0],
@@ -18,24 +28,6 @@ class SpotModalForm extends React.Component {
       fileName: '',
       errors: {},
     };
-  }
-
-  resetForm = () => {
-    const { spot } = this.props;
-
-    this.setState({
-      id: spot.id || '',
-      name: spot.name || '',
-      status: spot.status || '',
-      description: spot.description || '',
-      longitude: spot.longitude || '',
-      latitude: spot.latitude || '',
-      tag_list: spot.tag_list.join(' '),
-      imagesForUpload: [],
-      imagesToDelete: [],
-      fileName: '',
-      errors: {},
-    });
   };
 
   handleChange = (event) => {

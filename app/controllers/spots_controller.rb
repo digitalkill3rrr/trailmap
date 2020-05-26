@@ -7,8 +7,7 @@ class SpotsController < ApplicationController
       format.html { @spots = Spot.all }
       format.json do
         @spots = Spot.includes(:user, :spot_images).where(route_id: params[:route_id]).order(:id).to_a
-        @spots << Spot.new(route_id: params[:route_id], user_id: current_user.id)
-        authorize! :manage, Spot
+        @spots << Spot.new(route_id: params[:route_id], user_id: current_user.id) if user_signed_in?
         @ability = Ability.new(current_user)
       end
     end
@@ -45,14 +44,12 @@ class SpotsController < ApplicationController
       if @spot.save
         format.html { redirect_to @spot, notice: 'Spot was successfully created.' }
         format.json do
-          authorize! :manage, @spot
           @ability = Ability.new(current_user)
           render :show, status: :created
         end
       else
         format.html { render :new }
         format.json do
-          authorize! :manage, @spot
           @ability = Ability.new(current_user)
           render :show, status: :unprocessable_entity
         end
@@ -67,14 +64,12 @@ class SpotsController < ApplicationController
       if @spot.update(spot_params)
         format.html { redirect_to @spot, notice: 'Spot was successfully updated.' }
         format.json do
-          authorize! :manage, @spot
           @ability = Ability.new(current_user)
           render :show, status: :ok
         end
       else
         format.html { render :edit }
         format.json do
-          authorize! :manage, @spot
           @ability = Ability.new(current_user)
           render :show, status: :unprocessable_entity
         end
