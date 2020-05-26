@@ -18,6 +18,13 @@ Rails.application.routes.draw do
   resources :comments
   resources :spots
 
+  resources :reports, only: [:create, :index] do
+    member do
+      post :approve
+      post :reject
+    end
+  end
+
   get 'pages/home'
   get 'pages/constructor'
 

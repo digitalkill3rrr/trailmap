@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import SpotItem from './SpotItem';
+import ReportModalForm from './ReportModalForm';
 
 class SpotList extends React.Component {
-  state = { spots: [] };
+  state = { spots: [], showReportModal: false, reportSpotId: null };
 
   componentDidMount() {
     fetch(`/spots.json?route_id=${this.props.routeId}`)
@@ -12,6 +13,15 @@ class SpotList extends React.Component {
       })
       .catch((error) => console.log('error', error));
   }
+
+  onShowReportModal = (id) => {
+    this.setState({ showReportModal: true });
+    this.setState({ reportSpotId: id });
+  };
+
+  onHideReportModal = () => {
+    this.setState({ showReportModal: false });
+  };
 
   getCsrf = () => {
     return document.querySelector("meta[name='csrf-token']").getAttribute('content');
@@ -35,7 +45,7 @@ class SpotList extends React.Component {
           const spots = [...this.state.spots];
           const index = spots.findIndex((spot) => spot.id === object.id);
           if (index === -1) {
-            spots.push(object);
+            spots.splice(spots.length - 1, 0, object);
           } else {
             spots[index] = object;
           }
@@ -62,6 +72,26 @@ class SpotList extends React.Component {
       .catch((error) => console.log('error', error));
   };
 
+  handleReportSubmit = (report) => {
+    return fetch('/reports.json', {
+      method: 'POST',
+      body: JSON.stringify({ report }),
+      headers: {
+        'X-CSRF-Token': this.getCsrf(),
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then((object) => {
+        const spots = [...this.state.spots];
+        const index = spots.findIndex((spot) => spot.id === object.id);
+        spots[index] = object;
+
+        this.setState({ spots });
+      })
+      .catch((error) => console.log('error', error));
+  };
+
   render() {
     const { spots } = this.state;
 
@@ -75,9 +105,16 @@ class SpotList extends React.Component {
                 spot={spot}
                 onSubmit={this.handleSubmit}
                 onDelete={this.handleDelete}
+                onShowReportModal={this.onShowReportModal}
               />
             );
           })}
+        <ReportModalForm
+          show={this.state.showReportModal}
+          handleClose={this.onHideReportModal}
+          onSubmit={this.handleReportSubmit}
+          reportSpotId={this.state.reportSpotId}
+        ></ReportModalForm>
       </div>
     );
   }

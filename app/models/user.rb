@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :spots
   has_many :comments
   has_many :collections
+  has_many :reports
 
   enum role: [ :admin, :content, :user, :guest ]
 

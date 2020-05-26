@@ -3,6 +3,7 @@ class Spot < ApplicationRecord
 
   belongs_to :route
   belongs_to :user
+  has_many :reports
   has_many :spot_images
   accepts_nested_attributes_for(
     :spot_images,
