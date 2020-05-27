@@ -31,7 +31,11 @@
   border-radius: 2px;
 }
 
-.spot-edit:hover, .spot-new:hover {
+.spot-report {
+  width: 180px;
+}
+
+.spot-edit:hover, .spot-new:hover, .spot-report:hover {
   background: #E8E8E8;
 }
 

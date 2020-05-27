@@ -57,7 +57,7 @@ class ReportModalForm extends React.Component {
             <span className="close-btn" onClick={this.handleCloseForm}>
               &times;
             </span>
-            <h4>Сообщить о статусе</h4>
+            <h4>Сообщить о проблеме</h4>
           </div>
           <div className="report-modal-content">
             <form onSubmit={this.handleSubmit}>

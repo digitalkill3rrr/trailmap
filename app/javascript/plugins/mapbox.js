@@ -88,11 +88,9 @@ const initMapbox = () => {
               html += `<div class="spot-image"><img src=${image}></div>`;
             }
             html += '</div>';
-            var popup = new mapboxgl.Popup({ className: 'spot-popup' }).setHTML(html);
 
             const marker = new mapboxgl.Marker()
               .setLngLat(coordinates)
-              .setPopup(popup)
               .addTo(map);
           });
 

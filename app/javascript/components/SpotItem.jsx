@@ -46,9 +46,9 @@ class SpotItem extends React.Component {
                 <div className="body18-bold">{spot.name}</div>
                 <div className="body14">{spot.description.substr(0, 70) + '...'}</div>
               </div>
-              
+
               <div className="spot-report" onClick={() => onShowReportModal(spot.id)}>
-                <div className="body14">Сообщить о статусе</div>
+                <div className="body14">Сообщить о проблеме</div>
               </div>
             </div>
             <div className="spot-buttons">
