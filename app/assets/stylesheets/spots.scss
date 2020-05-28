@@ -54,7 +54,7 @@
     padding: 4px;
     width: 110px;
 
-    background: #FFFFFF;
+    background: #ffffff;
     border-radius: 18px;
 
     .active {
@@ -66,57 +66,13 @@
     }
   }
 
-  // MODAL
-
-  .backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(128, 128, 128, 0.5);
-    display: none;
-    z-index: 999;
-  }
-
-  .modal {
-    position: absolute;
-    top: 5%;
-    left: 15%;
-    width: 70%;
-    height: 65%;
-    background: #b5e6c2;
-    z-index: 999;
-  }
-
-  .modal-content {
+  .spot-buttons {
     position: relative;
-    background-color: white;
-    padding: 20px;
-    margin: auto;
-    width: 75%;
-    height: 100%;
-    overflow: scroll;
+    top: 70%;
+    cursor: pointer;
   }
 
-  .close-btn {
-    float: right;
-    color: green;
-    font-size: 24px;
-    font-weight: bold;
-  }
-
-  .close-btn:hover {
-    color: black;
-  }
-
-  .display-block {
-    display: block;
-  }
-
-  .display-none {
-    display: none;
-  }
+  // MODAL
 
   .images-wrapper {
     display: inline-block;
@@ -169,6 +125,55 @@
   }
 }
 
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(128, 128, 128, 0.5);
+  display: none;
+  z-index: 999;
+}
+
+.modal {
+  position: absolute;
+  top: 5%;
+  left: 15%;
+  width: 70%;
+  height: 65%;
+  background: #b5e6c2;
+  z-index: 999;
+}
+
+.modal-content {
+  position: relative;
+  background-color: white;
+  padding: 20px;
+  margin: auto;
+  width: 75%;
+  height: 100%;
+  overflow: scroll;
+}
+
+.close-btn {
+  float: right;
+  color: green;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.close-btn:hover {
+  color: black;
+}
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}
 
 .spots-container {
   display: flex;
@@ -184,7 +189,6 @@
   width: 543px;
 }
 
-
 // .scroll-container {
 //   overflow: auto;
 //   max-height: 100vh;
@@ -192,5 +196,5 @@
 
 // Remove scrollbar space
 ::-webkit-scrollbar {
-    width: 0px;
+  width: 0px;
 }

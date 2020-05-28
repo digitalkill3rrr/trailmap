@@ -1,7 +1,3 @@
-Rake::Task['db:drop'].invoke
-Rake::Task['db:create'].invoke
-Rake::Task['db:migrate'].invoke
-
 # Create user
 @users = [
   {
@@ -308,11 +304,10 @@ end
   }, {
     name:        'г. Горбатов',
     status:       0,
-    user_id:      random_users,
     description: 'Река Ока будет вас сопровождать практически на всем пути. Это красивая река которая именно в Нижегородской области впадает в величественную Волгу. В прошлом главная судоходная артерия, обеспечивающая г. Горбатов стабильным доходом от торговли, течет извилисто, создавая излучины и обрывистые берега.',
-    tag_list:    @tag_list.sample,
+    tag_list:     @tag_list.sample,
     route_id:     random_route_id,
-    user_id:      User.all.sample.id,
+    user_id:      random_users,
     latitude:     56.130869,
     longitude:    43.062701,
     spot_images_attributes: [ {image: upload_fake_spot_image} ]

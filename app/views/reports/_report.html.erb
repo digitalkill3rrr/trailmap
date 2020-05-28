@@ -1,0 +1,6 @@
+<div><%= report.spot.name %></div>
+<div><%= report.spot.status %></div>
+<div><%= report.body %></div>
+<div><%= link_to 'Подтвердить', approve_report_path(report), method: :post %></div>
+<div><%= link_to 'Отклонить', reject_report_path(report), method: :post %></div>
+<br>

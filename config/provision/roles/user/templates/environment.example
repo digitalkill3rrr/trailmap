@@ -1,0 +1,6 @@
+DB_HOST='see the first line in provision/roles/postgresql/templates/pg_hba.conf'
+DB_NAME='{{ app_db_name }}'
+DB_USERNAME='see the first line in provision/roles/postgresql/templates/pg_hba.conf'
+DB_USERPASS='see the first line in provision/roles/postgresql/templates/pg_hba.conf'
+LANG='en_US.UTF-8'
+RAILS_SERVE_STATIC_FILES='enabled'
