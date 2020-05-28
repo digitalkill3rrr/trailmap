@@ -1,29 +1,30 @@
-<div class="section-heading">
-  <span></span>
-  <div class="section-header32"><%= link_to collection.title %></div>
-</div>
-
-<div class="route-card__container">
-  <% collection.routes.take(4).each do |route|%>
-    <div class="route-card">
-      <div class="route-pic">
-        <% if route.cover.present? %>
-          <%= image_tag route.cover.url %>
-        <% end %>
-      </div>
-
-      <div class="card-content__frame">
-        <div class="header-caption12">НИЖЕГОРОДСКАЯ ОБЛАСТЬ</div>
-        <h4><%= link_to route.title, route %></h4>
-
-        <div class="route-info">
-          <div class="body16-bold"><%= number_to_human(route.distance, units: :distance) %></div>
-          <div>
-            <span></span>
-            <div class="body16-bold"><%= route.difficulty %></div>
-          </div>
-        </div>
-      </div>
+<!-- <div class="collection-card-big">
+  <div class="big-collection-card-title">
+    <div class="header-caption16"></div>
+    <h2><%#= link_to collection.title %></h2>
+    <div class="header-caption16">
+      <%# collection.routes.each do |routes| %>
+        <%#= routes.count %>
+      <%# end %>
     </div>
-  <% end %>
+  </div>
 </div>
+
+<div class="small-collections-container">
+  <div class="collection-card-small">
+    <div class="small-collection-card-title">
+      <div class="header-caption14">Маршруты</div>
+      <h3><%#= link_to collection.title %></h3>
+      <div class="header-caption14">19 маршрутов</div>
+    </div>
+  </div>
+
+  <div class="collection-card-small">
+    <div class="small-collection-card-title">
+      <div class="header-caption14">Маршруты</div>
+      <h3><%#= link_to collection.title %></h3>
+      <div class="header-caption14">19 маршрутов</div>
+    </div>
+  </div>
+
+</div> -->

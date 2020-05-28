@@ -16,11 +16,22 @@
   </div>
 </div>
 
+<% @collections.each do |collection| %>
+  <%= render 'collections/show', collection: collection %>
+<% end %>
+
 <div class="wrapper">
   <div id="second" class="section">
-    <% @collections.take(1).each do |collection| %>
-      <%= render 'collections/show', collection: collection %>
-    <% end %>
+    <div class="section-heading">
+      <span></span>
+      <div class="section-header32">Летом в поход</div>
+    </div>
+
+    <div class="route-card__container">
+      <% @routes.first(4).each do |route| %>
+        <%= render 'routes/show', route: route %>
+      <% end %>
+    </div>
   </div>
 
   <div id="third" class="section">
@@ -61,12 +72,9 @@
 
       <div class="places-container">
         <div class="section-header24">Интересные места</div>
-        <div class="place-item">
-          <div class="place-pic"></div>
-          <div class="place-info">
-            <div class="header-caption14">заброшки</div>
-            <div class="body16-bold">Горбатов сохранил в себе облик старинного уездного города</div>
-          </div>
+          <% @spots.first(6).each do |spot| %>
+            <%= render 'spots/show', spot: spot %>
+          <% end %>
         </div>
 
       </div>
@@ -97,13 +105,9 @@
     <div class="section-content-container">
       <div class="places-container">
         <div class="section-header24">Интересные места</div>
-        <div class="place-item">
-          <div class="place-pic"></div>
-          <div class="place-info">
-            <div class="header-caption14">заброшки</div>
-            <div class="body16-bold">Горбатов сохранил в себе облик старинного уездного города</div>
-          </div>
-        </div>
+          <% @spots.last(6).each do |spot| %>
+            <%= render 'spots/show', spot: spot %>
+          <% end %>
       </div>
 
       <div class="collection-container">
@@ -133,9 +137,16 @@
     </div>
 
     <div id="second" class="section">
-      <% @collections.take(1).each do |collection| %>
-        <%= render 'collections/show', collection: collection %>
-      <% end %>
+      <div class="section-heading">
+        <span></span>
+        <div class="section-header32">Летом в поход</div>
+      </div>
+
+      <div class="route-card__container">
+        <% @routes.last(4).each do |route| %>
+          <%= render 'routes/show', route: route %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

@@ -1,16 +1,15 @@
-<div class="spot-card">
-
-  <div class="spot-info__container">
-    <div id="label-s--bold"><%= spot.status %></div>
-    <div id="body-l"><%= link_to spot.name, spot %></div>
-    <div id="body-m--bold"><%= spot.user.nickname %></div>
-  </div>
-
-  <div class="spot-image">
-
-    <!-- show only first image -->
+<div class="place-item">
+  <div class="place-pic">
     <% spot.spot_images.each_with_index do |image, i| %>
       <%= image_tag image.image.url if i==0 %>
     <% end %>
+  </div>
+  <div class="place-info">
+    <div class="header-caption14">
+      <% spot.tags.first(1).each do |tag| %>
+        <%= link_to tag, tagged_path(tag: tag) %>
+      <% end %>
+    </div>
+    <div class="body16-bold"><%= link_to spot.description.truncate(70), spot.route %></div>
   </div>
 </div>

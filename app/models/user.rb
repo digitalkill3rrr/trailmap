@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many :collections
   has_many :reports
 
-  enum role: [ :admin, :content, :user, :guest ]
+  enum role: [ :admin, :content, :trailmapper, :user, :guest ]
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
