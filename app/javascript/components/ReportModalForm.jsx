@@ -52,14 +52,6 @@ class ReportModalForm extends React.Component {
 
     return (
       <div className={showHideClassName}>
-        <div className="report-modal">
-          <div className="report-modal-header">
-            <span className="close-btn" onClick={this.handleCloseForm}>
-              &times;
-            </span>
-            <h4>Сообщить о проблеме</h4>
-          </div>
-          <div className="report-modal-content">
         <div className="modal">
           <div className="modal-header">
             <span className="close-btn" onClick={this.handleCloseForm}>
@@ -79,12 +71,6 @@ class ReportModalForm extends React.Component {
                 />
               </div>
 
-              <div className="report-modal-buttons">
-                <button type="submit" disabled={this.state.body.length === 0}>
-                  <div className="body16-bold">Сохранить</div>
-                </button>
-                <button type="button" onClick={this.handleCloseForm}>
-                  <div className="body16-bold">Отменить</div>
               <div className="modal-buttons">
                 <button type="submit" disabled={this.state.body.length === 0}>
                   Сохранить
