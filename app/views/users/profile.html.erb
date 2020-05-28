@@ -1,22 +1,44 @@
 <div class="wrapper">
-  <div><%= link_to 'Настройки профиля', edit_user_registration_path %></div>
-  <% if can? :create, Route %>
-    <h1 class="section__title"><%= link_to 'Мои маршруты', routes_users_url %></h1>
-  <% end %>
 
-  <% if can? :create, Collection %>
-    <h1 class="section__title"><%= link_to 'Мои колекции', collections_users_url %></h1>
-  <% end %>
+<div class="profile-header">
+  <h3><%= current_user.nickname %></h3>
+  <div class="manage-buttons">
+    <div class="body16-bold"><%= link_to 'Настройки профиля', edit_user_registration_path %></div>
+    <div class="body16-bold" id="logout"><%= link_to 'Выйти', destroy_user_session_path, method: :delete %></div>
+  </div>
+</div>
 
-  <% if can? :create, Spot %>
-    <h1 class="section__title"><%= link_to 'Мои споты', spots_users_url %></h1>
-  <% end %>
+<div class="tab-bar">
+  <div class="tab">
+    <% if can? :create, Route %>
+      <div class="body18-bold"><%= link_to 'Мои маршруты', routes_users_url %></div>
+      <% else %>
+      <div class="hidden"></div>
+    <% end %>
+  </div>
 
-  <% if can? :index, User %>
-    <h1 class="section__title"><%= link_to 'Список пользователей', users_url %></h1>
-  <% end %>
+  <div class="tab">
+    <% if can? :create, Collection %>
+      <div class="body18-bold"><%= link_to 'Мои колекции', collections_users_url %></div>
+    <% end %>
+  </div>
 
-  <% if can? :index, Report %>
-    <h1 class="section__title"><%= link_to 'Репорты', reports_url %></h1>
-  <% end %>
+  <div class="tab">
+    <% if can? :create, Spot %>
+      <div class="body18-bold"><%= link_to 'Мои споты', spots_users_url %></div>
+    <% end %>
+  </div>
+
+  <div class="tab">
+    <% if can? :index, User %>
+      <div class="body18-bold"><%= link_to 'Список пользователей', users_url %></div>
+    <% end %>
+  </div>
+
+  <div class="tab">
+    <% if can? :index, Report %>
+      <div class="body18-bold"><%= link_to 'Репорты', reports_url %></div>
+    <% end %>
+  </div>
+</div>
 </div>

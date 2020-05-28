@@ -16,16 +16,16 @@ label, textarea, input {
 }
 
 input, textarea {
-  display: flex;
-  flex-direction: row;
-  padding: 12px;
-  width: 100%;
-  height: 40px;
-
-  background: #fff;
-  border: 1px solid #D3D3D3;
-  box-sizing: border-box;
-  border-radius: 2px;
+  // display: flex;
+  // flex-direction: row;
+  // padding: 12px;
+  // width: 100%;
+  // height: 40px;
+  //
+  // background: #fff;
+  // border: 1px solid #D3D3D3;
+  // box-sizing: border-box;
+  // border-radius: 2px;
 }
 
 .checkbox input {
@@ -158,7 +158,7 @@ textarea {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  align-items: center;
+  // align-items: center;
 
   margin-top: 8px;
 

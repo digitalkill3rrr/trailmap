@@ -26,13 +26,13 @@
       </div>
 
       <div class="nav-right">
-          <% if user_signed_in? %>
-            <div class="body16-bold"><%= link_to current_user.nickname, profile_users_url %></div>
-            <div class="body16-bold" id="logout"><%= link_to 'Выйти', destroy_user_session_path, method: :delete %></div>
-          <% else %>
-            <div class="body16-bold" id="login"><%= link_to 'Войти', new_user_session_path %></div>
-            <div class="body16-bold" id="register"><%= link_to 'Регистрация', new_user_registration_path %></div>
-          <% end %>
+        <% if user_signed_in? %>
+          <div class="body16-bold"><%= link_to current_user.nickname, profile_users_url %></div>
+          <div class="body16-bold" id="logout"><%= link_to 'Выйти', destroy_user_session_path, method: :delete %></div>
+        <% else %>
+          <div class="body16-bold" id="login"><%= link_to 'Войти', new_user_session_path %></div>
+          <div class="body16-bold" id="register"><%= link_to 'Регистрация', new_user_registration_path %></div>
+        <% end %>
 
       </div>
     </nav>

@@ -1,9 +1,11 @@
 <div class="wrapper">
-  <h1>Список пользователей</h1>
-  <div class="button-primary--back"><%= link_to 'Отправить инвайт', new_user_invitation_path %></div> <br>
+<div class="profile-header">
+  <h3>Список пользователей</h3>
+  <div><%= link_to 'Отправить инвайт', new_user_invitation_path %></div>
+</div>
 
   <div>
-    <h3>Invited users</h3>
+    <h4>Invited users</h4>
     <% @users.each do |user| %>
       <% if user.invitation_token.present? %>
         <div>email: <%= user.email %></div>
@@ -11,13 +13,12 @@
         <div>banned: <%= user.banned %></div>
         <div>role: <%= user.role %></div>
         <div>invitation token: <%= user.invitation_token %></div><br>
-        <h5><%#= link_to 'Edit', edit_user_path(user) %></h5>
       <% end %>
     <% end %>
   </div>
 
   <div>
-    <h3>Other users</h3>
+    <h4>Other users</h4>
     <% @users.each do |user| %>
       <% if user.invitation_token.nil? %>
         <div>email: <%= user.email %></div>

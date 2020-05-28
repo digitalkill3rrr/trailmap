@@ -8,10 +8,32 @@
   margin-bottom: 40px;
 }
 
+.route-pic {
+  width: 310px;
+  height: 192px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
 .route-pic img {
   display: flex;
   width: 100%;
   height: 192px;
+
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+}
+
+.route-card:hover {
+  cursor: pointer;
+
+  img {
+    -webkit-transform: scale(1.3);
+    transform: scale(1.1);
+  }
 }
 
 .route-card__container {

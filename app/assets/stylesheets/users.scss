@@ -1,3 +1,48 @@
-// Place all the styles related to the Users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+// PROFILE
+
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 100px 0 40px;
+
+  h3 {
+    margin: 24px 0 12px;
+  }
+
+  .manage-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 223px;
+  }
+}
+
+.tab-bar {
+  display: flex;
+  // flex-direction: column;
+  justify-content: flex-start;
+
+  div.body18-bold {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 311px;
+    height: 52px;
+    background: #FFFFFF;
+
+    border: 1.5px solid #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 2px;
+
+    margin-right: 8px;
+  }
+
+  div.body18-bold:hover {
+    border: 1.5px solid #E6E6E6;
+    border-radius: 2px;
+  }
+
+  .hidden {
+    display: none;
+  }
+}
