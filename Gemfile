@@ -39,9 +39,22 @@ gem 'letter_opener'
 
 gem 'geocoder'
 
+gem 'dotenv-rails'
+
+# fix for https://github.com/net-ssh/net-ssh/issues/565:
+gem 'ed25519'
+gem 'bcrypt_pbkdf'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+  # Deployments stuff
+  gem 'capistrano', '3.10.0', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-rvm', require: false
+  gem 'capistrano3-puma', require: false
 end
 
 group :development do

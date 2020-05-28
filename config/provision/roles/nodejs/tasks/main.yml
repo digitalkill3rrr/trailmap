@@ -1,0 +1,5 @@
+- name: Install Nodejs
+  include_role:
+    name: Oefenweb.nodejs
+  vars:
+    nodejs_version: nodejs-v10x

@@ -59,6 +59,9 @@ class SpotItem extends React.Component {
               ) : (
                 ''
               )}
+              <div className="spot-edit" onClick={() => onShowReportModal(spot.id)}>
+                <div className="body14">Сообщить о статусе</div>
+              </div>
             </div>
           </>
         ) : (

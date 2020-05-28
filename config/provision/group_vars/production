@@ -1,0 +1,5 @@
+app_stage: 'production'
+app_db_name: 'trailmap_production'
+puma_threads_min: 4
+puma_threads_max: 16
+puma_workers: 0

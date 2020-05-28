@@ -41,4 +41,9 @@
     <% end %>
   </div>
 </div>
+  <% if can? :index, Report %>
+    <h1 class="section__title"><%= link_to 'Репорты', reports_url %></h1>
+  <% end %>
+
+  <h1 class="section__title"><%= 'Статьи (beta)' %></h1>
 </div>

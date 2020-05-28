@@ -60,6 +60,14 @@ class ReportModalForm extends React.Component {
             <h4>Сообщить о проблеме</h4>
           </div>
           <div className="report-modal-content">
+        <div className="modal">
+          <div className="modal-header">
+            <span className="close-btn" onClick={this.handleCloseForm}>
+              &times;
+            </span>
+            <h4>Сообщить о статусе</h4>
+          </div>
+          <div className="modal-content">
             <form onSubmit={this.handleSubmit}>
               <div>
                 <textarea
@@ -77,6 +85,12 @@ class ReportModalForm extends React.Component {
                 </button>
                 <button type="button" onClick={this.handleCloseForm}>
                   <div className="body16-bold">Отменить</div>
+              <div className="modal-buttons">
+                <button type="submit" disabled={this.state.body.length === 0}>
+                  Сохранить
+                </button>
+                <button type="button" onClick={this.handleCloseForm}>
+                  Отмена
                 </button>
               </div>
             </form>

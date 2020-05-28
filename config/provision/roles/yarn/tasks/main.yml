@@ -1,0 +1,11 @@
+- name: Add Yarn repo key
+  apt_key: url=https://dl.yarnpkg.com/debian/pubkey.gpg
+  tags: yarn_repo
+
+- name: Add Yarn repo
+  apt_repository: repo='deb https://dl.yarnpkg.com/debian/ stable main'
+  tags: yarn_repo
+
+- name: Install Yarn
+  apt: pkg=yarn state=latest
+  tags: yarn_install

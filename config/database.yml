@@ -40,6 +40,9 @@ test:
 
 production:
   <<: *default
-  database: trailmap_production
-  username: trailmap
-  password: <%= ENV['TRAILMAP_DATABASE_PASSWORD'] %>
+  host: <%= ENV['DB_HOST'] %>
+  database: <%= ENV['DB_NAME'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_USERPASS'] %>
+
+
