@@ -17,7 +17,7 @@
   background: cyan;
 }
 
-.spot-delete, .spot-report {
+.spot-edit, .spot-report, .spot-approve {
   display: flex;
   flex-direction: row;
 
@@ -28,6 +28,23 @@
   height: 32px;
 
   background: #F2F2F2;
+  border-radius: 2px;
+}
+
+.spot-delete, .spot-refuse {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: center;
+  align-items: center;
+
+  width: 177px;
+  height: 32px;
+
+  background: #FFFFFF;
+
+  border: 1.5px solid #E6E6E6;
+  box-sizing: border-box;
   border-radius: 2px;
 }
 

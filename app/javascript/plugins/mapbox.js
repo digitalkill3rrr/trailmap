@@ -74,22 +74,23 @@ const initMapbox = () => {
           response.spots.forEach((item) => {
             const {
               geometry: { coordinates },
-              properties: { name, status, author, image },
+              properties: { name, status, image },
             } = item;
 
-            let html = `<div class="spot-card">
-              <div class="spot-info__container">
-                <div id="label-s--bold">${status}</div>
-                <div id="body-l">${name}</div>
-                <div id="body-m--bold">${author}</div>
+            let html = `<div class="spot-marker-popup">
+              <div class="spot-marker-content">
+                <div class="body16-bold">${name}</div>
+                <div class="body14">${status}</div>
               </div>`;
             if (image) {
-              html += `<div class="spot-image"><img src=${image}></div>`;
+              html += `<div class="spot-marker-pic"><img src=${image}></div>`;
             }
             html += '</div>';
+            var popup = new mapboxgl.Popup({ className: 'spot-popup' }).setHTML(html);
 
             const marker = new mapboxgl.Marker()
               .setLngLat(coordinates)
+              .setPopup(popup)
               .addTo(map);
           });
 

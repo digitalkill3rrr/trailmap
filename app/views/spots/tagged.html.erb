@@ -1,30 +1,41 @@
 <div class="wrapper">
 
-  <h1 class="section__title"><%= @tag %></h1>
-
-  <% @spots.each do |spot| %>
-    <div class="spots-container--spot">
-      <div class="spot-card">
-        <div class="spot-block">
-          <div id="label-s--bold"><%= spot.status %></div>
-          <div id="body-l--bold"><%= link_to spot.name, spot.route %></div>
-          <div id="body-m--bold"><%= spot.route.title %></div>
-
-          <div id="body-s--bold" class="tag-list">
-            <% spot.tag_list.each do |tag| %>
-              <%= link_to tag, tagged_path(tag: tag) %>
-            <% end %>
-          </div>
-        </div>
-
-        <div class="spot-image">
-          <% spot.spot_images.each do |image| %>
-            <%= image_tag image.image.url %>
-          <% end %>
-        </div>
+  <div class="route-page__wrapper">
+    <div class="route-container">
+      <div class="route-header">
+        <h2><%= @tag.delete_prefix('#') %></h2>
       </div>
-    </div>
-  <% end %>
 
-  <div id="body-m--bold" class="button-primary--back"><%= link_to 'Вернуться назад', request.referer %></div>
+        <% @spots.each do |spot| %>
+          <div class="spots-sidebar">
+            <div class="spots-container">
+              <div class="spot-card">
+                <div class="spot-image">
+                  <% spot.spot_images.take(1).each do |image| %>
+                    <%= image_tag image.image.url %>
+                  <% end %>
+
+                  <div class="spot-status">
+                    <div class="body14"><%= spot.status %></div>
+                  </div>
+                </div>
+
+                <div class="spot-info__container">
+                  <div class="spot-header">
+                    <div class="body16-bold"><%= spot.route.title %></div>
+                    <div class="body18-bold"><%= link_to spot.name, spot.route %></div>
+                    <div class="body14"><%= spot.description.truncate(70) + '...' %></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+    </div>
+
+    <div class="map-container--index">
+      <div></div>
+    </div>
+  </div>
+
 </div>

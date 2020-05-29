@@ -1,6 +1,23 @@
-<div><%= report.spot.name %></div>
-<div><%= report.spot.status %></div>
-<div><%= report.body %></div>
-<div><%= link_to 'Подтвердить', approve_report_path(report), method: :post %></div>
-<div><%= link_to 'Отклонить', reject_report_path(report), method: :post %></div>
-<br>
+<div class="wrapper">
+
+  <div class="route-header">
+    <h2>Мои репорты</h2>
+  </div>
+
+  <div class="report-container">
+    <div class="report-body">
+      <div class="report-header">
+        <div class="body16-bold"><%= report.spot.name %></div>
+        <div class="body14"><%= report.spot.status %></div>
+      </div>
+      <div class="report-text">
+        <div class="body14"><%= report.body %></div>
+      </div>
+    </div>
+    <div class="report-buttons">
+      <div class="spot-approve"><%= link_to 'Подтвердить', approve_report_path(report), method: :post %></div>
+      <div class="spot-refuse"><%= link_to 'Отклонить', reject_report_path(report), method: :post %></div>
+    </div>
+    <br>
+  </div>
+</div>

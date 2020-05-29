@@ -1,0 +1,44 @@
+.report-container {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  width: 543px;
+  padding: 12px 20px;
+
+  .spot-status {
+    position: inherit;
+    margin-bottom: 16px;
+  }
+}
+
+.report-card-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.report-body {
+  margin: 16px 0 24px;
+
+  .body14 {
+    margin: 4px 0;
+    color: #828282;
+  }
+}
+
+.report-text {
+  margin: 24px 0;
+
+  .body14 {
+    color: #111;
+  }
+}
+
+
+.report-buttons {
+  display: flex;
+
+  div {
+    margin-right: 16px;
+  }
+}

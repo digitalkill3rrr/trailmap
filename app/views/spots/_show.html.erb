@@ -7,7 +7,7 @@
   <div class="place-info">
     <div class="header-caption14">
       <% spot.tags.first(1).each do |tag| %>
-        <%= link_to tag, tagged_path(tag: tag) %>
+        <%= link_to tag.name.delete_prefix('#'), tagged_path(tag: tag.name) %>
       <% end %>
     </div>
     <div class="body16-bold"><%= link_to spot.description.truncate(70), spot.route %></div>

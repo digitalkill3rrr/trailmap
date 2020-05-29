@@ -25,6 +25,11 @@
                     <div class="body16-bold"><%= spot.route.title %></div>
                     <div class="body18-bold"><%= link_to spot.name, spot.route %></div>
                     <div class="body14"><%= spot.description.truncate(70) + '...' %></div>
+                    <div class="body14">
+                      <% spot.tags.first(1).each do |tag| %>
+                        <%= link_to tag.name.delete_prefix('#'), tagged_path(tag: tag.name) %>
+                      <% end %>
+                    </div>
                   </div>
                 </div>
               </div>

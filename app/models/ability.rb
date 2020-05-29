@@ -11,6 +11,7 @@ class Ability
     if user.role == 'admin'
       can :manage, :all, :user_id => user.id
       can :read, :all
+      can :tagged, Spot
       can :map_data, Route
       can :destroy, Comment
       cannot [:create, :update, :destroy], [Route, Collection, Spot]
@@ -18,6 +19,7 @@ class Ability
     elsif user.role == 'content'
       can :manage, :all, :user_id => user.id
       can :read, :all
+      can :tagged, Spot
       can :crud, [Collection, Route, Spot]
       can :map_data, Route
       cannot :index, [User, Comment]
@@ -25,6 +27,7 @@ class Ability
     elsif user.role == 'user'
       can :manage, :all, :user_id => user.id
       can :read, :all
+      can :tagged, Spot
       can :map_data, Route
       cannot :index, User
       cannot [:create, :update, :destroy], [Route, Collection]
@@ -33,6 +36,7 @@ class Ability
       cannot :index, User
       can :map_data, Route
       can :profile, User
+      can :tagged, Spot
     end
   end
 end

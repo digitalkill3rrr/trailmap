@@ -1,23 +1,23 @@
 <div class="collection-card-big">
   <div class="big-collection-card-title">
-    <div class="header-caption16"></div>
+    <div class="header-caption16"><%= collection1.description %></div>
     <h2><%= link_to collection1.title %></h2>
     <div class="header-caption16"><%= I18n.translate :route, count: collection1.routes.count %></div>
   </div>
 </div>
 
 <div class="small-collections-container">
-  <div class="collection-card-small">
+  <div class="collection-card-small1">
     <div class="small-collection-card-title">
-      <div class="header-caption14">Маршруты</div>
+      <div class="header-caption14"><%= collection2.description %></div>
       <h3><%= link_to collection2.title %></h3>
       <div class="header-caption14"><%= I18n.translate :route, count: collection2.routes.count %></div>
     </div>
   </div>
 
-  <div class="collection-card-small">
+  <div class="collection-card-small2">
     <div class="small-collection-card-title">
-      <div class="header-caption14">Маршруты</div>
+      <div class="header-caption14"><%= collection3.description %></div>
       <h3><%= link_to collection3.title %></h3>
       <div class="header-caption14"><%= I18n.translate :route, count: collection3.routes.count %></div>
     </div>

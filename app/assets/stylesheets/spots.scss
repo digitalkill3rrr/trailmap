@@ -19,7 +19,7 @@
     flex-direction: column;
     justify-content: space-between;
     cursor: pointer;
-    margin: 20px;
+    padding: 20px;
     // height: 157px;
     width: 0;
 
@@ -42,28 +42,28 @@
       }
     }
   }
+}
 
-  .spot-status {
-    position: relative;
-    bottom: 189px;
-    left: 12px;
+.spot-status {
+  position: relative;
+  bottom: 189px;
+  left: 12px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 4px;
-    width: 110px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+  width: 110px;
 
-    background: #ffffff;
-    border-radius: 18px;
+  background: #ffffff;
+  border-radius: 18px;
 
-    .active {
-      color: green;
-    }
+  .active {
+    color: green;
+  }
 
-    .inactive {
-      color: grey;
-    }
+  .inactive {
+    color: grey;
   }
 }
 

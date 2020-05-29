@@ -3,7 +3,7 @@ import SpotModalItem from './SpotModalItem';
 import SpotModalForm from './SpotModalForm';
 
 class SpotItem extends React.Component {
-  state = { showModal: false };
+  state = { showModal: false, showReport: false };
 
   onShowModal = () => {
     this.setState({ showModal: true });
@@ -11,6 +11,10 @@ class SpotItem extends React.Component {
 
   onHideModal = () => {
     this.setState({ showModal: false });
+  };
+
+  toggleReport = () => {
+    this.setState((prevState) => ({ showReport: !prevState.showReport }));
   };
 
   render() {
@@ -38,20 +42,28 @@ class SpotItem extends React.Component {
               {spot.images.length > 0 && <img src={spot.images[0].src} />}
 
               <div className="spot-status">
-                <div className="body14">{spot.status}</div>
+                <div className="body14" onClick={this.toggleReport}>
+                  {spot.status}
+                </div>
               </div>
             </div>
             <div className="spot-info_wrapper">
+              {this.state.showReport ? (
+                <div className="spot-info__container">{spot.report}</div>
+              ) : (
               <div className="spot-info__container" onClick={this.onShowModal}>
                 <div className="spot-header">
                   <div className="body18-bold">{spot.name}</div>
                   <div className="body14">{spot.description.substr(0, 70) + '...'}</div>
                 </div>
               </div>
+              )}
 
+              {spot.status === 'активная' && spot.signed_in && (
               <div className="spot-report" onClick={() => onShowReportModal(spot.id)}>
                 <div className="body14">Сообщить о статусе</div>
               </div>
+              )}
             </div>
 
             <div className="spot-buttons">

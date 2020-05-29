@@ -46,3 +46,22 @@
     display: none;
   }
 }
+
+.spot-info__container-show {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 20px;
+  height: 197px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+
+  .spot-edit, .spot-delete {
+    width: 100px;
+    margin-right: 16px;
+  }
+}

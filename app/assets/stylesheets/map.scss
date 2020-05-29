@@ -52,7 +52,7 @@
   justify-content: space-between;
   align-items: flex-start;
 
-  width: 443px;
+  // width: 443px;
   height: 100%;
 
   padding: 0;
@@ -73,6 +73,35 @@
 
 //
 
-.spot-marker {
-  background-color: red;
+.mapboxgl-marker {
+  background-image: image-url('marker.png');
+  background-size: cover;
+  padding: 4px;
+  width: 40px;
+  height: 47px;
+  border-radius: 50%;
+  cursor: pointer;
+
+  svg {
+    display: none;
+  }
+}
+
+
+.spot-marker-popup {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 310px;
+  height: 82px;
+
+  .spot-marker-content {
+    width: 310px;
+    height: 82px;
+    padding: 16px;
+  }
+
+  .spot-marker-pic img {
+    width: 110px;
+    height: 82px;
+  }
 }

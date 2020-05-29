@@ -1,7 +1,7 @@
-<div class="section-wide">
+<div class="section-wide1">
   <div class="card-title">
-    <div class="header-caption16">Заголовок</div>
-    <h1>Большой <br> заголовок</h1>
+    <div class="header-caption16">Новые впечатления</div>
+    <h1>По диким <br> уголкам страны</h1>
   </div>
   <div class="info-container">
     <div class="header-caption16"><%= link_to '115 маршрутов', routes_url %></div>
@@ -11,19 +11,6 @@
 </div>
 
 <div class="wrapper">
-  <div id="second" class="section">
-    <div class="section-heading">
-      <span></span>
-      <div class="section-header32">Летом в поход</div>
-    </div>
-
-    <div class="route-card__container">
-      <% @routes.first(4).each do |route| %>
-        <%= render 'routes/show', route: route %>
-      <% end %>
-    </div>
-  </div>
-
   <div id="third" class="section">
     <div class="section-heading">
       <span></span>
@@ -31,7 +18,7 @@
     </div>
 
     <div class="section-content-container">
-      <div class="collection-container">
+      <div class="collection-container1">
         <%= render 'collections/show', collection1: @collections[0], collection2: @collections[1], collection3: @collections[2] %>
       </div>
 
@@ -40,17 +27,28 @@
           <% @spots.first(6).each do |spot| %>
             <%= render 'spots/show', spot: spot %>
           <% end %>
-        </div>
+      </div>
+    </div>
 
+    <div id="second" class="section">
+      <div class="section-heading">
+        <span></span>
+        <div class="section-header32">С рюкзаком в горы</div>
+      </div>
+
+      <div class="route-card__container">
+        <% @routes.first(4).each do |route| %>
+          <%= render 'routes/show', route: route %>
+        <% end %>
       </div>
     </div>
   </div>
 </div>
 
-<div class="section-wide">
+<div class="section-wide2">
   <div class="card-title">
-    <div class="header-caption16">Заголовок</div>
-    <h1>Большой <br> заголовок</h1>
+    <div class="header-caption16">на край страны</div>
+    <h1>Неторенными <br> дорогами Алтая</h1>
   </div>
   <div class="info-container">
     <div class="header-caption16"><%= link_to '115 маршрутов', routes_url %></div>
@@ -60,7 +58,6 @@
 </div>
 
 <div class="wrapper">
-
   <div id="third" class="section">
     <div class="section-heading">
       <span></span>
@@ -75,7 +72,7 @@
           <% end %>
       </div>
 
-      <div class="collection-container">
+      <div class="collection-container2">
         <%= render 'collections/show', collection1: @collections[3], collection2: @collections[4], collection3: @collections[5] %>
       </div>
 
@@ -98,8 +95,8 @@
 
 <div class="banner">
   <div class="banner-text">
-    <h2>Есть идея классного маршрута?</h2>
-    <div class="body18-bold">Если у тебя есть опыт создания маршрутов, напиши нам на наш email, опиши себя, свой опыт <br> и идею маршрута. Если нам понравится твоё предложение, мы свяжемся с тобой.</div>
+    <h2>Есть идея для маршрута?</h2>
+    <div class="body18-bold">Развиваешь свой уникальный маршрут по неизведанным уголкам страны <br> и идею маршрута. Если нам понравится твоё предложение, мы свяжемся с тобой.</div>
 
     <div id="button" class="submit-idea">
       <div class="body16-bold">
