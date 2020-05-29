@@ -14,3 +14,7 @@
 # ActiveSupport::Inflector.inflections(:en) do |inflect|
 #   inflect.acronym 'RESTful'
 # end
+
+ActiveSupport::Inflector.inflections(:ru) do |inflect|
+  inflect.irregular 'маршрут', 'маршруты'
+end

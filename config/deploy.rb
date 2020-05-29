@@ -84,12 +84,11 @@ namespace :deploy do
   desc 'Create db, load shema and seed data'
   task :setup_db do
     on roles(:app) do
-      # only first run of `db:reset` command
-      # is possible without `DISABLE_DATABASE_ENVIRONMENT_CHECK=1`
-      # in production environment
-      execute :bundle, "exec rake RAILS_ENV=#{fetch(:rails_env)} db:reset"
-    rescue StandardError
-      nil
+      within release_path do
+        execute :bundle, "exec rake RAILS_ENV=#{fetch(:rails_env)} db:create"
+        execute :bundle, "exec rake RAILS_ENV=#{fetch(:rails_env)} DISABLE_DATABASE_ENVIRONMENT_CHECK=1 db:schema:load"
+        execute :bundle, "exec rake RAILS_ENV=#{fetch(:rails_env)} DISABLE_DATABASE_ENVIRONMENT_CHECK=1 db:seed"
+      end
     end
   end
 

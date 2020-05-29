@@ -41,23 +41,27 @@ class SpotItem extends React.Component {
                 <div className="body14">{spot.status}</div>
               </div>
             </div>
-            <div className="spot-info__container" onClick={this.onShowModal}>
-              <div className="spot-header">
-                <div className="body18-bold">{spot.name}</div>
-                <div className="body14">{spot.description.substr(0, 70) + '...'}</div>
+            <div className="spot-info_wrapper">
+              <div className="spot-info__container" onClick={this.onShowModal}>
+                <div className="spot-header">
+                  <div className="body18-bold">{spot.name}</div>
+                  <div className="body14">{spot.description.substr(0, 70) + '...'}</div>
+                </div>
+              </div>
+
+              <div className="spot-report" onClick={() => onShowReportModal(spot.id)}>
+                <div className="body14">Сообщить о статусе</div>
               </div>
             </div>
+
             <div className="spot-buttons">
               {spot.manage ? (
-                <div className="spot-edit" onClick={() => onDelete(spot.id)}>
+                <div className="spot-delete" onClick={() => onDelete(spot.id)}>
                   <div className="body14">Удалить точку</div>
                 </div>
               ) : (
                 ''
               )}
-              <div className="spot-edit" onClick={() => onShowReportModal(spot.id)}>
-                <div className="body14">Сообщить о статусе</div>
-              </div>
             </div>
           </>
         ) : (

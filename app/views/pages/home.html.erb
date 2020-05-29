@@ -4,21 +4,11 @@
     <h1>Большой <br> заголовок</h1>
   </div>
   <div class="info-container">
-    <div class="header-caption16">
-      <%= link_to '115 маршрутов', routes_url %>
-    </div>
-    <div class="header-caption16">
-      <%= link_to '402 места', spots_url %>
-    </div>
-    <div class="header-caption16">
-      <%= link_to '12 направлений' %>
-    </div>
+    <div class="header-caption16"><%= link_to '115 маршрутов', routes_url %></div>
+    <div class="header-caption16"><%= link_to '402 места', spots_url %></div>
+    <div class="header-caption16"><%= link_to '12 направлений' %></div>
   </div>
 </div>
-
-<% @collections.each do |collection| %>
-  <%= render 'collections/show', collection: collection %>
-<% end %>
 
 <div class="wrapper">
   <div id="second" class="section">
@@ -42,32 +32,7 @@
 
     <div class="section-content-container">
       <div class="collection-container">
-        <div class="collection-card-big">
-          <div class="big-collection-card-title">
-            <div class="header-caption16">Заголовок</div>
-            <h2>Покататься <br> на велосипедах</h2>
-            <div class="header-caption16">9 маршрутов</div>
-          </div>
-        </div>
-
-        <div class="small-collections-container">
-          <div class="collection-card-small">
-            <div class="small-collection-card-title">
-              <div class="header-caption14">Маршруты</div>
-              <h3>Всей семьёй <br> в поход</h3>
-              <div class="header-caption14">19 маршрутов</div>
-            </div>
-          </div>
-
-          <div class="collection-card-small">
-            <div class="small-collection-card-title">
-              <div class="header-caption14">Маршруты</div>
-              <h3>Всей семьёй <br> в поход</h3>
-              <div class="header-caption14">19 маршрутов</div>
-            </div>
-          </div>
-
-        </div>
+        <%= render 'collections/show', collection1: @collections[0], collection2: @collections[1], collection3: @collections[2] %>
       </div>
 
       <div class="places-container">
@@ -88,9 +53,9 @@
     <h1>Большой <br> заголовок</h1>
   </div>
   <div class="info-container">
-    <div class="header-caption16">115 маршрутов</div>
-    <div class="header-caption16">402 места</div>
-    <div class="header-caption16">12 направлений</div>
+    <div class="header-caption16"><%= link_to '115 маршрутов', routes_url %></div>
+    <div class="header-caption16"><%= link_to '402 места', spots_url %></div>
+    <div class="header-caption16"><%= link_to '12 направлений' %></div>
   </div>
 </div>
 
@@ -111,27 +76,7 @@
       </div>
 
       <div class="collection-container">
-        <div class="collection-card-big">
-          <div class="big-collection-card-title">
-            <div class="header-caption16">Заголовок</div>
-            <h2>Покататься <br> на велосипедах</h2>
-            <div class="header-caption16">9 маршрутов</div>
-          </div>
-        </div>
-        <div class="small-collections-container">
-          <div class="location-card">
-            <div class="location-card-title">
-              <h3>Нижегородская <br> область</h3>
-              <div class="header-caption14">19 маршрутов</div>
-            </div>
-          </div>
-          <div class="location-card">
-            <div class="location-card-title">
-              <h3>Нижегородская <br> область</h3>
-              <div class="header-caption14">19 маршрутов</div>
-            </div>
-          </div>
-        </div>
+        <%= render 'collections/show', collection1: @collections[3], collection2: @collections[4], collection3: @collections[5] %>
       </div>
 
     </div>

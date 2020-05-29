@@ -142,3 +142,10 @@ button {
   transform: none;
   padding: 0;
 }
+
+.spot-info_wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 197px;
+}

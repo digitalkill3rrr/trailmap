@@ -14,7 +14,7 @@
 }
 
 .spot-buttons {
-  background: #E8E8E8;
+  background: cyan;
 }
 
 .spot-delete, .spot-report {
@@ -24,18 +24,19 @@
   justify-content: center;
   align-items: center;
 
-  width: 160px;
-  height: 30px;
+  width: 177px;
+  height: 32px;
 
   background: #F2F2F2;
   border-radius: 2px;
 }
 
 .spot-report {
-  width: 180px;
+  margin: 0 0 20px 20px;
 }
 
 .spot-edit:hover, .spot-new:hover, .spot-report:hover {
+  cursor: pointer;
   background: #E8E8E8;
 }
 

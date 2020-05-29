@@ -1,12 +1,8 @@
-<!-- <div class="collection-card-big">
+<div class="collection-card-big">
   <div class="big-collection-card-title">
     <div class="header-caption16"></div>
-    <h2><%#= link_to collection.title %></h2>
-    <div class="header-caption16">
-      <%# collection.routes.each do |routes| %>
-        <%#= routes.count %>
-      <%# end %>
-    </div>
+    <h2><%= link_to collection1.title %></h2>
+    <div class="header-caption16"><%= pluralize(collection1.routes.count, 'маршрут') %></div>
   </div>
 </div>
 
@@ -14,17 +10,17 @@
   <div class="collection-card-small">
     <div class="small-collection-card-title">
       <div class="header-caption14">Маршруты</div>
-      <h3><%#= link_to collection.title %></h3>
-      <div class="header-caption14">19 маршрутов</div>
+      <h3><%= link_to collection2.title %></h3>
+      <div class="header-caption14"><%= pluralize(collection2.routes.count, 'маршрут') %></div>
     </div>
   </div>
 
   <div class="collection-card-small">
     <div class="small-collection-card-title">
       <div class="header-caption14">Маршруты</div>
-      <h3><%#= link_to collection.title %></h3>
-      <div class="header-caption14">19 маршрутов</div>
+      <h3><%= link_to collection3.title %></h3>
+      <div class="header-caption14"><%= pluralize(collection3.routes.count, 'маршрут') %></div>
     </div>
   </div>
 
-</div> -->
+</div>
