@@ -38,6 +38,7 @@ gem 'devise_invitable', '~> 2.0.0'
 gem 'letter_opener'
 
 gem 'geocoder'
+gem 'rails-i18n', '~> 6.0.0'
 
 gem 'dotenv-rails'
 

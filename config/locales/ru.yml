@@ -269,13 +269,19 @@ ru:
     pm: вечера
 
   distance:
-    centi:
-      one: "centimeter"
-      other: "centimeters"
     unit:
       one: "м"
+      few: "м"
+      many: "м"
       other: "м"
     thousand:
       one: "км"
+      few: "км"
+      many: "км"
       other: "км"
-    billion: "gazillion-distance"
+
+  route:
+    one: 1 маршрут
+    few: "%{count} маршрута"
+    many: "%{count} маршрутов"
+    other: "%{count} маршрутов"

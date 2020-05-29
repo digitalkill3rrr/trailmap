@@ -109,5 +109,5 @@ namespace :deploy do
   before :starting, :check_revision
   before :setup_db, :symlink_env_file # make sure to keep it up-to-date with real secrets
   before :migrate, :symlink_env_file
-  before :migrate, :setup_db
+  # before :migrate, :setup_db
 end

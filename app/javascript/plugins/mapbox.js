@@ -15,7 +15,6 @@ const initMapbox = () => {
 
     const map = new mapboxgl.Map({
       container: 'map',
-      // style: 'mapbox://styles/digitalkill3rr/ck3x6ftex0v0g1cmq2b5ps6kz',
       style: 'mapbox://styles/digitalkill3rr/ckam4skh34gj11ilkdb67f47o',
       center: [37.61556, 55.75222],
       // zoom: 12,

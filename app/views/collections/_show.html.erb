@@ -2,7 +2,7 @@
   <div class="big-collection-card-title">
     <div class="header-caption16"></div>
     <h2><%= link_to collection1.title %></h2>
-    <div class="header-caption16"><%= pluralize(collection1.routes.count, 'маршрут') %></div>
+    <div class="header-caption16"><%= I18n.translate :route, count: collection1.routes.count %></div>
   </div>
 </div>
 
@@ -11,7 +11,7 @@
     <div class="small-collection-card-title">
       <div class="header-caption14">Маршруты</div>
       <h3><%= link_to collection2.title %></h3>
-      <div class="header-caption14"><%= pluralize(collection2.routes.count, 'маршрут') %></div>
+      <div class="header-caption14"><%= I18n.translate :route, count: collection2.routes.count %></div>
     </div>
   </div>
 
@@ -19,7 +19,7 @@
     <div class="small-collection-card-title">
       <div class="header-caption14">Маршруты</div>
       <h3><%= link_to collection3.title %></h3>
-      <div class="header-caption14"><%= pluralize(collection3.routes.count, 'маршрут') %></div>
+      <div class="header-caption14"><%= I18n.translate :route, count: collection3.routes.count %></div>
     </div>
   </div>
 
