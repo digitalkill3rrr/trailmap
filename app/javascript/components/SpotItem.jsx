@@ -48,8 +48,12 @@ class SpotItem extends React.Component {
               </div>
             </div>
             <div className="spot-info_wrapper">
-              {this.state.showReport ? (
-                <div className="spot-info__container">{spot.report}</div>
+              {this.state.showReport && spot.report ? (
+                <div className="spot-info__container">
+                  <div className="spot-header">
+                    <div className="body14">{spot.report}</div>
+                  </div>
+                </div>
               ) : (
               <div className="spot-info__container" onClick={this.onShowModal}>
                 <div className="spot-header">

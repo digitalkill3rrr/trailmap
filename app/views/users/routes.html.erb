@@ -4,6 +4,12 @@
     <h2>Мои маршруты</h2>
   </div>
 
+  <div class="create-button">
+    <% if can? :create, Route %>
+      <%= link_to 'Создать маршрут', new_route_path(@route) %>
+    <% end %>
+  </div>
+
   <div class="route-card__container">
     <% current_user.routes.each do |route| %>
       <div class="route-card">

@@ -14,20 +14,22 @@ label, textarea, input {
 }
 
 input, textarea {
-  // display: flex;
-  // flex-direction: row;
-  // padding: 12px;
-  // width: 100%;
-  // height: 40px;
-  //
-  // background: #fff;
-  // border: 1px solid #D3D3D3;
-  // box-sizing: border-box;
-  // border-radius: 2px;
+  display: flex;
+  flex-direction: row;
+  padding: 12px;
+  width: 100%;
+  height: 40px;
+
+  background: #fff;
+  border: 1px solid #D3D3D3;
+  box-sizing: border-box;
+  border-radius: 2px;
 }
 
 .checkbox input {
   height: 17px;
+  width: 0px;
+  height: 0px;
 }
 
 .file-upload input {
@@ -129,7 +131,7 @@ textarea {
 }
 
 .field--email, .field--password {
-  .body16 {
+  #label-s {
     margin-top: 16px;
   }
 

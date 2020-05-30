@@ -13,9 +13,6 @@
   }
 }
 
-.spot-buttons {
-  background: cyan;
-}
 
 .spot-edit, .spot-report, .spot-approve {
   display: flex;
@@ -67,6 +64,30 @@
   background: #fff;
 }
 
+.route-new {
+  display: flex;
+  flex-direction: row;
+  width: 208px;
+
+  background: #111;
+  border-radius: 4px;
+
+  input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    background: none;
+    border: none;
+    color: #fff;
+  }
+}
+
+.route-new:hover {
+  background: #222;
+  cursor: pointer;
+}
+
 
 // MODAL
 
@@ -104,4 +125,15 @@ button[type=button]:hover {
   border: 2px;
   border-color: #333;
   background: #E8E8E8;
+}
+
+.spot-delete {
+  display: none;
+}
+
+.body16-bold {
+  input {
+    display: block;
+    padding: 0;
+  }
 }

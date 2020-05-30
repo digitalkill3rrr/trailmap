@@ -3,13 +3,13 @@
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="field--email">
-      <div class="body16">email</div>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => 'user@user.com' %>
+      <div class="body16">Email</div>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => 'Email' %>
     </div>
 
     <div class="field--password">
-      <div id="label-s">пароль</div>
-      <%= f.password_field :password, autocomplete: "current-password", :placeholder => 'testtest' %>
+      <div id="label-s">Пароль</div>
+      <%= f.password_field :password, autocomplete: "current-password", :placeholder => 'Пароль' %>
     </div>
 
     <div class="remember_me__wrapper">
@@ -22,7 +22,7 @@
     </div>
 
     <div class="button--login-primary">
-      <div id="body-l--bold"><%= f.submit "Войти" %></div>
+      <div class="body16-bold"><%= f.submit "Войти" %></div>
     </div>
   <% end %>
 

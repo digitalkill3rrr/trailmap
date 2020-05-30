@@ -1,21 +1,29 @@
-<h2><%= t "devise.invitations.new.header" %></h2>
+<div class="wrapper">
+  <div class="route-page__wrapper">
+    <div class="route-container">
+      <div class="route-header">
+        <h2><%= t "devise.invitations.new.header" %></h2>
+      </div>
 
-<%= form_for(resource, as: resource_name, url: invitation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+      <%= form_for(resource, as: resource_name, url: invitation_path(resource_name), html: { method: :post }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
 
-  <% resource.class.invite_key_fields.each do |field| -%>
-    <div class="field">
-      <%= f.label field %><br />
-      <%= f.text_field field %>
+        <% resource.class.invite_key_fields.each do |field| -%>
+          <div class="field">
+            <%= f.label field %>
+            <%= f.text_field field %>
+          </div>
+
+          <div class="role-selector">
+            <%= f.label 'role' %>
+            <%= f.select :role, User.roles.keys, selected: :content %>
+          </div>
+        <% end -%>
+
+        <div class="route-new">
+          <%= f.submit 'Отправить приглашение' %>
+        </div>
+      <% end %>
     </div>
-
-    <div class="field">
-      <%= f.label 'role' %><br />
-      <%= f.select :role, User.roles.keys, selected: :content %>
-    </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit  %>
   </div>
-<% end %>
+</div>

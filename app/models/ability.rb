@@ -20,9 +20,19 @@ class Ability
       can :manage, :all, :user_id => user.id
       can :read, :all
       can :tagged, Spot
-      can :crud, [Collection, Route, Spot]
+      can :crud, [Collection, Spot]
       can :map_data, Route
       cannot :index, [User, Comment]
+
+    elsif user.role == 'trailmapper'
+      can :manage, :all, :user_id => user.id
+      can :read, :all
+      can :tagged, Spot
+      can :crud, [Route, Spot]
+      can :map_data, Route
+      can :crud, [Route, Spot]
+      cannot :index, [User, Comment]
+      cannot [:create, :update, :destroy], Collection
 
     elsif user.role == 'user'
       can :manage, :all, :user_id => user.id
